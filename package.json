@@ -49,7 +49,6 @@
       "src/**/*.js",
       "!src/index.js",
       "!./src/server/setupServer.js"
-    ],
-    "testEnvironment": "jsdom"
+    ]
   }
 }
