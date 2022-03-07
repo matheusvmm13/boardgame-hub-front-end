@@ -19,7 +19,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --runInBand --verbose --passWithNoTests",
+    "test-coverage": "npx jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,5 +43,13 @@
   },
   "devDependencies": {
     "husky": "^7.0.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!./src/server/setupServer.js"
+    ],
+    "testEnvironment": "jsdom"
   }
 }
