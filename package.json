@@ -22,10 +22,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --verbose --passWithNoTests",
-    "test-coverage": "npx jest --coverage",
+    "test-coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.16.7",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",
@@ -73,7 +75,10 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
-      "!./src/server/setupServer.js"
+      "!./src/server/setupServer.js",
+      "!.src/stories",
+      "!../.storybook"
     ]
-  }
+  },
+  "verbose": true
 }
