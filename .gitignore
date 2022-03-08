@@ -19,8 +19,6 @@
 .env.test.local
 .env.production.local
 .vscode
-
-# storybook
 /storybook-static
 
 npm-debug.log*
