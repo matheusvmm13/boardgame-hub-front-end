@@ -3,14 +3,17 @@ import "@fontsource/work-sans";
 import { ThemeProvider } from "styled-components";
 import theme from "./themes/theme";
 import Navigationbar from "./components/navigationbar/Navigationbar";
-import MatchCard from "./components/matchCard/MatchCard";
+import { Navigate, Route, Routes } from "react-router-dom";
+import AllMatchesPage from "./pages/all-matches/AllMatchesPage";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navigationbar />
-      <h1>Hello World</h1>
-      <MatchCard />
+      <Routes>
+        <Route path="/" element={<Navigate to="/matches" />} />
+        <Route path="/matches" element={<AllMatchesPage />} />
+      </Routes>
     </ThemeProvider>
   );
 }

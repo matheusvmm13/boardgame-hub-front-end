@@ -1,10 +1,15 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Navigationbar from "./Navigationbar";
 
 describe("Given a Navigationbar component", () => {
   describe("When it get's rendered", () => {
     test("Then it should display a navigation with six links", () => {
-      render(<Navigationbar />);
+      render(
+        <BrowserRouter>
+          <Navigationbar />
+        </BrowserRouter>
+      );
 
       const firstNavLink = screen.getByRole("link", { name: /All Matches/i });
       const secondNavLink = screen.getByRole("link", { name: /My Matches/i });

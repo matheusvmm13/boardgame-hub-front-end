@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export interface NavbarProps {
   isOpen: boolean;
@@ -19,12 +20,24 @@ const Navigationbar = (): JSX.Element => {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuLink href="">All Matches</MenuLink>
-        <MenuLink href="">My Matches</MenuLink>
-        <MenuLink href="">New Match</MenuLink>
-        <MenuLink href="">My Boardgames</MenuLink>
-        <MenuLink href="">Login</MenuLink>
-        <MenuLinkAuth href="">Sign Up</MenuLinkAuth>
+        <Link to={`/matches`} className="menu__link">
+          <MenuLink>All Matches</MenuLink>
+        </Link>
+        <Link to={`/my-matches`} className="menu__link">
+          <MenuLink>My Matches</MenuLink>
+        </Link>
+        <Link to={`/new-match`} className="menu__link">
+          <MenuLink>New Match</MenuLink>
+        </Link>
+        <Link to={`/my-boardgames`} className="menu__link">
+          <MenuLink>My Boardgames</MenuLink>
+        </Link>
+        <Link to={`/user/login`} className="menu__link">
+          <MenuLink>Login</MenuLink>
+        </Link>
+        <Link to={`/user/signup`} className="menu__link">
+          <MenuLinkAuth>Sign Up</MenuLinkAuth>
+        </Link>
       </Menu>
     </Nav>
   );
@@ -91,11 +104,15 @@ const Logo = styled.a`
   }
 `;
 
-export const Menu = styled.div<NavbarProps>`
+const Menu = styled.div<NavbarProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+
+  .menu__link {
+    text-decoration: none;
+  }
   @media (max-width: 768px) {
     overflow: hidden;
     flex-direction: column;
