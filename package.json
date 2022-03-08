@@ -85,6 +85,7 @@
       "!src/reportWebVitals.ts",
       "!.src/stories/**/*",
       "!../.storybook/*",
+      "!../storybook-static/**/*",
       "!src/themes/*",
       "!src/react-app-env.d.ts",
       "!styled.d.ts"
