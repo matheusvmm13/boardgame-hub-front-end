@@ -1,9 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 test("renders learn react link", () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Hello World/i);
-  expect(linkElement).toBeInTheDocument();
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+  const linkElement = screen.getAllByText(/All Matches/i);
+  expect(linkElement).toHaveLength(2);
 });
