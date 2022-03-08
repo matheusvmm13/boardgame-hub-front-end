@@ -75,11 +75,12 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/index.js",
-      "!./src/server/setupServer.js",
-      "!.src/stories",
-      "!../.storybook"
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts",
+      "!.src/stories/**/*",
+      "!../.storybook/*"
     ]
   },
   "verbose": true
