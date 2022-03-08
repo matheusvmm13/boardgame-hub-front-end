@@ -1,9 +1,9 @@
 export interface MatchInterface {
-  id: String;
-  gameTitle: String;
-  image: String;
-  creator: String;
-  date: String;
-  players: String[];
-  location: String;
+  id: string;
+  gameTitle: string;
+  image: string;
+  creator: string;
+  date: string;
+  players: string[];
+  location: string;
 }
