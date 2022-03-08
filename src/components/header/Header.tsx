@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export interface HeaderProps {
-  title: String;
+  title: string;
 }
 
 const Header = ({ title }: HeaderProps): JSX.Element => {
