@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MatchCard = () => {
+const MatchCard = (): JSX.Element => {
   return (
     <Card className="card">
       <Cardbody className="card__body">
@@ -61,13 +61,13 @@ const Cardbody = styled.article`
 
 const CardDate = styled.p`
   font-weight: 400;
-  color: #120d26;
+  color: ${(props) => props.theme.text};
   margin: 0.5rem 0;
 `;
 
 const CardGameTitle = styled.h2`
   font-weight: 900;
-  color: #120d26;
+  color: ${(props) => props.theme.text};
   margin: 0.3rem 0;
 `;
 
@@ -85,12 +85,5 @@ const CardPlayers = styled.div`
 const CardLocation = styled.div`
   font-weight: 400;
   margin: 0.5rem 0;
-  color: #9e9e9e;
-
-  &--city {
-    margin: 0;
-    display: inline-flex;
-    color: red;
-    flex-direction: row;
-  }
+  color: ${(props) => props.theme.lightText};
 `;
