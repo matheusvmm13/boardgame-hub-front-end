@@ -1,9 +1,9 @@
-export interface Match {
+export interface MatchInterface {
   id: String;
   gameTitle: String;
   image: String;
   creator: String;
   date: String;
   players: String[];
-  Location: String;
+  location: String;
 }
