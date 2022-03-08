@@ -20,7 +20,7 @@ const Navigationbar = () => {
         <MenuLink href="">New Match</MenuLink>
         <MenuLink href="">My Boardgames</MenuLink>
         <MenuLink href="">Login</MenuLink>
-        <MenuLink href="">Sign Up</MenuLink>
+        <MenuLinkAuth href="">Sign Up</MenuLinkAuth>
       </Menu>
     </Nav>
   );
@@ -38,6 +38,23 @@ const MenuLink = styled.a`
   font-size: 0.9rem;
   &:hover {
     color: #00edf5;
+  }
+`;
+
+const MenuLinkAuth = styled.a`
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 0;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #00edf5;
+  transition: all 0.3s ease-in;
+  font-size: 0.9rem;
+  font-weight: 900;
+  &:hover {
+    color: #fff;
   }
 `;
 
@@ -93,5 +110,6 @@ const Hamburger = styled.div`
   }
   @media (max-width: 768px) {
     display: flex;
+    z-index: 20;
   }
 `;
