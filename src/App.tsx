@@ -1,11 +1,11 @@
 import React from "react";
 import "@fontsource/work-sans";
-import Navbar from "./components/navbar/Navbar";
+import Navigationbar from "./components/navigationbar/Navigationbar";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Navigationbar />
       <h1>Hello World</h1>
     </div>
   );
