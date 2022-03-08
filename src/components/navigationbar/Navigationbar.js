@@ -56,6 +56,10 @@ const MenuLinkAuth = styled.a`
   &:hover {
     color: #fff;
   }
+  @media (max-width: 768px) {
+    padding-right: 0rem;
+    padding-bottom: 1rem;
+  }
 `;
 
 const Nav = styled.div`
@@ -65,7 +69,6 @@ const Nav = styled.div`
   align-items: center;
   flex-wrap: wrap;
   background: #3d50df;
-  //position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -78,8 +81,9 @@ const Logo = styled.a`
   font-weight: 800;
   font-size: 1.7rem;
   span {
-    font-weight: 300;
-    font-size: 1.3rem;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #00edf5;
   }
 `;
 
@@ -110,6 +114,5 @@ const Hamburger = styled.div`
   }
   @media (max-width: 768px) {
     display: flex;
-    z-index: 20;
   }
 `;
