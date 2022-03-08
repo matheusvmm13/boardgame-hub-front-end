@@ -20,6 +20,9 @@
 .env.production.local
 .vscode
 
+# storybook
+/storybook-static
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
