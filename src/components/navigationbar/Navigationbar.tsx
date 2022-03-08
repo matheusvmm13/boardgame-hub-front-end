@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const Navigationbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export interface NavbarProps {
+  isOpen: boolean;
+}
+
+const Navigationbar = (): JSX.Element => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <Nav>
@@ -87,7 +91,7 @@ const Logo = styled.a`
   }
 `;
 
-const Menu = styled.div`
+export const Menu = styled.div<NavbarProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,7 +99,7 @@ const Menu = styled.div`
   @media (max-width: 768px) {
     overflow: hidden;
     flex-direction: column;
-    max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
+    max-height: ${(props) => (props.isOpen ? "300px" : "0")};
     transition: max-height 0.3s ease-in;
     width: 100%;
   }
