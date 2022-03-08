@@ -69,16 +69,18 @@
     "@storybook/preset-create-react-app": "^4.0.1",
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.9",
+    "@types/styled-components": "^5.1.24",
     "husky": "^7.0.4",
     "webpack": "^5.70.0"
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/index.js",
-      "!./src/server/setupServer.js",
-      "!.src/stories",
-      "!../.storybook"
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts",
+      "!.src/stories/**/*",
+      "!../.storybook/*"
     ]
   },
   "verbose": true
