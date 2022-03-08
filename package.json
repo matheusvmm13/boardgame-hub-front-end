@@ -23,7 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --runInBand --verbose --passWithNoTests",
-    "test-coverage": "react-scripts test --coverage",
+    "test-coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
@@ -80,7 +80,10 @@
       "!src/index.tsx",
       "!src/reportWebVitals.ts",
       "!.src/stories/**/*",
-      "!../.storybook/*"
+      "!../.storybook/*",
+      "!src/themes/*",
+      "!src/react-app-env.d.ts",
+      "!styled.d.ts"
     ]
   },
   "verbose": true
