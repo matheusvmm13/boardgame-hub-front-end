@@ -13,7 +13,12 @@ const MatchCard = ({
     <Card className="card">
       <Cardbody className="card__body">
         <img className="card__gameimage" src={image} alt={gameTitle} />
-        <CardDate className="card__gamedate">{date}</CardDate>
+        <CardDate className="card__gamedate">
+          {new Intl.DateTimeFormat("en-GB", {
+            dateStyle: "full",
+            timeStyle: "short",
+          }).format(Date.parse(date))}
+        </CardDate>
         <CardGameTitle className="card__gametitle">{gameTitle}</CardGameTitle>
 
         <CardPlayers className="card__players">
@@ -39,7 +44,7 @@ export default MatchCard;
 const Card = styled.li`
   list-style: none;
   max-width: 330px;
-  max-height: 340px;
+  min-height: 280px;
   margin: 1rem 1rem;
   display: flex;
   flex-direction: column;
