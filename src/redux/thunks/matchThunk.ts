@@ -1,10 +1,14 @@
-import { MatchInterface } from "../../utils/types/matchInterface";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import { loadMatchesAction } from "../actions/actionsCreator";
 
 export const loadMatchesThunk = async (
-  dispatch: (arg0: { type: string; match: MatchInterface }) => void
+  dispatch: ThunkDispatch<void, unknown, AnyAction>
 ) => {
-  const response = await fetch("http://localhost:4000/matches");
+  const response = await fetch(
+    "https://boardgame-hub-api.onrender.com/matches"
+  );
   const matchesList = await response.json();
-  dispatch(loadMatchesAction(matchesList));
+  const allMatches = matchesList.matches;
+  dispatch(loadMatchesAction(allMatches));
 };

@@ -4,6 +4,7 @@ export interface MatchInterface {
   image: string;
   creator: string;
   date: string;
+  maxPlayers: number;
   players: string[];
   location: string;
 }
