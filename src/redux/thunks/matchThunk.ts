@@ -9,5 +9,6 @@ export const loadMatchesThunk = async (
     "https://boardgame-hub-api.onrender.com/matches"
   );
   const matchesList = await response.json();
-  dispatch(loadMatchesAction(matchesList));
+  const allMatches = matchesList.matches;
+  dispatch(loadMatchesAction(allMatches));
 };

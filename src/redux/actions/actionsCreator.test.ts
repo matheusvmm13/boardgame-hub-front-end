@@ -10,6 +10,7 @@ describe("Given a load matches action", () => {
         image: "",
         creator: "username",
         date: "2022",
+        maxPlayers: 4,
         players: ["uno", "dos"],
         location: "Barcelona",
       };

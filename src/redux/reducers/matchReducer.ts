@@ -1,24 +1,17 @@
-import { ActionInterface } from "../../utils/types/actionInterface";
+import { AnyAction } from "redux";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import actionsType from "../actions/actionsType";
 
-const matchReducer = (
-  currentState: MatchInterface[] = [],
-  action: ActionInterface = {}
-) => {
+const matchReducer = (state: MatchInterface[] = [], action: AnyAction) => {
   let newMatch: MatchInterface[] | MatchInterface;
 
   switch (action.type) {
     case actionsType.loadMatches:
-      if (action.matches) {
-        newMatch = [...action.matches];
-      } else {
-        newMatch = [...currentState];
-      }
+      newMatch = [...action.match];
       break;
 
     default:
-      newMatch = [...currentState];
+      newMatch = [...state];
       break;
   }
   return newMatch;

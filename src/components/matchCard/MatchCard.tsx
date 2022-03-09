@@ -1,18 +1,20 @@
 import styled from "styled-components";
+import { MatchInterface } from "../../utils/types/matchInterface";
 
-const MatchCard = (): JSX.Element => {
+const MatchCard = ({
+  gameTitle,
+  image,
+  date,
+  maxPlayers,
+  players,
+  location,
+}: MatchInterface): JSX.Element => {
   return (
     <Card className="card">
       <Cardbody className="card__body">
-        <img
-          className="card__gameimage"
-          src={
-            "https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__imagepage/img/BjM3LyahJ4IQ2ov5MkzkHatbmUc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5666597.jpg"
-          }
-          alt={"Dune imperium"}
-        />
-        <CardDate className="card__gamedate">Mar 09 2022 - 16:30</CardDate>
-        <CardGameTitle className="card__gametitle">Dune Imperium</CardGameTitle>
+        <img className="card__gameimage" src={image} alt={gameTitle} />
+        <CardDate className="card__gamedate">{date}</CardDate>
+        <CardGameTitle className="card__gametitle">{gameTitle}</CardGameTitle>
 
         <CardPlayers className="card__players">
           <img
@@ -25,7 +27,7 @@ const MatchCard = (): JSX.Element => {
         </CardPlayers>
 
         <CardLocation className="card__location">
-          <p className="card__location--city">Barcelona</p>
+          <p className="card__location--city">{location}</p>
         </CardLocation>
       </Cardbody>
     </Card>
@@ -34,7 +36,8 @@ const MatchCard = (): JSX.Element => {
 
 export default MatchCard;
 
-const Card = styled.section`
+const Card = styled.li`
+  list-style: none;
   max-width: 330px;
   max-height: 340px;
   margin: 1rem 1rem;

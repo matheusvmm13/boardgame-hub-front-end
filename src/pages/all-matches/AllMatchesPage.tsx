@@ -13,12 +13,26 @@ const AllMatchesPage = () => {
     dispatch(loadMatchesThunk);
   }, [dispatch]);
 
-  console.log(matchesData);
-
   return (
     <>
-      <Header title={"All Matches"} />
-      <MatchCard />
+      <section className="container">
+        <Header title={"All Matches"} />
+        <ul className="d-flex flex-row justify-content-around align-items-center flex-wrap">
+          {matchesData.map((partida) => (
+            <MatchCard
+              gameTitle={partida.gameTitle}
+              image={partida.image}
+              date={partida.date}
+              maxPlayers={partida.maxPlayers}
+              players={partida.players}
+              location={partida.location}
+              key={partida.id}
+              id={partida.id}
+              creator={partida.creator}
+            />
+          ))}
+        </ul>
+      </section>
     </>
   );
 };
