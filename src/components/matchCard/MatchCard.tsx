@@ -44,8 +44,9 @@ export default MatchCard;
 const Card = styled.li`
   list-style: none;
   max-width: 330px;
+  min-width: 330px;
   min-height: 280px;
-  margin: 1rem 1rem;
+  margin: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

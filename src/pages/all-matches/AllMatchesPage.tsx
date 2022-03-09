@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header/Header";
@@ -15,9 +16,9 @@ const AllMatchesPage = () => {
 
   return (
     <>
-      <section className="container">
+      <Wrapper className="container">
         <Header title={"All Matches"} />
-        <ul className="d-flex flex-row justify-content-around align-items-center flex-wrap">
+        <ul className="matches__list">
           {matchesData.map((partida) => (
             <MatchCard
               gameTitle={partida.gameTitle}
@@ -32,8 +33,19 @@ const AllMatchesPage = () => {
             />
           ))}
         </ul>
-      </section>
+      </Wrapper>
     </>
   );
 };
 export default AllMatchesPage;
+
+const Wrapper = styled.section`
+  min-height: 100vh;
+
+  .matches__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+`;
