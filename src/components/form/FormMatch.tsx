@@ -60,7 +60,7 @@ const FormMatch: React.FC<{}> = () => {
             type="number"
             min={2}
           />
-          <MainButton buttonText={"CREATE"} />
+          <SubmitButton>CREATE</SubmitButton>
         </StyledForm>
       </Formik>
     </FormWrapper>
@@ -102,4 +102,18 @@ const Field = styled.input`
   margin: 8px 0;
   width: 100%;
   font-family: inherit;
+`;
+
+const SubmitButton = styled.button`
+  background-color: ${(props) => props.theme.primary};
+  width: 270px;
+  height: 60px;
+  color: #fff;
+  font-weight: 900;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 0.6rem 2rem;
+  margin: 2rem 1rem;
+  border: none;
+  border-radius: 15px;
 `;

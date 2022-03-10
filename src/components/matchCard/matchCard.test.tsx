@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../redux/store";
 import MatchCard from "./MatchCard";
 
 describe("Given a Match Card component", () => {
@@ -16,17 +18,19 @@ describe("Given a Match Card component", () => {
       };
 
       render(
-        <MatchCard
-          gameTitle={partida.gameTitle}
-          image={partida.image}
-          date={partida.date}
-          maxPlayers={partida.maxPlayers}
-          players={partida.players}
-          location={partida.location}
-          key={partida.id}
-          id={partida.id}
-          creator={partida.creator}
-        />
+        <Provider store={store}>
+          <MatchCard
+            gameTitle={partida.gameTitle}
+            image={partida.image}
+            date={partida.date}
+            maxPlayers={partida.maxPlayers}
+            players={partida.players}
+            location={partida.location}
+            key={partida.id}
+            id={partida.id}
+            creator={partida.creator}
+          />
+        </Provider>
       );
 
       const text = screen.getByRole("heading", { name: /Dune Imperium/i });

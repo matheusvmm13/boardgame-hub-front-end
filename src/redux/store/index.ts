@@ -8,4 +8,5 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
+export type AppDispatch = typeof store.dispatch;
 export default store;

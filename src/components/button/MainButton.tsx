@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 export interface ButtonProps {
   buttonText: string;
+  actionOnClick: () => void;
 }
 
-const MainButton = ({ buttonText }: ButtonProps): JSX.Element => {
-  return <Button>{buttonText}</Button>;
+const MainButton = ({
+  buttonText,
+  actionOnClick,
+}: ButtonProps): JSX.Element => {
+  return <Button onClick={actionOnClick}>{buttonText}</Button>;
 };
 
 export default MainButton;

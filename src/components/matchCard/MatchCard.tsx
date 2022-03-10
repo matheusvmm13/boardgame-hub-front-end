@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { MatchInterface } from "../../utils/types/matchInterface";
 
@@ -8,7 +9,14 @@ const MatchCard = ({
   maxPlayers,
   players,
   location,
+  id,
 }: MatchInterface): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const deleteMatch = (id: string) => {
+    dispatch(deleteMatchThunk(id));
+  };
+
   return (
     <Card className="card">
       <Cardbody className="card__body">
@@ -34,6 +42,9 @@ const MatchCard = ({
         <CardLocation className="card__location">
           <p className="card__location--city">{location}</p>
         </CardLocation>
+        <p className="card__delete" onClick={() => deleteMatch(id)}>
+          DELETE
+        </p>
       </Cardbody>
     </Card>
   );
@@ -95,4 +106,10 @@ const CardLocation = styled.div`
   font-weight: 400;
   margin: 0.5rem 0;
   color: ${(props) => props.theme.lightText};
+
+  .card__delete {
+    font-weight: 400;
+    margin: 0.5rem 0;
+    color: ${(props) => props.theme.lightText};
+  }
 `;
