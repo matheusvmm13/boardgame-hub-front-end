@@ -8,9 +8,7 @@ import {
 export const loadMatchesThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
 ) => {
-  const response = await fetch(
-    "https://boardgame-hub-api.onrender.com/matches"
-  );
+  const response = await fetch(`${process.env.REACT_APP_PUBLIC_API}matches`);
   const matchesList = await response.json();
   const allMatches = matchesList.matches;
   dispatch(loadMatchesAction(allMatches));
@@ -19,7 +17,7 @@ export const loadMatchesThunk = async (
 export const deleteMatchThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const response = await fetch(
-      `https://boardgame-hub-api.onrender.com/my-matches/delete/${id}`,
+      `${process.env.REACT_APP_PUBLIC_API}my-matches/delete/${id}`,
       {
         method: "DELETE",
       }
