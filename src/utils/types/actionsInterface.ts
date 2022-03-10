@@ -1,11 +1,11 @@
 import { MatchInterface } from "./matchInterface";
 
 export interface anyActionInterface {
-  type: string;
+  type?: string;
 }
 
 export interface loadMatchesInterface extends anyActionInterface {
-  matches: MatchInterface[];
+  match: MatchInterface[];
 }
 
 export interface deleteMatchesInterface extends anyActionInterface {

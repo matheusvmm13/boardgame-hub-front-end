@@ -4,10 +4,10 @@ import matchReducer from "./matchReducer";
 
 describe("Given a matchReducer function", () => {
   describe("When it is called with an empty state and the loadMatches action with an match", () => {
-    test("Then it should return the new state with the array of matches", () => {
+    test("Then it should return the new state with the array of matches", async () => {
       const state: MatchInterface[] = [];
 
-      const matchesArray = [
+      const matchesArray: MatchInterface[] = [
         {
           id: "12355",
           gameTitle: "Dune",
@@ -29,12 +29,13 @@ describe("Given a matchReducer function", () => {
           location: "Barcelona",
         },
       ];
+
       const action = {
         type: actionsType.loadMatches,
         match: matchesArray,
       };
 
-      const newState = matchReducer(state, action);
+      const newState = await matchReducer(state, action);
 
       expect(newState).toEqual(matchesArray);
     });
