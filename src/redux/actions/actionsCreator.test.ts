@@ -1,5 +1,9 @@
 import { MatchInterface } from "../../utils/types/matchInterface";
-import { loadMatchesAction } from "./actionsCreator";
+import {
+  createMatchesAction,
+  deleteMatchesAction,
+  loadMatchesAction,
+} from "./actionsCreator";
 
 describe("Given a load matches action", () => {
   describe("When it receives a match", () => {
@@ -23,6 +27,48 @@ describe("Given a load matches action", () => {
       const action = loadMatchesAction(match);
 
       expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a delete matches action", () => {
+  describe("When it receives an id", () => {
+    test("Then it should return an action type delete match", () => {
+      const id = "332425";
+
+      const expectedAction = {
+        type: "delete-matches",
+        id,
+      };
+
+      const deleteAction = deleteMatchesAction(id);
+      expect(deleteAction).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a create matches action", () => {
+  describe("When it receives an match", () => {
+    test("Then it should return an action type create match", () => {
+      const match: MatchInterface = {
+        id: "345245871",
+        gameTitle: "Dune",
+        image: "",
+        creator: "username",
+        date: "2022",
+        maxPlayers: 5,
+        players: ["uno", "dos"],
+        location: "Barcelona",
+      };
+
+      const expectedAction = {
+        type: "create-matches",
+        match,
+      };
+
+      const createAction = createMatchesAction(match);
+
+      expect(createAction).toEqual(expectedAction);
     });
   });
 });
