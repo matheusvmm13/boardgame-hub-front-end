@@ -26,7 +26,7 @@ const Navigationbar = (): JSX.Element => {
         <Link to={`/my-matches`} className="menu__link">
           <MenuLink>My Matches</MenuLink>
         </Link>
-        <Link to={`/new-match`} className="menu__link">
+        <Link to={`/my-matches/new-match`} className="menu__link">
           <MenuLink>New Match</MenuLink>
         </Link>
         <Link to={`/my-boardgames`} className="menu__link">

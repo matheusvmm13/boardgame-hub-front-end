@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import FormMatch from "../../components/form/FormMatch";
 import Header from "../../components/header/Header";
 
 const NewMatchPage = () => {
@@ -6,6 +7,7 @@ const NewMatchPage = () => {
     <>
       <Wrapper className="container">
         <Header title={"New Match"} />
+        <FormMatch />
       </Wrapper>
     </>
   );
