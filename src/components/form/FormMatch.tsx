@@ -38,10 +38,7 @@ const FormMatch: React.FC<{}> = () => {
           values: MyFormValues,
           { setSubmitting }: FormikHelpers<MyFormValues>
         ) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 500);
+          setSubmitting(false);
           dispatch(createMatchThunk(values));
         }}
       >
