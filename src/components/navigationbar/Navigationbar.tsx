@@ -54,7 +54,10 @@ const MenuLink = styled.a`
   transition: all 0.3s ease-in;
   font-size: 0.9rem;
   &:hover {
-    color: #00edf5;
+    color: ${(props) => props.theme.secondary};
+  }
+  @media (max-width: 768px) {
+    padding-bottom: 2rem;
   }
 `;
 
@@ -66,7 +69,7 @@ const MenuLinkAuth = styled.a`
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  color: #00edf5;
+  color: ${(props) => props.theme.secondary};
   transition: all 0.3s ease-in;
   font-size: 0.9rem;
   font-weight: 900;
@@ -75,7 +78,6 @@ const MenuLinkAuth = styled.a`
   }
   @media (max-width: 768px) {
     padding-right: 0rem;
-    padding-bottom: 1rem;
   }
 `;
 
@@ -85,7 +87,7 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #3d50df;
+  background: ${(props) => props.theme.primary};
   top: 0;
   left: 0;
   right: 0;
@@ -100,7 +102,7 @@ const Logo = styled.a`
   span {
     font-weight: 900;
     font-size: 1.4rem;
-    color: #00edf5;
+    color: ${(props) => props.theme.secondary};
   }
 `;
 
@@ -112,11 +114,12 @@ const Menu = styled.div<NavbarProps>`
 
   .menu__link {
     text-decoration: none;
+    margin: 0.4rem;
   }
   @media (max-width: 768px) {
     overflow: hidden;
     flex-direction: column;
-    max-height: ${(props) => (props.isOpen ? "300px" : "0")};
+    max-height: ${(props) => (props.isOpen ? "400px" : "0")};
     transition: max-height 0.3s ease-in;
     width: 100%;
   }
@@ -129,7 +132,7 @@ const Hamburger = styled.div`
   span {
     height: 2px;
     width: 25px;
-    background: #00edf5;
+    background: ${(props) => props.theme.secondary};
     margin-bottom: 5px;
     border-radius: 5px;
   }
