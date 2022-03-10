@@ -36,11 +36,6 @@ describe("Given a Match Card component", () => {
       const text = screen.getByRole("heading", { name: /Dune Imperium/i });
       expect(text).toBeInTheDocument();
     });
-  });
-});
-
-describe("Given a Match Card component", () => {
-  describe("When it's rendered", () => {
     test("Then it should render with a delete text on it", () => {
       const partida = {
         id: "12355",
