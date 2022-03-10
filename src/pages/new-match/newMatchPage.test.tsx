@@ -6,7 +6,6 @@ import NewMatchPage from "./NewMatchPage";
 describe("Given a New Match page component", () => {
   describe("When it's rendered", () => {
     test("Then it should render form for a new match", () => {
-      const dispatch = jest.fn();
       render(
         <Provider store={store}>
           <NewMatchPage />

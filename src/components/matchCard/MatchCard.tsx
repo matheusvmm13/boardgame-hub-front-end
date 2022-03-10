@@ -30,15 +30,19 @@ const MatchCard = ({
         </CardDate>
         <CardGameTitle className="card__gametitle">{gameTitle}</CardGameTitle>
 
-        <CardPlayers className="card__players">
-          <img
-            className="card__players--playerimage"
-            src={
-              "https://images.generated.photos/wMYFoRC5e6yEtisDvXdfWot_TxmVmrZDSYc3Z8NeRk0/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTkxMDA3LmpwZw.jpg"
-            }
-            alt={"player"}
-          />
-        </CardPlayers>
+        <CardPlayersWrapper>
+          {Array.from(Array(maxPlayers)).map((player, index) => (
+            <CardPlayers key={index} className="card__players">
+              <img
+                className="card__players--playerimage"
+                src={
+                  "https://cdn.icon-icons.com/icons2/390/PNG/512/meeple_38522.png"
+                }
+                alt={"player"}
+              />
+            </CardPlayers>
+          ))}
+        </CardPlayersWrapper>
 
         <CardLocation className="card__location">
           <p className="card__location--city">{location}</p>
@@ -78,6 +82,15 @@ const Card = styled.li`
 
 const Cardbody = styled.article`
   padding: 1rem;
+
+  .card__delete {
+    font-weight: 400;
+    margin: 0.5rem 0;
+    color: ${(props) => props.theme.lightText};
+    &:hover {
+      color: #000;
+    }
+  }
 `;
 
 const CardDate = styled.p`
@@ -92,13 +105,19 @@ const CardGameTitle = styled.h2`
   margin: 0.3rem 0;
 `;
 
+const CardPlayersWrapper = styled.article`
+  display: flex;
+`;
+
 const CardPlayers = styled.div`
   margin: 0.5rem 0rem 0.5rem 0rem;
 
   .card__players--playerimage {
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
+    height: 1.8rem;
+    width: 1.8rem;
+    margin-right: 0.2rem;
+    border-radius: 20%;
+    border: 1.5px solid ${(props) => props.theme.lightText};
     object-fit: cover;
   }
 `;
@@ -107,10 +126,4 @@ const CardLocation = styled.div`
   font-weight: 400;
   margin: 0.5rem 0;
   color: ${(props) => props.theme.lightText};
-
-  .card__delete {
-    font-weight: 400;
-    margin: 0.5rem 0;
-    color: ${(props) => props.theme.lightText};
-  }
 `;
