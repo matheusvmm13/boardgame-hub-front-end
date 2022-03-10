@@ -1,6 +1,9 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
-import { loadMatchesAction } from "../actions/actionsCreator";
+import {
+  deleteMatchesAction,
+  loadMatchesAction,
+} from "../actions/actionsCreator";
 
 export const loadMatchesThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
@@ -12,3 +15,16 @@ export const loadMatchesThunk = async (
   const allMatches = matchesList.matches;
   dispatch(loadMatchesAction(allMatches));
 };
+
+export const deleteMatchThunk =
+  (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(
+      `https://boardgame-hub-api.onrender.com/my-matches/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (response.ok) {
+      dispatch(deleteMatchesAction(id));
+    }
+  };

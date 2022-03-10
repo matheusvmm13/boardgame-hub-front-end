@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { deleteMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
 
 const MatchCard = ({
