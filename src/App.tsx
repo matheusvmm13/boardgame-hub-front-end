@@ -5,6 +5,7 @@ import theme from "./themes/theme";
 import Navigationbar from "./components/navigationbar/Navigationbar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AllMatchesPage from "./pages/all-matches/AllMatchesPage";
+import NewMatchPage from "./pages/new-match/NewMatchPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/matches" />} />
         <Route path="/matches" element={<AllMatchesPage />} />
+        <Route path="/my-matches/new-match" element={<NewMatchPage />} />
       </Routes>
     </ThemeProvider>
   );

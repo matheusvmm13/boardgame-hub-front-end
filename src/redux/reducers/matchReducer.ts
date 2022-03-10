@@ -14,6 +14,10 @@ const matchReducer = (state: MatchInterface[] = [], action: AnyAction) => {
       newMatch = state.filter((match) => match.id !== action.id);
       break;
 
+    case actionsType.createMatches:
+      newMatch = [...state, action.match];
+      break;
+
     default:
       newMatch = [...state];
       break;

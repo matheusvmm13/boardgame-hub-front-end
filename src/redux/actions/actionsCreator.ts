@@ -10,3 +10,8 @@ export const deleteMatchesAction = (id: string) => ({
   type: actionsType.deleteMatches,
   id,
 });
+
+export const createMatchesAction = (match: MatchInterface) => ({
+  type: actionsType.createMatches,
+  match,
+});
