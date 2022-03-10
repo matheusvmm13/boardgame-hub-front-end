@@ -6,7 +6,9 @@ describe("Given a main button component", () => {
     test("Then it should render the given text", () => {
       const buttonText = "Click Me";
 
-      render(<MainButton buttonText={buttonText} />);
+      render(
+        <MainButton buttonText={buttonText} actionOnClick={() => "hello"} />
+      );
 
       const button = screen.getByRole("button", { name: buttonText });
 
