@@ -1,6 +1,7 @@
 export interface BoardgameInterface {
   name: string;
-  image: string;
-  maxPlayers: number;
-  maxPlayTime: number;
+  image_url: string;
+  max_players: number;
+  min_players: number;
+  max_playtime: number;
 }
