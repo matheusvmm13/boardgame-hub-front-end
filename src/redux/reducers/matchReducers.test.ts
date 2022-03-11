@@ -41,3 +41,15 @@ describe("Given a matchReducer function", () => {
     });
   });
 });
+
+describe("Given a matchReducer default function", () => {
+  describe("When it is called with an empty state no action", () => {
+    test("Then it should return the current state", async () => {
+      const currentState: MatchInterface[] = [];
+
+      const newState = await matchReducer(currentState);
+
+      expect(newState).toEqual(currentState);
+    });
+  });
+});
