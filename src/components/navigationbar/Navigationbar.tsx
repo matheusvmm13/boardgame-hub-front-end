@@ -11,9 +11,13 @@ const Navigationbar = (): JSX.Element => {
 
   return (
     <Nav>
-      <Logo href="">
-        Boardgame<span>Hub</span>
+      <Logo>
+        <Link to="/matches" className="logo__link">
+          <span className="logo__boardgame">Boardgame</span>
+          <span>Hub</span>
+        </Link>
       </Logo>
+
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         <span />
         <span />
@@ -45,8 +49,39 @@ const Navigationbar = (): JSX.Element => {
 
 export default Navigationbar;
 
-const MenuLink = styled.a`
+const Nav = styled.div`
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: ${(props) => props.theme.primary};
+  top: 0;
+  left: 0;
+  right: 0;
+`;
+
+const Logo = styled.a`
+  padding: 0.5rem 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.7rem;
+  span {
+    font-weight: black;
+    font-size: 1.4rem;
+    color: ${(props) => props.theme.secondary};
+  }
+  .logo__link {
+    text-decoration: none;
+  }
+  .logo__boardgame {
+    color: #fff;
+  }
+`;
+
+const MenuLink = styled.a`
+  padding: 1rem 0.8rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -78,31 +113,6 @@ const MenuLinkAuth = styled.a`
   }
   @media (max-width: 768px) {
     padding-right: 0rem;
-  }
-`;
-
-const Nav = styled.div`
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  background: ${(props) => props.theme.primary};
-  top: 0;
-  left: 0;
-  right: 0;
-`;
-
-const Logo = styled.a`
-  padding: 1rem 0;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 1.7rem;
-  span {
-    font-weight: 900;
-    font-size: 1.4rem;
-    color: ${(props) => props.theme.secondary};
   }
 `;
 

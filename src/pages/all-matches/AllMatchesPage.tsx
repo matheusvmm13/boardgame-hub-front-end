@@ -45,7 +45,7 @@ const Wrapper = styled.section`
   .matches__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
   }
 `;
