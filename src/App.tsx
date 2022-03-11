@@ -6,7 +6,7 @@ import Navigationbar from "./components/navigationbar/Navigationbar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AllMatchesPage from "./pages/all-matches/AllMatchesPage";
 import NewMatchPage from "./pages/new-match/NewMatchPage";
-import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
+import AllBoardgamesPage from "./pages/all-boardgames/AllBoardgamesPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Navigate to="/matches" />} />
         <Route path="/matches" element={<AllMatchesPage />} />
         <Route path="/my-matches/new-match" element={<NewMatchPage />} />
-        <Route path="/my-boardgames" element={<MyBoardgamesPage />} />
+        <Route path="/all-boardgames" element={<AllBoardgamesPage />} />
       </Routes>
     </ThemeProvider>
   );

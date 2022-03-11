@@ -4,7 +4,7 @@ import BoardgameCard from "../../components/boardgameCard/boardgameCard";
 import Header from "../../components/header/Header";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
-const MyBoardgamesPage = () => {
+const AllBoardgamesPage = () => {
   const [boardgameResults, setBoardgameResults] = useState<
     BoardgameInterface[]
   >([]);
@@ -22,7 +22,7 @@ const MyBoardgamesPage = () => {
   return (
     <>
       <Wrapper className="container">
-        <Header title={"My Boardgames"} />
+        <Header title={"All Boardgames"} />
         <ul className="boardgame__list">
           {boardgameResults.map((game) => (
             <BoardgameCard
@@ -39,7 +39,7 @@ const MyBoardgamesPage = () => {
     </>
   );
 };
-export default MyBoardgamesPage;
+export default AllBoardgamesPage;
 
 const Wrapper = styled.section`
   min-height: 100vh;
