@@ -47,7 +47,7 @@ const Wrapper = styled.section`
   .boardgame__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
   }
 `;
