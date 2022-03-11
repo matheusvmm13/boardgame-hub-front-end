@@ -24,7 +24,7 @@ const BoardgameCard = ({
             <p className="card__playtime--minutes">{max_playtime} Minutes</p>
           </CardMaxPlayTime>
         </CardInfo>
-        <AddButton className="card__add" onClick={() => console.log("Added")}>
+        <AddButton className="card__add" onClick={() => "hello"}>
           ADD
         </AddButton>
       </Cardbody>
