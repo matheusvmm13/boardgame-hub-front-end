@@ -1,45 +1,59 @@
 import * as React from "react";
+import jwtDecode from "jwt-decode";
 import styled from "styled-components";
 import { Formik, Field, Form, FormikHelpers } from "formik";
 import { useDispatch } from "react-redux";
 import { createMatchThunk } from "../../redux/thunks/matchThunk";
+import { MatchInterface } from "../../utils/types/matchInterface";
 
-interface MyFormValues {
-  gameTitle: string;
+interface MyFormValues extends MatchInterface {
+  userid: string;
+}
+
+interface DecodedToken {
+  name: string;
   id: string;
-  image: string;
-  creator: string;
-  date: string;
-  players: string[];
-  maxPlayers: number;
-  location: string;
+  iat: number;
 }
 
 const FormMatch: React.FC<{}> = () => {
+  const decoded = React.useRef({ name: "", id: "", iat: 0 });
+
   const dispatch = useDispatch();
 
   const initialValues: MyFormValues = {
     gameTitle: "",
     id: "",
+    userid: "",
     image: "",
     creator: "",
     date: "",
-    players: [],
     maxPlayers: 0,
+    players: [],
     location: "",
   };
+
+  const token: string | null = localStorage.getItem("token");
+  if (token !== null) {
+    decoded.current = jwtDecode(token);
+    initialValues.userid = decoded.current.id;
+    initialValues.creator = decoded.current.id;
+    initialValues.players.push(decoded.current.id);
+  }
 
   return (
     <FormWrapper>
       <h1>My Form</h1>
       <Formik
         initialValues={initialValues}
+        enableReinitialize={true}
         onSubmit={(
           values: MyFormValues,
           { setSubmitting }: FormikHelpers<MyFormValues>
         ) => {
           setSubmitting(false);
           dispatch(createMatchThunk(values));
+          console.log(values);
         }}
       >
         <Form>

@@ -3,6 +3,11 @@ import FormMatch from "../../components/form/FormMatch";
 import Header from "../../components/header/Header";
 
 const NewMatchPage = () => {
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRXJpYyBMYW5nIiwiaWQiOiI2MjJhMzRlZjU1YzE1YjgyMGVkYzlhM2UiLCJpYXQiOjE2NDcwOTg1OTl9.mySIm1UGEEUtaZsa6pRVzTl3bTgssQfcIl2W_SOe6ho";
+
+  localStorage.setItem("token", token);
+
   return (
     <>
       <Wrapper className="container">
