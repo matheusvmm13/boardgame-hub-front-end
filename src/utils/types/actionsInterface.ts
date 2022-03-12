@@ -1,3 +1,4 @@
+import { BoardgameInterface } from "./boardgameInterface";
 import { MatchInterface } from "./matchInterface";
 
 export interface anyActionInterface {
@@ -14,4 +15,8 @@ export interface deleteMatchesInterface extends anyActionInterface {
 
 export interface createMatchesInterface extends anyActionInterface {
   match: MatchInterface;
+}
+
+export interface addGameInterface extends anyActionInterface {
+  name: Partial<BoardgameInterface>;
 }

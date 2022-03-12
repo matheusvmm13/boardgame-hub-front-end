@@ -1,5 +1,7 @@
+import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import {
+  addGameAction,
   createMatchesAction,
   deleteMatchesAction,
   loadMatchesAction,
@@ -69,6 +71,22 @@ describe("Given a create matches action", () => {
       const createAction = createMatchesAction(match);
 
       expect(createAction).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a add games action", () => {
+  describe("When it receives a name", () => {
+    test("Then it should return an action type add game", () => {
+      const game: Partial<BoardgameInterface> = {};
+
+      const expectedAction = {
+        type: "add-game",
+        name: game,
+      };
+
+      const addAction = addGameAction(game);
+      expect(addAction).toEqual(expectedAction);
     });
   });
 });

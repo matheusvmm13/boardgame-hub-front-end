@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addGameThunk } from "../../redux/thunks/baordgameThunks";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
 const BoardgameCard = ({
@@ -8,6 +10,15 @@ const BoardgameCard = ({
   max_players,
   max_playtime,
 }: BoardgameInterface): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const addNewBoardgame = (
+    boardgameName: Partial<BoardgameInterface> | string
+  ) => {
+    console.log("Dispatched!");
+    dispatch(addGameThunk(boardgameName));
+  };
+
   return (
     <Card className="card">
       <Cardbody className="card__body">
@@ -24,7 +35,7 @@ const BoardgameCard = ({
             <p className="card__playtime--minutes">{max_playtime} Minutes</p>
           </CardMaxPlayTime>
         </CardInfo>
-        <AddButton className="card__add" onClick={() => "hello"}>
+        <AddButton className="card__add" onClick={() => addNewBoardgame(name)}>
           ADD
         </AddButton>
       </Cardbody>
