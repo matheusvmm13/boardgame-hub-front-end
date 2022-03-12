@@ -17,7 +17,7 @@ interface DecodedToken {
 }
 
 const FormMatch: React.FC<{}> = () => {
-  const decoded = React.useRef({ name: "", id: "", iat: 0 });
+  const decoded = React.useRef<DecodedToken>({ name: "", id: "", iat: 0 });
 
   const dispatch = useDispatch();
 
