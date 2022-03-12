@@ -1,3 +1,4 @@
+import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import {
   addGameAction,
@@ -77,17 +78,11 @@ describe("Given a create matches action", () => {
 describe("Given a add games action", () => {
   describe("When it receives a name", () => {
     test("Then it should return an action type add game", () => {
-      const game = {
-        name: "",
-        image_url: "",
-        max_players: 0,
-        min_players: 0,
-        max_playtime: 0,
-      };
+      const game: Partial<BoardgameInterface> = {};
 
       const expectedAction = {
         type: "add-game",
-        boardgame: game,
+        name: game,
       };
 
       const addAction = addGameAction(game);

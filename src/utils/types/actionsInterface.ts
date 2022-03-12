@@ -18,5 +18,5 @@ export interface createMatchesInterface extends anyActionInterface {
 }
 
 export interface addGameInterface extends anyActionInterface {
-  boardgame: BoardgameInterface;
+  name: Partial<BoardgameInterface>;
 }
