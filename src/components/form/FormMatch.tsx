@@ -10,7 +10,7 @@ interface MyFormValues extends MatchInterface {
   userid: string;
 }
 
-interface DecodedToken {
+export interface DecodedToken {
   name: string;
   id: string;
   iat: number;
