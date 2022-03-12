@@ -1,3 +1,4 @@
+import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import actionsType from "./actionsType";
 
@@ -14,4 +15,9 @@ export const deleteMatchesAction = (id: string) => ({
 export const createMatchesAction = (match: MatchInterface) => ({
   type: actionsType.createMatches,
   match,
+});
+
+export const addGameAction = (boardgame: BoardgameInterface) => ({
+  type: actionsType.addGame,
+  boardgame,
 });
