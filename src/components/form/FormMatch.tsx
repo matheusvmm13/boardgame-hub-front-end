@@ -53,7 +53,6 @@ const FormMatch: React.FC<{}> = () => {
         ) => {
           setSubmitting(false);
           dispatch(createMatchThunk(values));
-          console.log(values);
         }}
       >
         <Form>
