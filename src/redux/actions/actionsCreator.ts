@@ -7,6 +7,11 @@ export const loadMatchesAction = (match: MatchInterface) => ({
   match,
 });
 
+export const loadMyMatchesAction = (match: MatchInterface) => ({
+  type: actionsType.loadMyMatches,
+  match,
+});
+
 export const deleteMatchesAction = (id: string) => ({
   type: actionsType.deleteMatches,
   id,
