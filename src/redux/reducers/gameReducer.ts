@@ -6,16 +6,14 @@ import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import actionsType from "../actions/actionsType";
 
 const gameReducer = (
-  state: BoardgameInterface = {
-    name: "",
-  },
+  state = {} as BoardgameInterface,
   action: anyActionInterface | addGameInterface = {}
 ) => {
-  let newBoardgames: Partial<BoardgameInterface>;
+  let newBoardgames: BoardgameInterface | string;
 
   switch (action.type) {
     case actionsType.addGame:
-      newBoardgames = (action as addGameInterface).name;
+      newBoardgames = (action as addGameInterface).boardgame;
       break;
 
     default:

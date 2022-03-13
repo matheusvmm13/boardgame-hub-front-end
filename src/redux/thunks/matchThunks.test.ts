@@ -11,10 +11,10 @@ describe("Given a loadMatchesThunk function", () => {
   });
 });
 
-describe("Given a deleteRobotThunk", () => {
+describe("Given a deleteMatchesThunk", () => {
   describe("When it's called with an id parameter and api response is ok", () => {
     test("Then it should call dispatch passing a deleteAction", async () => {
-      jest.setTimeout(8000);
+      jest.setTimeout(9000);
       const id = "6229ef04d27d51d23afda2e0";
 
       const expectedAction = {
@@ -25,7 +25,6 @@ describe("Given a deleteRobotThunk", () => {
       const mockDispatch = jest.fn();
 
       const deleteThunk = deleteMatchThunk(id);
-
       await deleteThunk(mockDispatch);
 
       expect(mockDispatch).toHaveBeenCalledWith(expectedAction);

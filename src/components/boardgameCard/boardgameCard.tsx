@@ -14,10 +14,10 @@ const BoardgameCard = ({
   const dispatch = useDispatch();
 
   const addNewBoardgame = (
-    boardgameName: Partial<BoardgameInterface> | string
+    _id: Partial<BoardgameInterface> | string | undefined
   ) => {
-    console.log("Dispatched!");
-    dispatch(addGameThunk(boardgameName));
+    console.log(_id);
+    dispatch(addGameThunk(_id));
   };
 
   return (
@@ -36,7 +36,7 @@ const BoardgameCard = ({
             <p className="card__playtime--minutes">{max_playtime} Minutes</p>
           </CardMaxPlayTime>
         </CardInfo>
-        <AddButton className="card__add" onClick={() => addNewBoardgame(name)}>
+        <AddButton className="card__add" onClick={() => addNewBoardgame(_id)}>
           ADD
         </AddButton>
       </Cardbody>

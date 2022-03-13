@@ -12,9 +12,11 @@ const AllBoardgamesPage = () => {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        `${process.env.REACT_APP_PUBLIC_API}all-boardgames`
+        `${process.env.REACT_APP_LOCAL_API}all-boardgames`
       );
       const { boardgames } = await response.json();
+      console.log(boardgames);
+
       setBoardgameResults(boardgames);
     })();
   }, []);
