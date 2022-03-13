@@ -13,7 +13,7 @@ export const addGameThunk =
       const decodedToken: DecodedToken = jwtDecode(token);
       const userId = decodedToken.id;
       const response = await fetch(
-        `http://localhost:3500/all-boardgames/add/${gameId}/${userId}`,
+        `${process.env.REACT_APP_PUBLIC_API}all-boardgames/add/${gameId}/${userId}`,
         {
           method: "PATCH",
           mode: "cors",
