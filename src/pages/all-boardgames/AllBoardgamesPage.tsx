@@ -11,11 +11,9 @@ const AllBoardgamesPage = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(
-        "https://api.boardgameatlas.com/api/search?order_by=rank&ascending=false&limit=50&pretty=true&client_id=KZeBa27mqo"
-      );
-      const { games } = await response.json();
-      setBoardgameResults(games);
+      const response = await fetch("http://localhost:3500/all-boardgames/");
+      const { boardgames } = await response.json();
+      setBoardgameResults(boardgames);
     })();
   }, []);
 
@@ -32,6 +30,7 @@ const AllBoardgamesPage = () => {
               max_players={game.max_players}
               max_playtime={game.max_playtime}
               key={game.name}
+              _id={game._id}
             />
           ))}
         </ul>

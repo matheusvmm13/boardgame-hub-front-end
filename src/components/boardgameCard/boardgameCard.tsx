@@ -9,6 +9,7 @@ const BoardgameCard = ({
   min_players,
   max_players,
   max_playtime,
+  _id,
 }: BoardgameInterface): JSX.Element => {
   const dispatch = useDispatch();
 
