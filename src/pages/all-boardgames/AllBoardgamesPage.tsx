@@ -11,7 +11,9 @@ const AllBoardgamesPage = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:3500/all-boardgames/");
+      const response = await fetch(
+        `${process.env.REACT_APP_PUBLIC_API}all-boardgames`
+      );
       const { boardgames } = await response.json();
       setBoardgameResults(boardgames);
     })();
