@@ -12,7 +12,7 @@ describe("Given a form component", () => {
         </Provider>
       );
 
-      const textField = screen.getByRole("textbox", {
+      const textField = screen.getByRole("combobox", {
         name: "Choose one of your games",
       });
 

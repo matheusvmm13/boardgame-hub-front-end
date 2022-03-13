@@ -5,6 +5,7 @@ import { Formik, Field, Form, FormikHelpers } from "formik";
 import { useDispatch } from "react-redux";
 import { createMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
+import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
 interface MyFormValues extends MatchInterface {
   userid: string;
@@ -16,8 +17,24 @@ export interface DecodedToken {
   iat: number;
 }
 
-const FormMatch: React.FC<{}> = () => {
+const FormMatch: React.FC<{}> = (preloadedValues) => {
   const decoded = React.useRef<DecodedToken>({ name: "", id: "", iat: 0 });
+  const [boardgameResults, setBoardgameResults] = React.useState<
+    BoardgameInterface[]
+  >([]);
+
+  React.useEffect(() => {
+    (async (userId) => {
+      const token: string | null = localStorage.getItem("token");
+      if (token !== null) {
+        const decodedToken: DecodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
+        const response = await fetch(`http://localhost:3500/users/${userId}`);
+        const { user } = await response.json();
+        setBoardgameResults(user.boardgames);
+      }
+    })();
+  }, []);
 
   const dispatch = useDispatch();
 
@@ -44,70 +61,82 @@ const FormMatch: React.FC<{}> = () => {
   return (
     <FormWrapper>
       <h1>My Form</h1>
-      <Formik
-        initialValues={initialValues}
-        enableReinitialize={true}
-        onSubmit={(
-          values: MyFormValues,
-          { setSubmitting }: FormikHelpers<MyFormValues>
-        ) => {
-          setSubmitting(false);
-          dispatch(createMatchThunk(values));
-        }}
-      >
-        <Form>
-          <StyledForm>
-            <label className="form__label" htmlFor="gameTitle">
-              Choose one of your games
-            </label>
-            <Field
-              className="field__form"
-              id="gameTitle"
-              name="gameTitle"
-              placeholder="Which game"
-              type="text"
-            />
+      {boardgameResults ? (
+        <Formik
+          initialValues={initialValues}
+          enableReinitialize={true}
+          onSubmit={(
+            values: MyFormValues,
+            { setSubmitting }: FormikHelpers<MyFormValues>
+          ) => {
+            setSubmitting(false);
+            dispatch(createMatchThunk(values));
+          }}
+        >
+          <Form>
+            <StyledForm>
+              <label className="form__label" htmlFor="gameTitle">
+                Choose one of your games
+              </label>
+              <Field
+                as="select"
+                className="field__form"
+                id="gameTitle"
+                name="gameTitle"
+                placeholder="Which game"
+              >
+                {boardgameResults.map((option) => (
+                  <option
+                    key={option._id}
+                    value={option.name}
+                    label={option.name}
+                  />
+                ))}
+              </Field>
 
-            <label className="form__label" htmlFor="date">
-              Pick a date and time
-            </label>
-            <Field
-              className="field__form"
-              id="date"
-              name="date"
-              placeholder="Pick a date"
-              type="datetime-local"
-              min={new Date().toISOString().slice(0, -8)}
-            />
+              <label className="form__label" htmlFor="date">
+                Pick a date and time
+              </label>
+              <Field
+                className="field__form"
+                id="date"
+                name="date"
+                placeholder="Pick a date"
+                type="datetime-local"
+                min={new Date().toISOString().slice(0, -8)}
+              />
 
-            <label className="form__label" htmlFor="maxPlayers">
-              Number of Players
-            </label>
-            <Field
-              className="field__form"
-              id="maxPlayers"
-              name="maxPlayers"
-              placeholder="Select the number of players"
-              type="number"
-              min={2}
-            />
+              <label className="form__label" htmlFor="maxPlayers">
+                Number of Players
+              </label>
+              <Field
+                className="field__form"
+                id="maxPlayers"
+                name="maxPlayers"
+                placeholder="Select the number of players"
+                type="number"
+                min={2}
+              />
 
-            <label className="form__label" htmlFor="location">
-              Choose a location
-            </label>
-            <Field
-              className="field__form"
-              id="location"
-              name="location"
-              placeholder="Where"
-              type="text"
-            />
-          </StyledForm>
-          <button type="submit" className="button__submit">
-            Create
-          </button>
-        </Form>
-      </Formik>
+              <label className="form__label" htmlFor="location">
+                Choose a location
+              </label>
+              <Field
+                className="field__form"
+                id="location"
+                name="location"
+                placeholder="Where"
+                type="text"
+              />
+            </StyledForm>
+            <button type="submit" className="button__submit">
+              Create
+            </button>
+          </Form>
+        </Formik>
+      ) : (
+        <div>Loading...</div>
+      )}
     </FormWrapper>
   );
 };
