@@ -16,7 +16,6 @@ const BoardgameCard = ({
   const addNewBoardgame = (
     _id: Partial<BoardgameInterface> | string | undefined
   ) => {
-    console.log(_id);
     dispatch(addGameThunk(_id));
   };
 

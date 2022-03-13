@@ -1,25 +1,32 @@
-import styled from "styled-components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import jwtDecode from "jwt-decode";
+import { DecodedToken } from "../../components/form/FormMatch";
 import Header from "../../components/header/Header";
-import MatchCard from "../../components/matchCard/MatchCard";
 import { RootState } from "../../redux/reducers";
-import { loadMatchesThunk } from "../../redux/thunks/matchThunk";
+import { loadMyMatchesThunk } from "../../redux/thunks/matchThunk";
+import MatchCard from "../../components/matchCard/MatchCard";
 
-const AllMatchesPage = () => {
+const MyMatchesPage = () => {
   const dispatch = useDispatch();
-  const matchesData = useSelector((state: RootState) => state.matches);
+  const myMatchesData = useSelector((state: RootState) => state.matches);
 
   useEffect(() => {
-    dispatch(loadMatchesThunk);
+    const token: string | null = localStorage.getItem("token");
+    if (token !== null) {
+      const decodedToken: DecodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      dispatch(loadMyMatchesThunk(userId));
+    }
   }, [dispatch]);
 
   return (
     <>
       <Wrapper className="container">
-        <Header title={"All Matches"} />
+        <Header title={"My Matches"} />
         <ul className="matches__list">
-          {matchesData.map((partida) => (
+          {myMatchesData.map((partida) => (
             <MatchCard
               gameTitle={partida.gameTitle}
               image={partida.image}
@@ -37,7 +44,8 @@ const AllMatchesPage = () => {
     </>
   );
 };
-export default AllMatchesPage;
+
+export default MyMatchesPage;
 
 const Wrapper = styled.section`
   min-height: 100vh;

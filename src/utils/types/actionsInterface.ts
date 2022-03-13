@@ -9,6 +9,10 @@ export interface loadMatchesInterface extends anyActionInterface {
   match: MatchInterface[];
 }
 
+export interface loadMyMatchesInterface extends anyActionInterface {
+  match: MatchInterface[];
+}
+
 export interface deleteMatchesInterface extends anyActionInterface {
   id: string;
 }

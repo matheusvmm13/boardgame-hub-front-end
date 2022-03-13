@@ -5,6 +5,7 @@ import {
   createMatchesAction,
   deleteMatchesAction,
   loadMatchesAction,
+  loadMyMatchesAction,
 } from "./actionsCreator";
 
 describe("Given a load matches action", () => {
@@ -27,6 +28,32 @@ describe("Given a load matches action", () => {
       };
 
       const action = loadMatchesAction(match);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a load my matches action", () => {
+  describe("When it receives a match", () => {
+    test("Then it should return an action type loadMatches", () => {
+      const match: MatchInterface = {
+        id: "34871",
+        gameTitle: "Carcassone",
+        image: "",
+        creator: "username",
+        date: "2022",
+        maxPlayers: 5,
+        players: ["uno", "dos"],
+        location: "Barcelona",
+      };
+
+      const expectedAction = {
+        type: "load-my-matches",
+        match,
+      };
+
+      const action = loadMyMatchesAction(match);
 
       expect(action).toEqual(expectedAction);
     });

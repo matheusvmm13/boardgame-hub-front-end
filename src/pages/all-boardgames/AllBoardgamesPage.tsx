@@ -15,7 +15,6 @@ const AllBoardgamesPage = () => {
         `${process.env.REACT_APP_LOCAL_API}all-boardgames`
       );
       const { boardgames } = await response.json();
-      console.log(boardgames);
 
       setBoardgameResults(boardgames);
     })();

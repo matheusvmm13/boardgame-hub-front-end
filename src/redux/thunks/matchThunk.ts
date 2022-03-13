@@ -16,6 +16,15 @@ export const loadMatchesThunk = async (
   dispatch(loadMatchesAction(allMatches));
 };
 
+export const loadMyMatchesThunk =
+  (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_PUBLIC_API}my-matches/${id}`
+    );
+    const myMatchesList = await response.json();
+    dispatch(loadMatchesAction(myMatchesList));
+  };
+
 export const deleteMatchThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const response = await fetch(
