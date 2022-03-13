@@ -9,6 +9,7 @@ const BoardgameCard = ({
   min_players,
   max_players,
   max_playtime,
+  _id,
 }: BoardgameInterface): JSX.Element => {
   const dispatch = useDispatch();
 
@@ -86,6 +87,7 @@ const AddButton = styled.button`
   margin: 1rem 1rem;
   border: none;
   border-radius: 15px;
+  cursor: pointer;
 
   &:hover {
     color: #fff;
