@@ -1,19 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
-import AllMatchesPage from "./AllMatchesPage";
+import MyMatchesPage from "./MyMatchesPage";
 
-describe("Given a All Matches page component", () => {
+describe("Given a My Matches page component", () => {
   describe("When it's rendered", () => {
     test("Then it should render a title with All Matches", () => {
       render(
         <Provider store={store}>
-          <AllMatchesPage />
+          <MyMatchesPage />
         </Provider>
       );
 
       const TextHeading = screen.getByRole("heading", {
-        name: "All Matches",
+        name: "My Matches",
       });
 
       expect(TextHeading).toBeInTheDocument();

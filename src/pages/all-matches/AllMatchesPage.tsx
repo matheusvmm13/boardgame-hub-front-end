@@ -9,7 +9,6 @@ import { loadMatchesThunk } from "../../redux/thunks/matchThunk";
 const AllMatchesPage = () => {
   const dispatch = useDispatch();
   const matchesData = useSelector((state: RootState) => state.matches);
-  console.log(matchesData);
 
   useEffect(() => {
     dispatch(loadMatchesThunk);
