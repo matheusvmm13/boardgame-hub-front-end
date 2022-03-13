@@ -6,14 +6,14 @@ import { DecodedToken } from "../../components/form/FormMatch";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
 export const addGameThunk =
-  (name: Partial<BoardgameInterface> | string) =>
+  (gameId: Partial<BoardgameInterface> | string | undefined) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const token: string | null = localStorage.getItem("token");
     if (token !== null) {
       const decodedToken: DecodedToken = jwtDecode(token);
       const userId = decodedToken.id;
       const response = await fetch(
-        `http://localhost:3500/all-boardgames/add/${name}/${userId}`,
+        `${process.env.REACT_APP_PUBLIC_API}all-boardgames/add/${gameId}/${userId}`,
         {
           method: "PATCH",
           mode: "cors",

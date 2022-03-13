@@ -17,7 +17,7 @@ export const createMatchesAction = (match: MatchInterface) => ({
   match,
 });
 
-export const addGameAction = (name: Partial<BoardgameInterface>) => ({
+export const addGameAction = (boardgame: BoardgameInterface) => ({
   type: actionsType.addGame,
-  name,
+  boardgame,
 });
