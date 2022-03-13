@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import Navigationbar from "../components/navigationbar/Navigationbar";
 
 export default {
@@ -6,4 +7,14 @@ export default {
   component: Navigationbar,
 };
 
-export const Responsive = () => <Navigationbar />;
+const Template = (args) => (
+  <BrowserRouter>
+    <Navigationbar {...args} />
+  </BrowserRouter>
+);
+
+export const NavigationBarComponent = Template.bind({});
+
+NavigationBarComponent.args = {
+  isOpen: false,
+};
