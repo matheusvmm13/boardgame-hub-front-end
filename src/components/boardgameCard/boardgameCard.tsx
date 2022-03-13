@@ -87,6 +87,7 @@ const AddButton = styled.button`
   margin: 1rem 1rem;
   border: none;
   border-radius: 15px;
+  cursor: pointer;
 
   &:hover {
     color: #fff;
