@@ -10,6 +10,10 @@ import AllBoardgamesPage from "./pages/all-boardgames/AllBoardgamesPage";
 import MyMatchesPage from "./pages/my-matches/MyMatchesPage";
 
 function App() {
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiRXJpYyBMYW5nIiwiaWQiOiI2MjJhMzRlZjU1YzE1YjgyMGVkYzlhM2UiLCJpYXQiOjE2NDcwOTg1OTl9.mySIm1UGEEUtaZsa6pRVzTl3bTgssQfcIl2W_SOe6ho";
+  localStorage.setItem("token", token);
+
   return (
     <ThemeProvider theme={theme}>
       <Navigationbar />
