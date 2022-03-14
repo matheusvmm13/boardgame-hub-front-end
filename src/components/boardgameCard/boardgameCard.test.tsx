@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
-import BoardgameCard from "./BoardgameCard";
+import BoardgameCard from "./BoardgameCardComponent";
 
 describe("Given a Match Card component", () => {
   describe("When it's rendered", () => {
