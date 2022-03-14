@@ -5,6 +5,7 @@ const actionsType = {
   createMatches: "create-matches",
   addGame: "add-game",
   loadGames: "load-games",
+  loadMyGames: "load-my-games",
 };
 
 export default actionsType;

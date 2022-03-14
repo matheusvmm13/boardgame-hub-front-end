@@ -32,7 +32,9 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
       if (token !== null) {
         const decodedToken: DecodedToken = jwtDecode(token);
         const userId = decodedToken.id;
-        const response = await fetch(`http://localhost:3500/users/${userId}`);
+        const response = await fetch(
+          `${process.env.REACT_APP_PUBLIC_API}users/${userId}`
+        );
         const { user } = await response.json();
         setBoardgameResults(user.boardgames);
       }

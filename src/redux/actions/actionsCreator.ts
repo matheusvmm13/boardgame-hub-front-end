@@ -26,3 +26,8 @@ export const addGameAction = (boardgame: BoardgameInterface) => ({
   type: actionsType.addGame,
   boardgame,
 });
+
+export const loadMyGamesAction = (boardgame: MatchInterface) => ({
+  type: actionsType.loadMyMatches,
+  boardgame,
+});

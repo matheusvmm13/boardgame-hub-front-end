@@ -13,6 +13,10 @@ export interface loadMyMatchesInterface extends anyActionInterface {
   match: MatchInterface[];
 }
 
+export interface loadMyGamesInterface extends anyActionInterface {
+  boardgame: BoardgameInterface[];
+}
+
 export interface deleteMatchesInterface extends anyActionInterface {
   id: string;
 }
