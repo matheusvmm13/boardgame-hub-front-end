@@ -18,7 +18,10 @@ export interface DecodedToken {
 }
 
 const FormMatch: React.FC<{}> = (preloadedValues) => {
+  const dispatch = useDispatch();
+
   const decoded = React.useRef<DecodedToken>({ name: "", id: "", iat: 0 });
+
   const [boardgameResults, setBoardgameResults] = React.useState<
     BoardgameInterface[]
   >([]);
@@ -35,8 +38,6 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
       }
     })();
   }, []);
-
-  const dispatch = useDispatch();
 
   const initialValues: MyFormValues = {
     gameTitle: "",

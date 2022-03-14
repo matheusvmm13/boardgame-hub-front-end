@@ -40,49 +40,9 @@ describe("Given a matchReducer function", () => {
       expect(newState).toEqual(matchesArray);
     });
   });
-  describe("When it is called with a DELETE function", () => {
-    test("Then it should return the new state with the array of matches", async () => {
-      const state: MatchInterface[] = [];
-
-      const matchesArray: MatchInterface[] = [
-        {
-          id: "531452",
-          gameTitle: "Carcassone",
-          image: "",
-          creator: "username2",
-          date: "march 2020",
-          maxPlayers: 4,
-          players: ["", "", ""],
-          location: "Barcelona",
-        },
-      ];
-
-      const action = {
-        type: actionsType.deleteMatches,
-        id: "531452",
-      };
-
-      const newState = await matchReducer(state, action);
-
-      expect(newState).toEqual([]);
-    });
-  });
   describe("When it is called with a bad DELETE request function", () => {
     test("Then it should return the new state with the array of matches", async () => {
       const state: MatchInterface[] = [];
-
-      const matchesArray: MatchInterface[] = [
-        {
-          id: "531452",
-          gameTitle: "Carcassone",
-          image: "",
-          creator: "username2",
-          date: "march 2020",
-          maxPlayers: 4,
-          players: ["", "", ""],
-          location: "Barcelona",
-        },
-      ];
 
       const action = {
         type: actionsType.deleteMatches,
