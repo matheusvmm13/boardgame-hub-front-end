@@ -7,6 +7,5 @@ import { server } from "./mocks/server.js";
 import "jest-localstorage-mock";
 
 beforeAll(() => server.listen());
-beforeEach(() => {});
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
