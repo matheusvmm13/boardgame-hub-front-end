@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import BoardgameCard from "../../components/boardgameCard/boardgameCard";
+import BoardgameCard from "../../components/boardgameCard/BoardgameCard";
 import Header from "../../components/header/Header";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
