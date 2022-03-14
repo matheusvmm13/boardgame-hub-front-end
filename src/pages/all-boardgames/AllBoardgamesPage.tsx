@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import BoardgameCard from "../../components/boardgameCard/boardgameCard";
+import BoardgameCard from "../../components/boardgameCard/BoardgameCard";
 import Header from "../../components/header/Header";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
@@ -12,7 +12,7 @@ const AllBoardgamesPage = () => {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        `${process.env.REACT_APP_LOCAL_API}all-boardgames`
+        `${process.env.REACT_APP_PUBLIC_API}all-boardgames`
       );
       const { boardgames } = await response.json();
 

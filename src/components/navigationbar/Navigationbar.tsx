@@ -61,7 +61,7 @@ const Nav = styled.div`
   right: 0;
 `;
 
-const Logo = styled.a`
+const Logo = styled.div`
   padding: 0.5rem 0;
   color: #fff;
   text-decoration: none;
@@ -80,8 +80,8 @@ const Logo = styled.a`
   }
 `;
 
-const MenuLink = styled.a`
-  padding: 1rem 0.8rem;
+const MenuLink = styled.div`
+  padding: 0.3rem 0.8rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -92,14 +92,11 @@ const MenuLink = styled.a`
     color: ${(props) => props.theme.secondary};
   }
   @media (max-width: 768px) {
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
   }
 `;
 
-const MenuLinkAuth = styled.a`
-  padding-top: 1rem;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
+const MenuLinkAuth = styled.div`
   padding-left: 0;
   cursor: pointer;
   text-align: center;

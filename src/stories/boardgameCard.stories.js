@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import BoardgameCard from "../components/boardgameCard/boardgameCard";
+import BoardgameCard from "../components/boardgameCard/BoardgameCard";
 import store from "../redux/store";
 
 export default {
