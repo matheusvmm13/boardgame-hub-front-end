@@ -1,20 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store";
-import AllMatchesPage from "./AllMatchesPage";
+import AllBoardgamesPage from "./AllBoardgamesPage";
 
-describe("Given a All Matches page component", () => {
-  describe("When it's rendered", () => {
-    test("Then it should render a title with All Matches", () => {
+describe("Given a All Boardgames component", () => {
+  describe("When it get's rendered", () => {
+    test("Then it must display a title text", () => {
       render(
         <Provider store={store}>
-          <AllMatchesPage />
+          <AllBoardgamesPage />
         </Provider>
       );
 
       const TextHeading = screen.getByRole("heading", {
-        name: "All Matches",
+        name: "All Boardgames",
       });
 
       expect(TextHeading).toBeInTheDocument();
@@ -23,14 +22,12 @@ describe("Given a All Matches page component", () => {
   describe("When it's rendered with an array of Matches, with a text 'Spirit Island' in one of them", () => {
     test("Then it should render a paragraph with the text 'Spirit Island'", async () => {
       render(
-        <BrowserRouter>
-          <Provider store={store}>
-            <AllMatchesPage />
-          </Provider>
-        </BrowserRouter>
+        <Provider store={store}>
+          <AllBoardgamesPage />
+        </Provider>
       );
 
-      const textFound = await screen.findByText(/Spirit Island/i);
+      const textFound = await screen.findByText(/Root/i);
 
       expect(textFound).toBeInTheDocument();
     });

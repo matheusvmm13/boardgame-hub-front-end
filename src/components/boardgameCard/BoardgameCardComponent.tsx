@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addGameThunk } from "../../redux/thunks/baordgameThunks";
+import { addGameThunk } from "../../redux/thunks/boardgameThunks";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 
 const BoardgameCard = ({

@@ -15,6 +15,7 @@
     "@types/react-redux": "^7.1.23",
     "formik": "^2.2.9",
     "javascript-time-ago": "^2.3.13",
+    "jest-localstorage-mock": "^2.4.19",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -80,6 +81,7 @@
     "@storybook/testing-library": "^0.0.9",
     "@types/styled-components": "^5.1.24",
     "husky": "^7.0.4",
+    "msw": "^0.39.1",
     "webpack": "^5.70.0"
   },
   "jest": {
@@ -93,8 +95,10 @@
       "!../storybook-static/**/*",
       "!src/themes/*",
       "!src/react-app-env.d.ts",
-      "!styled.d.ts"
+      "!styled.d.ts",
+      "!src/utils/*"
     ]
   },
-  "verbose": true
+  "verbose": true,
+  "resetMocks": false
 }
