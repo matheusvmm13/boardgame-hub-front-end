@@ -33,10 +33,10 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
         const decodedToken: DecodedToken = jwtDecode(token);
         const userId = decodedToken.id;
         const response = await fetch(
-          `${process.env.REACT_APP_PUBLIC_API}users/${userId}`
+          `${process.env.REACT_APP_LOCAL_API}my-boardgames/${userId}`
         );
-        const { user } = await response.json();
-        setBoardgameResults(user.boardgames);
+        const games = await response.json();
+        setBoardgameResults(games);
       }
     })();
   }, []);
@@ -53,6 +53,8 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
     location: "",
   };
 
+  const [formData, setFormData] = React.useState(initialValues);
+
   const token: string | null = localStorage.getItem("token");
   if (token !== null) {
     decoded.current = jwtDecode(token);
@@ -60,6 +62,18 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
     initialValues.creator = decoded.current.id;
     initialValues.players.push(decoded.current.id);
   }
+
+  const changeData = (event: any) => {
+    setFormData({ ...formData, [event.target.id]: event.target.value });
+
+    const selectedId = event.target.value;
+    const selectedGameState = boardgameResults.filter(
+      (game) => game.name === selectedId
+    )[0];
+    formData.gameTitle = selectedGameState.name;
+    formData.image = selectedGameState.image_url as string;
+    formData.maxPlayers = selectedGameState.max_players as number;
+  };
 
   return (
     <FormWrapper>
@@ -87,13 +101,11 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
                 id="gameTitle"
                 name="gameTitle"
                 placeholder="Which game"
+                onChange={changeData}
+                value={formData.gameTitle}
               >
-                {boardgameResults.map((option) => (
-                  <option
-                    key={option._id}
-                    value={option.name}
-                    label={option.name}
-                  />
+                {boardgameResults.map((option, index) => (
+                  <option key={index} value={option.name} label={option.name} />
                 ))}
               </Field>
 
@@ -112,14 +124,19 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
               <label className="form__label" htmlFor="maxPlayers">
                 Number of Players
               </label>
-              <Field
-                className="field__form"
-                id="maxPlayers"
-                name="maxPlayers"
-                placeholder="Select the number of players"
-                type="number"
-                min={2}
-              />
+              {formData.gameTitle !== "" ? (
+                <Field
+                  className="field__form"
+                  id="maxPlayers"
+                  name="maxPlayers"
+                  placeholder="Select the number of players"
+                  type="number"
+                  min={2}
+                  max={formData.maxPlayers}
+                />
+              ) : (
+                <div>Loading...</div>
+              )}
 
               <label className="form__label" htmlFor="location">
                 Choose a location
@@ -133,7 +150,7 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
               />
             </StyledForm>
             <button type="submit" className="button__submit">
-              Create
+              Create Match
             </button>
           </Form>
         </Formik>

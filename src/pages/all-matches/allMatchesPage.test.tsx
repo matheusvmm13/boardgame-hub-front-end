@@ -30,7 +30,7 @@ describe("Given a All Matches page component", () => {
         </BrowserRouter>
       );
 
-      const textFound = await screen.findByText(/Spirit Island/i);
+      const textFound = await screen.findByText(/Carrer de Sans, Barcelona/i);
 
       expect(textFound).toBeInTheDocument();
     });

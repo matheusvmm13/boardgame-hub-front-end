@@ -21,18 +21,14 @@ describe("Given a form component", () => {
       const textField = screen.getByRole("combobox", {
         name: "Choose one of your games",
       });
-      const playersField = screen.getByRole("spinbutton", {
-        name: "Number of Players",
-      });
       const locationField = screen.getByRole("textbox", {
         name: "Choose a location",
       });
       const button = screen.getByRole("button", {
-        name: "Create",
+        name: "Create Match",
       });
 
       expect(textField).toBeInTheDocument();
-      expect(playersField).toBeInTheDocument();
       expect(locationField).toBeInTheDocument();
       expect(button).toBeInTheDocument();
     });
