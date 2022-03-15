@@ -1,7 +1,6 @@
 import {
   addGameInterface,
   anyActionInterface,
-  loadMyGamesInterface,
 } from "../../utils/types/actionsInterface";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import actionsType from "../actions/actionsType";
