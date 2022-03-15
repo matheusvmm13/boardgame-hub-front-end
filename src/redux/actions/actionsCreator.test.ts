@@ -4,6 +4,7 @@ import {
   addGameAction,
   createMatchesAction,
   deleteMatchesAction,
+  loadGamesAction,
   loadMatchesAction,
   loadMyMatchesAction,
 } from "./actionsCreator";
@@ -98,6 +99,30 @@ describe("Given a create matches action", () => {
       const createAction = createMatchesAction(match);
 
       expect(createAction).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a load games action", () => {
+  describe("When it receives a boardgame", () => {
+    test("Then it should return an action type loadGames", () => {
+      const boardgame: BoardgameInterface = {
+        name: "string",
+        _id: "string",
+        image_url: "string",
+        max_players: 3,
+        min_players: 3,
+        max_playtime: 30,
+      };
+
+      const expectedAction = {
+        type: "load-games",
+        boardgame,
+      };
+
+      const action = loadGamesAction(boardgame);
+
+      expect(action).toEqual(expectedAction);
     });
   });
 });
