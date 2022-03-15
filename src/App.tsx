@@ -12,7 +12,7 @@ import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
 
 function App() {
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmFtZXkgU3RhZ21laWVyIiwiaWQiOiI2MjJhNGRjOTU1YzE1YjgyMGVkYzlhNDUiLCJpYXQiOjE2NDczNDgwOTF9.0Fnhev-br-P72wrKRNIPwdodjNwSGFRroXyrVclXknI";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmFtZXkgU3RhZ21laWVyIiwiaWQiOiI2MjJhNGRjOTU1YzE1YjgyMGVkYzlhNDUiLCJpYXQiOjE2NDczNTU4NDZ9.uwYFhPLKb5AzNKJBUDFDw2nkNM91Y4UG5ghIyTMLqAA";
   localStorage.setItem("token", token);
 
   return (
