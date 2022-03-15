@@ -19,8 +19,8 @@ describe("Given a All Boardgames component", () => {
       expect(TextHeading).toBeInTheDocument();
     });
   });
-  describe("When it's rendered with an array of Matches, with a text 'Spirit Island' in one of them", () => {
-    test("Then it should render a paragraph with the text 'Spirit Island'", async () => {
+  describe("When it's rendered with an array of boardgames, with a text 'Root' in one of them", () => {
+    test("Then it should render a paragraph with the text 'Root'", async () => {
       render(
         <Provider store={store}>
           <AllBoardgamesPage />
