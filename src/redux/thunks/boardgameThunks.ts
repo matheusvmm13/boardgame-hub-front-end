@@ -1,9 +1,32 @@
 import { AnyAction } from "redux";
 import jwtDecode from "jwt-decode";
 import { ThunkDispatch } from "redux-thunk";
-import { addGameAction } from "../actions/actionsCreator";
+import {
+  addGameAction,
+  loadGamesAction,
+  loadMyGamesAction,
+} from "../actions/actionsCreator";
 import { DecodedToken } from "../../components/form/FormMatch";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
+
+export const loadGamesThunk = async (
+  dispatch: ThunkDispatch<void, unknown, AnyAction>
+) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_PUBLIC_API}all-boardgames`
+  );
+  const boardgamesList = await response.json();
+  dispatch(loadGamesAction(boardgamesList.boardgames));
+};
+
+export const loadMyGamesThunk =
+  (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_PUBLIC_API}my-boardgames/${id}`
+    );
+    const myGamesList = await response.json();
+    dispatch(loadMyGamesAction(myGamesList));
+  };
 
 export const addGameThunk =
   (gameId: Partial<BoardgameInterface> | string | undefined) =>

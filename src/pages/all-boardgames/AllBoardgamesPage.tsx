@@ -1,31 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import BoardgameCard from "../../components/boardgameCard/BoardgameCard";
 import Header from "../../components/header/Header";
-import { BoardgameInterface } from "../../utils/types/boardgameInterface";
+import { RootState } from "../../redux/reducers";
+import { loadGamesThunk } from "../../redux/thunks/boardgameThunks";
 
 const AllBoardgamesPage = () => {
-  const [boardgameResults, setBoardgameResults] = useState<
-    BoardgameInterface[]
-  >([]);
+  const dispatch = useDispatch();
+
+  const boardgamesData = useSelector((state: RootState) => state.boardGames);
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_PUBLIC_API}all-boardgames`
-      );
-      const { boardgames } = await response.json();
-
-      setBoardgameResults(boardgames);
-    })();
-  }, []);
+    dispatch(loadGamesThunk);
+  }, [dispatch]);
 
   return (
     <>
       <Wrapper className="container">
         <Header title={"All Boardgames"} />
         <ul className="boardgame__list">
-          {boardgameResults.map((game) => (
+          {boardgamesData.map((game) => (
             <BoardgameCard
               name={game.name}
               image_url={game.image_url}

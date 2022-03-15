@@ -9,7 +9,7 @@ const gameReducer = (
   state = {} as BoardgameInterface,
   action: anyActionInterface | addGameInterface = {}
 ) => {
-  let newBoardgames: BoardgameInterface | string;
+  let newBoardgames: BoardgameInterface;
 
   switch (action.type) {
     case actionsType.addGame:

@@ -22,6 +22,16 @@ export const createMatchesAction = (match: MatchInterface) => ({
   match,
 });
 
+export const loadGamesAction = (boardgame: BoardgameInterface) => ({
+  type: actionsType.loadGames,
+  boardgame,
+});
+
+export const loadMyGamesAction = (boardgame: BoardgameInterface) => ({
+  type: actionsType.loadMyGames,
+  boardgame,
+});
+
 export const addGameAction = (boardgame: BoardgameInterface) => ({
   type: actionsType.addGame,
   boardgame,
