@@ -36,6 +36,39 @@ describe("Given a boardgameReducer function", () => {
       expect(newState).toEqual(gamesArray);
     });
   });
+  describe("When it is called with the load my gamess action", () => {
+    test("Then it should return the new state with the array of games from the user", async () => {
+      const boardgameState: BoardgameInterface[] = [];
+
+      const gamesArray: BoardgameInterface[] = [
+        {
+          name: "string",
+          _id: "string",
+          image_url: "string",
+          max_players: 3,
+          min_players: 3,
+          max_playtime: 30,
+        },
+        {
+          name: "string",
+          _id: "string",
+          image_url: "string",
+          max_players: 6,
+          min_players: 1,
+          max_playtime: 130,
+        },
+      ];
+
+      const action = {
+        type: actionsType.loadMyGames,
+        boardgame: gamesArray,
+      };
+
+      const newState = await boardgameReducer(boardgameState, action);
+
+      expect(newState).toEqual(gamesArray);
+    });
+  });
 });
 
 describe("Given a boardgameReducer default function", () => {

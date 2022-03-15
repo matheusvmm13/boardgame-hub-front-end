@@ -2,6 +2,7 @@ import { AnyAction } from "redux";
 import {
   anyActionInterface,
   loadGamesInterface,
+  loadMyGamesInterface,
 } from "../../utils/types/actionsInterface";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import actionsType from "../actions/actionsType";
@@ -15,6 +16,10 @@ const boardgameReducer = (
   switch (action.type) {
     case actionsType.loadGames:
       newBoardgames = [...(action as loadGamesInterface).boardgame];
+      break;
+
+    case actionsType.loadMyGames:
+      newBoardgames = [...(action as loadMyGamesInterface).boardgame];
       break;
 
     default:
