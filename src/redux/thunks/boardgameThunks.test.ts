@@ -1,4 +1,8 @@
-import { addGameThunk, loadGamesThunk } from "./boardgameThunks";
+import {
+  addGameThunk,
+  loadGamesThunk,
+  loadMyGamesThunk,
+} from "./boardgameThunks";
 
 jest.mock("jwt-decode", () => () => ({
   name: "Lina Bo",
@@ -34,6 +38,21 @@ describe("Given a loadGamesThunk function", () => {
 
       const dispatch = jest.fn();
       await loadGamesThunk(dispatch);
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a loadMyGamesThunk function", () => {
+  describe("When it called", () => {
+    test("Then it should dispatch a function", async () => {
+      jest.setTimeout(8000);
+
+      const gameId = "622dd09e87c35208164d62c3";
+      const dispatch = jest.fn();
+
+      const myLoadMyGamesThunk = loadMyGamesThunk(gameId);
+      await myLoadMyGamesThunk(dispatch);
       expect(dispatch).toHaveBeenCalled();
     });
   });
