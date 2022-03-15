@@ -65,7 +65,6 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
 
   const changeData = (event: any) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
-    console.log(formData);
 
     const selectedId = event.target.value;
     const selectedGameState = boardgameResults.filter(
