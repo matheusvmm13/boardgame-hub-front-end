@@ -12,7 +12,9 @@ import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 export const loadGamesThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
 ) => {
-  const response = await fetch(`http://localhost:3500/all-boardgames`);
+  const response = await fetch(
+    `${process.env.REACT_APP_PUBLIC_API}all-boardgames`
+  );
   const boardgamesList = await response.json();
   dispatch(loadGamesAction(boardgamesList.boardgames));
 };
