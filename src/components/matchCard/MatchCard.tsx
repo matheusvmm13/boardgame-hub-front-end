@@ -1,3 +1,4 @@
+import { GiMeeple } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { deleteMatchThunk } from "../../redux/thunks/matchThunk";
@@ -31,15 +32,18 @@ const MatchCard = ({
         <CardGameTitle className="card__gametitle">{gameTitle}</CardGameTitle>
 
         <CardPlayersWrapper>
+          <p className="card__player--max">Max Players</p>
+          <p className="card__player--number">{players.length}</p>
           {Array.from(Array(maxPlayers)).map((player, index) => (
             <CardPlayers key={index} className="card__players">
-              <img
+              <GiMeeple className="icon__meeple" />
+              {/* <img
                 className="card__players--playerimage"
                 src={
                   "https://cdn.icon-icons.com/icons2/390/PNG/512/meeple_38522.png"
                 }
                 alt={"player"}
-              />
+              /> */}
             </CardPlayers>
           ))}
         </CardPlayersWrapper>
@@ -75,7 +79,7 @@ const Card = styled.li`
   img {
     height: 10rem;
     width: 100%;
-    object-fit: cover;
+    object-fit: none;
     border-radius: 10px;
   }
 `;
@@ -107,10 +111,25 @@ const CardGameTitle = styled.h2`
 
 const CardPlayersWrapper = styled.article`
   display: flex;
+  align-items: center;
+
+  .card__maxplayers {
+    margin: 1px 5px;
+    color: ${(props) => props.theme.text};
+  }
+
+  .card__player--number {
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+  }
+
+  .card__player--max {
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+  }
 `;
 
 const CardPlayers = styled.div`
-  margin: 0.5rem 0rem 0.5rem 0rem;
+  margin: 0.5rem 0.3rem 0.5rem 0rem;
+  align-items: center;
 
   .card__players--playerimage {
     height: 1.8rem;
@@ -119,6 +138,12 @@ const CardPlayers = styled.div`
     border-radius: 20%;
     border: 1.5px solid ${(props) => props.theme.lightText};
     object-fit: cover;
+  }
+
+  .icon__meeple {
+    color: ${(props) => props.theme.lightText};
+    height: 1.3rem;
+    width: 100%;
   }
 `;
 

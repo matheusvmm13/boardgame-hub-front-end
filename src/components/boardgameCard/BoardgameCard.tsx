@@ -25,8 +25,8 @@ const BoardgameCard = ({
         <img className="card__gameimage" src={image_url} alt={name} />
         <CardInfo>
           <CardGameTitle className="card__gametitle">{name}</CardGameTitle>
-          <CardMaxPlayers className="card__playtime">
-            <p className="card__playtime--minutes">
+          <CardMaxPlayers className="card__maxplayers">
+            <p className="card__playtime--number">
               {min_players} - {max_players} Players
             </p>
           </CardMaxPlayers>
@@ -64,6 +64,12 @@ const Card = styled.li`
     object-fit: cover;
     border-radius: 10px;
     align-self: center;
+  }
+
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
+    max-width: 300px;
+    min-width: 250px;
+    min-height: 150px;
   }
 `;
 
@@ -105,6 +111,11 @@ const CardInfo = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-grow: 1;
+
+  .card__maxplayers {
+    margin: 0px;
+    color: ${(props) => props.theme.text};
+  }
 
   .card__playtime--minutes {
     margin: 0px;
