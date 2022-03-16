@@ -91,7 +91,7 @@ const MenuLink = styled.div`
   &:hover {
     color: ${(props) => props.theme.secondary};
   }
-  @media (max-width: 768px) {
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
     padding-bottom: 0.5rem;
   }
 `;
@@ -108,8 +108,9 @@ const MenuLinkAuth = styled.div`
   &:hover {
     color: #fff;
   }
-  @media (max-width: 768px) {
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
     padding-right: 0rem;
+    min-width: 100vw;
   }
 `;
 
@@ -123,7 +124,7 @@ const Menu = styled.div<NavbarProps>`
     text-decoration: none;
     margin: 0.4rem;
   }
-  @media (max-width: 768px) {
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
     overflow: hidden;
     flex-direction: column;
     max-height: ${(props) => (props.isOpen ? "400px" : "0")};
@@ -143,7 +144,7 @@ const Hamburger = styled.div`
     margin-bottom: 5px;
     border-radius: 5px;
   }
-  @media (max-width: 768px) {
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
     display: flex;
   }
 `;
