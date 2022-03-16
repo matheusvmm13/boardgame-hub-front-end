@@ -1,6 +1,8 @@
 import { Provider } from "react-redux";
-import BoardgameCard from "../components/boardgameCard/BoardgameCardComponent";
+import { ThemeProvider } from "styled-components";
+import BoardgameCard from "../components/boardgameCard/BoardgameCard";
 import store from "../redux/store";
+import theme from "../themes/theme";
 
 export default {
   title: "Boardgame Card",
@@ -8,9 +10,11 @@ export default {
 };
 
 const Template = (args) => (
-  <Provider store={store}>
-    <BoardgameCard {...args} />
-  </Provider>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <BoardgameCard {...args} />
+    </Provider>
+  </ThemeProvider>
 );
 
 export const BoardgameCardComponent = Template.bind({});

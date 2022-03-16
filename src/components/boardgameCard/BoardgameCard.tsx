@@ -67,9 +67,10 @@ const Card = styled.li`
   }
 
   @media screen and (min-device-width: 320px) and (max-width: 768px) {
-    max-width: 300px;
     min-width: 250px;
+    width: 250px;
     min-height: 150px;
+    align-self: flex-start;
   }
 `;
 
@@ -77,6 +78,11 @@ const Cardbody = styled.article`
   padding: 1rem;
   display: flex;
   flex-grow: 1;
+
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const AddButton = styled.button`
@@ -93,6 +99,14 @@ const AddButton = styled.button`
   border: none;
   border-radius: 15px;
   cursor: pointer;
+
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
+    border-top: 0rem;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1rem;
+  }
 
   &:hover {
     color: #fff;

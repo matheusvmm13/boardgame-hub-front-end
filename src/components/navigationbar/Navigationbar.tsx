@@ -36,6 +36,9 @@ const Navigationbar = (): JSX.Element => {
         <Link to={`/my-boardgames`} className="menu__link">
           <MenuLink>My Boardgames</MenuLink>
         </Link>
+        <Link to={`/all-boardgames`} className="menu__link">
+          <MenuLink>All Boardgames</MenuLink>
+        </Link>
         <Link to={`/user/login`} className="menu__link">
           <MenuLink>Login</MenuLink>
         </Link>
