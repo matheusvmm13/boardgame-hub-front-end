@@ -1,4 +1,3 @@
-import React from "react";
 import "@fontsource/work-sans";
 import { ThemeProvider } from "styled-components";
 import theme from "./themes/theme";
@@ -9,11 +8,18 @@ import NewMatchPage from "./pages/new-match/NewMatchPage";
 import AllBoardgamesPage from "./pages/all-boardgames/AllBoardgamesPage";
 import MyMatchesPage from "./pages/my-matches/MyMatchesPage";
 import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
+import LoginPage from "./pages/login/LoginPage";
 
 function App() {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmFtZXkgU3RhZ21laWVyIiwiaWQiOiI2MjJhNGRjOTU1YzE1YjgyMGVkYzlhNDUiLCJpYXQiOjE2NDc0MTkxNzJ9.pU8Crwmxr60bFDxDJX02ljjpl2kQSfdJBrsQjijbDsM";
-  localStorage.setItem("token", token);
+  /*   const dispatch = useDispatch();
+  const userData = {
+    username: "jmayer",
+    password: "123456789",
+  };
+
+  useEffect(() => {
+    dispatch(userLoginThunk(userData));
+  }, [dispatch, userData]); */
 
   return (
     <ThemeProvider theme={theme}>
@@ -25,6 +31,7 @@ function App() {
         <Route path="/my-matches" element={<MyMatchesPage />} />
         <Route path="/my-boardgames" element={<MyBoardgamesPage />} />
         <Route path="/all-boardgames" element={<AllBoardgamesPage />} />
+        <Route path="/users/login" element={<LoginPage />} />
       </Routes>
     </ThemeProvider>
   );

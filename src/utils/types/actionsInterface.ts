@@ -1,5 +1,6 @@
 import { BoardgameInterface } from "./boardgameInterface";
 import { MatchInterface } from "./matchInterface";
+import { UserLoginDataInterface } from "./userInterface";
 
 export interface anyActionInterface {
   type?: string;
@@ -30,4 +31,8 @@ export interface loadMyGamesInterface extends anyActionInterface {
 
 export interface addGameInterface extends anyActionInterface {
   boardgame: BoardgameInterface;
+}
+
+export interface logingUserInterface extends anyActionInterface {
+  userData: UserLoginDataInterface;
 }
