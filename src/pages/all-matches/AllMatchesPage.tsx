@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import MatchCard from "../../components/matchCard/MatchCard";
 import { RootState } from "../../redux/reducers";
 import { loadMatchesThunk } from "../../redux/thunks/matchThunk";
+import Spinner from "../../components/spinner/Spinner";
 
 const AllMatchesPage = () => {
   const dispatch = useDispatch();
@@ -18,21 +19,25 @@ const AllMatchesPage = () => {
     <>
       <Wrapper className="container">
         <Header title={"All Matches"} />
-        <ul className="matches__list">
-          {matchesData.map((partida) => (
-            <MatchCard
-              gameTitle={partida.gameTitle}
-              image={partida.image}
-              date={partida.date}
-              maxPlayers={partida.maxPlayers}
-              players={partida.players}
-              location={partida.location}
-              key={partida.id}
-              id={partida.id}
-              creator={partida.creator}
-            />
-          ))}
-        </ul>
+        {matchesData.length > 0 ? (
+          <ul className="matches__list">
+            {matchesData.map((partida) => (
+              <MatchCard
+                gameTitle={partida.gameTitle}
+                image={partida.image}
+                date={partida.date}
+                maxPlayers={partida.maxPlayers}
+                players={partida.players}
+                location={partida.location}
+                key={partida.id}
+                id={partida.id}
+                creator={partida.creator}
+              />
+            ))}
+          </ul>
+        ) : (
+          <Spinner />
+        )}
       </Wrapper>
     </>
   );

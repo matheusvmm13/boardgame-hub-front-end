@@ -62,6 +62,7 @@ const Nav = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 887;
 `;
 
 const Logo = styled.div`
@@ -70,6 +71,7 @@ const Logo = styled.div`
   text-decoration: none;
   font-weight: 800;
   font-size: 1.7rem;
+  z-index: 888;
   span {
     font-weight: black;
     font-size: 1.4rem;
@@ -91,6 +93,7 @@ const MenuLink = styled.div`
   color: #fff;
   transition: all 0.3s ease-in;
   font-size: 0.9rem;
+  z-index: 888;
   &:hover {
     color: ${(props) => props.theme.secondary};
   }
@@ -108,6 +111,7 @@ const MenuLinkAuth = styled.div`
   transition: all 0.3s ease-in;
   font-size: 0.9rem;
   font-weight: 900;
+  z-index: 888;
   &:hover {
     color: #fff;
   }
@@ -122,6 +126,7 @@ const Menu = styled.div<NavbarProps>`
   justify-content: space-between;
   align-items: center;
   position: relative;
+  z-index: 888;
 
   .menu__link {
     text-decoration: none;
@@ -140,6 +145,7 @@ const Hamburger = styled.div`
   display: none;
   flex-direction: column;
   cursor: pointer;
+  z-index: 888;
   span {
     height: 2px;
     width: 25px;
