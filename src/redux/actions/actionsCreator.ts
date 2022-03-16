@@ -1,6 +1,6 @@
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
-import { UserInterface } from "../../utils/types/userInterface";
+import { UserLoginDataInterface } from "../../utils/types/userInterface";
 import actionsType from "./actionsType";
 
 export const loadMatchesAction = (match: MatchInterface) => ({
@@ -38,7 +38,7 @@ export const addGameAction = (boardgame: BoardgameInterface) => ({
   boardgame,
 });
 
-export const loginUserAction = (userData: UserInterface) => ({
+export const loginUserAction = (userData: UserLoginDataInterface) => ({
   type: actionsType.loginUser,
   userData,
 });

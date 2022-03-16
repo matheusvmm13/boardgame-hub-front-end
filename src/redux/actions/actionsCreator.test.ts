@@ -1,6 +1,7 @@
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
-import { UserInterface } from "../../utils/types/userInterface";
+import { UserLoginDataInterface } from "../../utils/types/userInterface";
+
 import {
   addGameAction,
   createMatchesAction,
@@ -155,7 +156,7 @@ describe("Given a add games action", () => {
 describe("Given a login user action", () => {
   describe("When it receives a user data", () => {
     test("Then it should return an action type loginUser", () => {
-      const userData: UserInterface = {
+      const userData: UserLoginDataInterface = {
         name: "Matheus",
         username: "matheusvmm",
         password: "123456",
