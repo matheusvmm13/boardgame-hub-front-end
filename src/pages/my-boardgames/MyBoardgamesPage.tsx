@@ -7,6 +7,7 @@ import Header from "../../components/header/Header";
 import { RootState } from "../../redux/reducers";
 import { loadMyGamesThunk } from "../../redux/thunks/boardgameThunks";
 import BoardgameCard from "../../components/boardgameCard/BoardgameCard";
+import Spinner from "../../components/spinner/Spinner";
 
 const MyBoardgamesPage = () => {
   const dispatch = useDispatch();
@@ -25,19 +26,23 @@ const MyBoardgamesPage = () => {
     <>
       <Wrapper className="container">
         <Header title={"My Boardgames"} />
-        <ul className="boardgames__list">
-          {myGamesData.map((game) => (
-            <BoardgameCard
-              name={game.name}
-              image_url={game.image_url}
-              min_players={game.min_players}
-              max_players={game.max_players}
-              max_playtime={game.max_playtime}
-              key={game.name}
-              _id={game._id}
-            />
-          ))}
-        </ul>
+        {myGamesData.length > 0 ? (
+          <ul className="boardgames__list">
+            {myGamesData.map((game) => (
+              <BoardgameCard
+                name={game.name}
+                image_url={game.image_url}
+                min_players={game.min_players}
+                max_players={game.max_players}
+                max_playtime={game.max_playtime}
+                key={game.name}
+                _id={game._id}
+              />
+            ))}
+          </ul>
+        ) : (
+          <Spinner />
+        )}
       </Wrapper>
     </>
   );
