@@ -8,6 +8,7 @@ import NewMatchPage from "./pages/new-match/NewMatchPage";
 import AllBoardgamesPage from "./pages/all-boardgames/AllBoardgamesPage";
 import MyMatchesPage from "./pages/my-matches/MyMatchesPage";
 import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
+import LoginPage from "./pages/login/LoginPage";
 
 function App() {
   /*   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/my-matches" element={<MyMatchesPage />} />
         <Route path="/my-boardgames" element={<MyBoardgamesPage />} />
         <Route path="/all-boardgames" element={<AllBoardgamesPage />} />
+        <Route path="/users/login" element={<LoginPage />} />
       </Routes>
     </ThemeProvider>
   );
