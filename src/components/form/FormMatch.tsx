@@ -17,7 +17,7 @@ export interface DecodedToken {
   iat: number;
 }
 
-const FormMatch: React.FC<{}> = (preloadedValues) => {
+const FormMatch: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   const decoded = React.useRef<DecodedToken>({ name: "", id: "", iat: 0 });
@@ -63,9 +63,8 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
     initialValues.players.push(decoded.current.id);
   }
 
-  const changeData = (event: any) => {
+  const changeData = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
-
     const selectedId = event.target.value;
     const selectedGameState = boardgameResults.filter(
       (game) => game.name === selectedId
@@ -77,17 +76,18 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
 
   return (
     <FormWrapper>
-      <h1>My Form</h1>
       {boardgameResults ? (
         <Formik
           initialValues={initialValues}
-          enableReinitialize={true}
+          enableReinitialize={false}
           onSubmit={(
             values: MyFormValues,
             { setSubmitting }: FormikHelpers<MyFormValues>
           ) => {
             setSubmitting(false);
             dispatch(createMatchThunk(values));
+            console.log(formData);
+            console.log(values);
           }}
         >
           <Form>
@@ -131,8 +131,8 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
                   name="maxPlayers"
                   placeholder="Select the number of players"
                   type="number"
-                  min={2}
-                  max={formData.maxPlayers}
+                  min={1}
+                  //max={formData?.maxPlayers}
                 />
               ) : (
                 <div>Loading...</div>
@@ -149,9 +149,9 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
                 type="text"
               />
             </StyledForm>
-            <button type="submit" className="button__submit">
+            <FormButton type="submit" className="button__submit">
               Create Match
-            </button>
+            </FormButton>
           </Form>
         </Formik>
       ) : (
@@ -166,48 +166,72 @@ export default FormMatch;
 const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 100vw;
   font-family: inherit;
+
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
+    padding-right: 0rem;
+  }
 `;
 
 const StyledForm = styled.form`
   background-color: #ffffff;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
+  padding: 0 2rem;
   height: 100%;
-  font-family: inherit;
+  width: 36rem;
   text-align: center;
+  font-family: inherit;
 
   .field__form {
     background-color: #eee;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 12px 15px;
     margin: 8px 0;
-    width: 100%;
+    width: 90%;
     font-family: inherit;
   }
 
   .form__label {
     justify-content: flex-start;
     color: blue;
+    line-height: 1.7rem;
   }
 
-  .button__submit {
-    background-color: ${(props) => props.theme.primary};
-    width: 270px;
-    height: 60px;
+  @media screen and (min-device-width: 320px) and (max-width: 768px) {
+    padding-right: 0rem;
+    width: 24rem;
+  }
+`;
+
+const FormButton = styled.button`
+  background-color: ${(props) => props.theme.primary};
+  width: 250px;
+  height: 60px;
+  color: #fff;
+  font-weight: 900;
+  font-family: inherit;
+  font-size: 1.3rem;
+  padding: 0.6rem 2rem;
+  margin: 2rem 2rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover {
     color: #fff;
-    font-weight: 900;
-    font-family: inherit;
-    font-size: 1.3rem;
-    padding: 0.6rem 2rem;
-    margin: 2rem 1rem;
-    border: none;
-    border-radius: 15px;
+    filter: brightness(95%);
+  }
+  &:active {
+    transform: scale(0.99);
+    background-color: darken(#3d50df, 25%);
+    box-shadow: 0 1px 20px #d6d6d6;
   }
 `;
