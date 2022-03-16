@@ -17,7 +17,7 @@ export interface DecodedToken {
   iat: number;
 }
 
-const FormMatch: React.FC<{}> = (preloadedValues) => {
+const FormMatch: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   const decoded = React.useRef<DecodedToken>({ name: "", id: "", iat: 0 });
@@ -65,7 +65,6 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
 
   const changeData = (event: any) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
-
     const selectedId = event.target.value;
     const selectedGameState = boardgameResults.filter(
       (game) => game.name === selectedId
@@ -81,13 +80,15 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
       {boardgameResults ? (
         <Formik
           initialValues={initialValues}
-          enableReinitialize={true}
+          enableReinitialize={false}
           onSubmit={(
             values: MyFormValues,
             { setSubmitting }: FormikHelpers<MyFormValues>
           ) => {
             setSubmitting(false);
             dispatch(createMatchThunk(values));
+            console.log(formData);
+            console.log(values);
           }}
         >
           <Form>
@@ -131,8 +132,8 @@ const FormMatch: React.FC<{}> = (preloadedValues) => {
                   name="maxPlayers"
                   placeholder="Select the number of players"
                   type="number"
-                  min={2}
-                  max={formData.maxPlayers}
+                  min={1}
+                  //max={formData?.maxPlayers}
                 />
               ) : (
                 <div>Loading...</div>
