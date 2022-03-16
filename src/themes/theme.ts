@@ -1,3 +1,4 @@
+import "@fontsource/work-sans";
 export type ThemeType = typeof light;
 
 export const light = {

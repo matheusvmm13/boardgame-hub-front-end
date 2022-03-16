@@ -1,12 +1,22 @@
 import React from "react";
+import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
 import MatchCard from "../components/matchCard/MatchCard";
+import store from "../redux/store";
+import theme from "../themes/theme";
 
 export default {
   title: "Match Card",
   component: MatchCard,
 };
 
-const Template = (args) => <MatchCard {...args} />;
+const Template = (args) => (
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <MatchCard {...args} />
+    </Provider>
+  </ThemeProvider>
+);
 
 export const MatchCardComponent = Template.bind({});
 MatchCardComponent.args = {

@@ -124,19 +124,16 @@ const FormMatch: React.FC<{}> = () => {
               <label className="form__label" htmlFor="maxPlayers">
                 Number of Players
               </label>
-              {formData.gameTitle !== "" ? (
-                <Field
-                  className="field__form"
-                  id="maxPlayers"
-                  name="maxPlayers"
-                  placeholder="Select the number of players"
-                  type="number"
-                  min={1}
-                  //max={formData?.maxPlayers}
-                />
-              ) : (
-                <div>Loading...</div>
-              )}
+
+              <Field
+                className="field__form"
+                id="maxPlayers"
+                name="maxPlayers"
+                placeholder="Select the number of players"
+                type="number"
+                min={1}
+                //max={formData?.maxPlayers}
+              />
 
               <label className="form__label" htmlFor="location">
                 Choose a location
