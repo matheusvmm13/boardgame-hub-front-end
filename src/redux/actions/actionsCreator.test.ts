@@ -1,5 +1,6 @@
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
+import { UserInterface } from "../../utils/types/userInterface";
 import {
   addGameAction,
   createMatchesAction,
@@ -7,6 +8,7 @@ import {
   loadGamesAction,
   loadMatchesAction,
   loadMyMatchesAction,
+  loginUserAction,
 } from "./actionsCreator";
 
 describe("Given a load matches action", () => {
@@ -146,6 +148,27 @@ describe("Given a add games action", () => {
 
       const addAction = addGameAction(game);
       expect(addAction).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a login user action", () => {
+  describe("When it receives a user data", () => {
+    test("Then it should return an action type loginUser", () => {
+      const userData: UserInterface = {
+        name: "Matheus",
+        username: "matheusvmm",
+        password: "123456",
+      };
+
+      const expectedAction = {
+        type: "login-user",
+        userData,
+      };
+
+      const action = loginUserAction(userData);
+
+      expect(action).toEqual(expectedAction);
     });
   });
 });
