@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Header from "../../components/header/Header";
-import FormLogin from "../../components/loginForm/LoginForm";
+import LoginForm from "../../components/loginForm/LoginForm";
 
 const LoginPage = () => {
   return (
@@ -14,7 +14,7 @@ const LoginPage = () => {
               alt="boardgame"
             />
           </figure>
-          <FormLogin />
+          <LoginForm />
         </SectionContainer>
       </Wrapper>
     </>

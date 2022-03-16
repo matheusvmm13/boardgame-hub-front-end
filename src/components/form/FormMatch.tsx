@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { createMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
+import Spinner from "../spinner/Spinner";
 
 interface MyFormValues extends MatchInterface {
   userid: string;
@@ -33,7 +34,7 @@ const FormMatch: React.FC<{}> = () => {
         const decodedToken: DecodedToken = jwtDecode(token);
         const userId = decodedToken.id;
         const response = await fetch(
-          `${process.env.REACT_APP_LOCAL_API}my-boardgames/${userId}`
+          `${process.env.REACT_APP_PUBLIC_API}my-boardgames/${userId}`
         );
         const games = await response.json();
         setBoardgameResults(games);
@@ -150,7 +151,7 @@ const FormMatch: React.FC<{}> = () => {
           </Form>
         </Formik>
       ) : (
-        <div>Loading...</div>
+        <Spinner />
       )}
     </FormWrapper>
   );

@@ -9,7 +9,7 @@ interface Values {
   password: string;
 }
 
-const FormLogin: React.FC<{}> = () => {
+const LoginForm: React.FC<{}> = () => {
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +23,9 @@ const FormLogin: React.FC<{}> = () => {
           values: Values,
           { setSubmitting }: FormikHelpers<Values>
         ) => {
+          setSubmitting(false);
           dispatch(userLoginThunk(values));
+          console.log(values);
         }}
       >
         <Form>
@@ -31,7 +33,12 @@ const FormLogin: React.FC<{}> = () => {
             <label htmlFor="username" className="form__label">
               Username
             </label>
-            <Field className="field__form" id="username" name="username" />
+            <Field
+              className="field__form"
+              id="username"
+              name="username"
+              type="text"
+            />
 
             <label htmlFor="password" className="form__label">
               password
@@ -53,7 +60,7 @@ const FormLogin: React.FC<{}> = () => {
   );
 };
 
-export default FormLogin;
+export default LoginForm;
 
 const FormWrapper = styled.div`
   display: flex;
