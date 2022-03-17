@@ -19,6 +19,7 @@ const LoginForm: React.FC<{}> = () => {
           username: "",
           password: "",
         }}
+        enableReinitialize={true}
         onSubmit={(
           values: Values,
           { setSubmitting }: FormikHelpers<Values>
@@ -49,11 +50,11 @@ const LoginForm: React.FC<{}> = () => {
               name="password"
               type="password"
             />
-
-            <FormButton type="submit" className="button__submit">
-              Login
-            </FormButton>
           </StyledForm>
+
+          <FormButton type="submit" className="button__submit">
+            Login
+          </FormButton>
         </Form>
       </Formik>
     </FormWrapper>
@@ -119,8 +120,7 @@ const FormButton = styled.button`
   font-family: inherit;
   font-size: 1.3rem;
   padding: 0.6rem 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 2rem;
   border: none;
   border-radius: 15px;
   cursor: pointer;
