@@ -33,17 +33,10 @@ const MatchCard = ({
 
         <CardPlayersWrapper>
           <p className="card__player--max">Max Players</p>
-          <p className="card__player--number">{players.length}</p>
+          {/* <p className="card__player--number">{players.length}</p> */}
           {Array.from(Array(maxPlayers)).map((player, index) => (
             <CardPlayers key={index} className="card__players">
               <GiMeeple className="icon__meeple" />
-              {/* <img
-                className="card__players--playerimage"
-                src={
-                  "https://cdn.icon-icons.com/icons2/390/PNG/512/meeple_38522.png"
-                }
-                alt={"player"}
-              /> */}
             </CardPlayers>
           ))}
         </CardPlayersWrapper>
