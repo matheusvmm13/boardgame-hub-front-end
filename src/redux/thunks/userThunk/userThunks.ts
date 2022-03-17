@@ -19,12 +19,19 @@ export const userLoginThunk =
       }
     );
     const token = await response.json();
-    console.log(token);
-    const decodedToken: DecodedToken = await jwtDecode(token.token);
+    const decodedToken: DecodedToken = jwtDecode(token.token);
     localStorage.setItem("token", token.token);
-    console.log(decodedToken);
-    console.log(user);
-    dispatch(loginUserAction(user));
+
+    const logedUser = {
+      name: decodedToken.name,
+      username: user.username,
+      password: user.password,
+      id: decodedToken.id,
+      loggedIn: true,
+    };
+
+    console.log(logedUser);
+    dispatch(loginUserAction(logedUser));
   };
 
 export default userLoginThunk;
