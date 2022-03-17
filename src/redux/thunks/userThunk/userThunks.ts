@@ -3,6 +3,7 @@ import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { DecodedToken } from "../../../components/form/FormMatch";
 import { UserLoginDataInterface } from "../../../utils/types/userInterface";
+import { loginUserAction } from "../../actions/actionsCreator";
 
 export const userLoginThunk =
   (user: UserLoginDataInterface) =>
@@ -18,10 +19,19 @@ export const userLoginThunk =
       }
     );
     const token = await response.json();
-    console.log(token);
-    const decodedToken: DecodedToken = await jwtDecode(token.token);
+    const decodedToken: DecodedToken = jwtDecode(token.token);
     localStorage.setItem("token", token.token);
-    console.log(decodedToken);
+
+    const logedUser = {
+      name: decodedToken.name,
+      username: user.username,
+      password: user.password,
+      id: decodedToken.id,
+      loggedIn: true,
+    };
+
+    console.log(logedUser);
+    dispatch(loginUserAction(logedUser));
   };
 
 export default userLoginThunk;
