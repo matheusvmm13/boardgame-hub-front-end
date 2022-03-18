@@ -1,8 +1,4 @@
-import {
-  deleteMatchThunk,
-  loadMatchesThunk,
-  loadMyMatchesThunk,
-} from "./matchThunk";
+import { loadMatchesThunk, loadMyMatchesThunk } from "./matchThunk";
 
 describe("Given a loadMatchesThunk function", () => {
   describe("When it called", () => {
