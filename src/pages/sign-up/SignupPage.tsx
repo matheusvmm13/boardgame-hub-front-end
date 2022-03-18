@@ -4,21 +4,19 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../components/header/Header";
-import LoginForm from "../../components/loginForm/LoginForm";
+import SignupForm from "../../components/signupForm/SignupForm";
 import { RootState } from "../../redux/reducers";
 
-const LoginPage = () => {
+const SignupPage = () => {
   const user = useSelector((state: RootState) => state.users);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user.loggedIn) {
-      toast("Welcome", {
-        icon: "🤗",
-      });
+      toast.success("Welcome to the BoardgameHub");
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/users/login");
       }, 250);
     }
   }, [navigate, user.loggedIn]);
@@ -26,22 +24,22 @@ const LoginPage = () => {
   return (
     <>
       <Wrapper className="container">
-        <Header title={"Login"} />
+        <Header title={"Sign Up"} />
         <SectionContainer className="container__section">
           <figure className="container__image">
             <img
-              src="https://images.unsplash.com/photo-1635921152718-06a19ec70a6c"
+              src="https://images.unsplash.com/photo-1506954673998-b077f05b13c7"
               alt="boardgame"
             />
           </figure>
-          <LoginForm />
+          <SignupForm />
         </SectionContainer>
       </Wrapper>
     </>
   );
 };
 
-export default LoginPage;
+export default SignupPage;
 
 const Wrapper = styled.section`
   min-height: 100vh;
