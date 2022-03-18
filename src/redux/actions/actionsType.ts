@@ -7,6 +7,7 @@ const actionsType = {
   loadGames: "load-games",
   loadMyGames: "load-my-games",
   loginUser: "login-user",
+  logoutUser: "logout-user",
 };
 
 export default actionsType;

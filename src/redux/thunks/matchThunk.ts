@@ -18,8 +18,15 @@ export const loadMatchesThunk = async (
 
 export const loadMyMatchesThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const token = localStorage.getItem("token");
     const response = await fetch(
-      `${process.env.REACT_APP_PUBLIC_API}my-matches/${id}`
+      `${process.env.REACT_APP_PUBLIC_API}my-matches/${id}`,
+      {
+        headers: new Headers({
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        }),
+      }
     );
     const myMatchesList = await response.json();
     dispatch(loadMatchesAction(myMatchesList));
@@ -27,10 +34,15 @@ export const loadMyMatchesThunk =
 
 export const deleteMatchThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const token = localStorage.getItem("token");
     const response = await fetch(
       `${process.env.REACT_APP_PUBLIC_API}my-matches/delete/${id}`,
       {
         method: "DELETE",
+        headers: new Headers({
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        }),
       }
     );
     if (response.ok) {
@@ -41,12 +53,14 @@ export const deleteMatchThunk =
 export const createMatchThunk =
   (match: MatchInterface) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const token = localStorage.getItem("token");
     const response = await fetch(
       `${process.env.REACT_APP_PUBLIC_API}my-matches/new-match`,
       {
         method: "POST",
         mode: "cors",
         headers: {
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(match),

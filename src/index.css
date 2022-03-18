@@ -4,7 +4,9 @@
 
 body {
   margin: 0;
+  max-width: 100%;
   font-family: "Work Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 ul {

@@ -40,6 +40,7 @@ export const addGameThunk =
         method: "PATCH",
         mode: "cors",
         headers: {
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
       }

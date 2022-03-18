@@ -29,8 +29,6 @@ export const userLoginThunk =
       id: decodedToken.id,
       loggedIn: true,
     };
-
-    console.log(logedUser);
     dispatch(loginUserAction(logedUser));
   };
 

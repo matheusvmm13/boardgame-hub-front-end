@@ -1,13 +1,25 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logoutUserAction } from "../../redux/actions/actionsCreator";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/reducers";
 
 export interface NavbarProps {
   isOpen: boolean;
 }
 
 const Navigationbar = (): JSX.Element => {
+  const user = useSelector((state: RootState) => state.users);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    dispatch(logoutUserAction());
+    navigate(`/`);
+  };
 
   return (
     <Nav>
@@ -40,8 +52,9 @@ const Navigationbar = (): JSX.Element => {
           <MenuLink>All Boardgames</MenuLink>
         </Link>
         <Link to={`/users/login`} className="menu__link">
-          <MenuLink>Login</MenuLink>
+          {!user.loggedIn && <MenuLink>Login</MenuLink>}
         </Link>
+        {user.loggedIn && <MenuLink onClick={logout}>Logout</MenuLink>}
         <Link to={`/users/signup`} className="menu__link">
           <MenuLinkAuth>Sign Up</MenuLinkAuth>
         </Link>
