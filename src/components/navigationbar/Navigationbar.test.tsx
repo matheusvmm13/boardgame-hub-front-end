@@ -1,14 +1,18 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import store from "../../redux/store";
 import Navigationbar from "./Navigationbar";
 
 describe("Given a Navigationbar component", () => {
   describe("When it get's rendered", () => {
     test("Then it should display a navigation with six links", () => {
       render(
-        <BrowserRouter>
-          <Navigationbar />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Navigationbar />
+          </BrowserRouter>
+        </Provider>
       );
 
       const firstNavLink = screen.getByRole("link", { name: /All Matches/i });

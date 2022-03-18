@@ -28,6 +28,10 @@ const userReducer = (
       newUserState = { ...(action as logingUserInterface).userData };
       break;
 
+    case actionsType.logoutUser:
+      newUserState = { ...initialUserData };
+      break;
+
     default:
       newUserState = { ...userState };
   }

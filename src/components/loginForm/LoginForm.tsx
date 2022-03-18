@@ -35,7 +35,6 @@ const LoginForm: React.FC<{}> = () => {
         ) => {
           setSubmitting(false);
           dispatch(userLoginThunk(values));
-          console.log(values);
         }}
       >
         <Form>

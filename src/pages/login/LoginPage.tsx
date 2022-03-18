@@ -1,8 +1,21 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../components/header/Header";
 import LoginForm from "../../components/loginForm/LoginForm";
+import { RootState } from "../../redux/reducers";
 
 const LoginPage = () => {
+  const user = useSelector((state: RootState) => state.users);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.loggedIn) {
+      navigate("/");
+    }
+  }, [navigate, user.loggedIn]);
+
   return (
     <>
       <Wrapper className="container">
