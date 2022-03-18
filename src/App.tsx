@@ -10,6 +10,7 @@ import MyMatchesPage from "./pages/my-matches/MyMatchesPage";
 import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
 import LoginPage from "./pages/login/LoginPage";
 import { Toaster } from "react-hot-toast";
+import SignupPage from "./pages/sign-up/SignupPage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/my-boardgames" element={<MyBoardgamesPage />} />
           <Route path="/all-boardgames" element={<AllBoardgamesPage />} />
           <Route path="/users/login" element={<LoginPage />} />
+          <Route path="/users/signup" element={<SignupPage />} />
         </Routes>
       </ThemeProvider>
     </>
