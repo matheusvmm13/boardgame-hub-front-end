@@ -11,16 +11,6 @@ import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
 import LoginPage from "./pages/login/LoginPage";
 
 function App() {
-  /*   const dispatch = useDispatch();
-  const userData = {
-    username: "jmayer",
-    password: "123456789",
-  };
-
-  useEffect(() => {
-    dispatch(userLoginThunk(userData));
-  }, [dispatch, userData]); */
-
   return (
     <ThemeProvider theme={theme}>
       <Navigationbar />
