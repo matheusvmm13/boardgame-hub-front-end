@@ -14,5 +14,5 @@ test("renders the page title", () => {
     </BrowserRouter>
   );
   const linkElement = screen.getAllByText(/All Matches/i);
-  expect(linkElement).toHaveLength(2);
+  expect(linkElement).toHaveLength(1);
 });

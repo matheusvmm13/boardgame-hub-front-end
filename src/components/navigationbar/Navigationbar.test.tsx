@@ -15,19 +15,11 @@ describe("Given a Navigationbar component", () => {
         </Provider>
       );
 
-      const firstNavLink = screen.getByRole("link", { name: /All Matches/i });
-      const secondNavLink = screen.getByRole("link", { name: /My Matches/i });
-      const thirdNavLink = screen.getByRole("link", { name: /New Match/i });
-      const forthNavLink = screen.getByRole("link", { name: /My Boardgames/i });
-      const fifthNavLink = screen.getByRole("link", { name: /Login/i });
-      const sixthNavLink = screen.getByRole("link", { name: /Sign Up/i });
+      const loginNavLink = screen.getByRole("link", { name: /Login/i });
+      const signupNavLink = screen.getByRole("link", { name: /Sign Up/i });
 
-      expect(firstNavLink).toBeInTheDocument();
-      expect(secondNavLink).toBeInTheDocument();
-      expect(thirdNavLink).toBeInTheDocument();
-      expect(forthNavLink).toBeInTheDocument();
-      expect(fifthNavLink).toBeInTheDocument();
-      expect(sixthNavLink).toBeInTheDocument();
+      expect(loginNavLink).toBeInTheDocument();
+      expect(signupNavLink).toBeInTheDocument();
     });
   });
 });
