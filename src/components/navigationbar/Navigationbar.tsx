@@ -44,19 +44,19 @@ const Navigationbar = (): JSX.Element => {
       </Hamburger>
       <Menu isOpen={isOpen}>
         <Link to={`/matches`} className="menu__link">
-          <MenuLink>All Matches</MenuLink>
+          {user.loggedIn && <MenuLink>All Matches</MenuLink>}
         </Link>
         <Link to={`/my-matches`} className="menu__link">
-          <MenuLink>My Matches</MenuLink>
+          {user.loggedIn && <MenuLink>My Matches</MenuLink>}
         </Link>
         <Link to={`/my-matches/new-match`} className="menu__link">
-          <MenuLink>New Match</MenuLink>
+          {user.loggedIn && <MenuLink>New Match</MenuLink>}
         </Link>
         <Link to={`/my-boardgames`} className="menu__link">
-          <MenuLink>My Boardgames</MenuLink>
+          {user.loggedIn && <MenuLink>My Boardgames</MenuLink>}
         </Link>
         <Link to={`/all-boardgames`} className="menu__link">
-          <MenuLink>All Boardgames</MenuLink>
+          {user.loggedIn && <MenuLink>All Boardgames</MenuLink>}
         </Link>
         <Link to={`/users/login`} className="menu__link">
           {!user.loggedIn && <MenuLink>Login</MenuLink>}

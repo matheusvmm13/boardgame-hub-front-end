@@ -49,8 +49,9 @@ export const deleteMatchThunk =
     if (response.ok) {
       dispatch(deleteMatchesAction(id));
       toast.success("Match deleted");
+    } else {
+      toast.error("Something went wrong");
     }
-    toast.error("Something went wrong");
   };
 
 export const createMatchThunk =
