@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../components/header/Header";
-import LoginForm from "../../components/loginForm/LoginForm";
+import SignupForm from "../../components/signupForm/SignupForm";
 import { RootState } from "../../redux/reducers";
 
 const SignupPage = () => {
@@ -32,7 +32,7 @@ const SignupPage = () => {
               alt="boardgame"
             />
           </figure>
-          <LoginForm />
+          <SignupForm />
         </SectionContainer>
       </Wrapper>
     </>
