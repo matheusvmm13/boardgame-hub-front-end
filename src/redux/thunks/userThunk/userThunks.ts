@@ -1,4 +1,5 @@
 import jwtDecode from "jwt-decode";
+import toast from "react-hot-toast";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { DecodedToken } from "../../../components/form/FormMatch";
@@ -19,17 +20,20 @@ export const userLoginThunk =
       }
     );
     const token = await response.json();
-    const decodedToken: DecodedToken = jwtDecode(token.token);
-    localStorage.setItem("token", token.token);
-
-    const logedUser = {
-      name: decodedToken.name,
-      username: user.username,
-      password: user.password,
-      id: decodedToken.id,
-      loggedIn: true,
-    };
-    dispatch(loginUserAction(logedUser));
+    if (response.ok) {
+      const decodedToken: DecodedToken = jwtDecode(token.token);
+      localStorage.setItem("token", token.token);
+      const logedUser = {
+        name: decodedToken.name,
+        username: user.username,
+        password: user.password,
+        id: decodedToken.id,
+        loggedIn: true,
+      };
+      dispatch(loginUserAction(logedUser));
+    } else {
+      toast.error("Wrong credentials");
+    }
   };
 
 export default userLoginThunk;

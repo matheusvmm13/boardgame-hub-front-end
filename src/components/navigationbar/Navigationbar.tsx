@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logoutUserAction } from "../../redux/actions/actionsCreator";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
+import toast from "react-hot-toast";
 
 export interface NavbarProps {
   isOpen: boolean;
@@ -18,7 +19,13 @@ const Navigationbar = (): JSX.Element => {
   const logout = () => {
     localStorage.removeItem("token");
     dispatch(logoutUserAction());
-    navigate(`/`);
+    toast("Good Bye!", {
+      icon: "👋",
+    });
+
+    setTimeout(() => {
+      navigate("/");
+    }, 250);
   };
 
   return (

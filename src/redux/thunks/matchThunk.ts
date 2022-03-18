@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
@@ -47,7 +48,9 @@ export const deleteMatchThunk =
     );
     if (response.ok) {
       dispatch(deleteMatchesAction(id));
+      toast.success("Match deleted");
     }
+    toast.error("Something went wrong");
   };
 
 export const createMatchThunk =
@@ -68,4 +71,5 @@ export const createMatchThunk =
     );
     const newMatch = await response.json();
     dispatch(createMatchesAction(newMatch));
+    toast.success("New match created");
   };

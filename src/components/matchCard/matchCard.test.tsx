@@ -64,7 +64,7 @@ describe("Given a Match Card component", () => {
         </Provider>
       );
 
-      const text = screen.getByText("DELETE");
+      const text = screen.getByText("Madrid");
       expect(text).toBeInTheDocument();
     });
   });
