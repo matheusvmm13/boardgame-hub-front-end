@@ -38,6 +38,11 @@ export const addGameAction = (boardgame: BoardgameInterface) => ({
   boardgame,
 });
 
+export const registerUserAction = (userData: UserLoginDataInterface) => ({
+  type: actionsType.loginUser,
+  userData,
+});
+
 export const loginUserAction = (userData: UserLoginDataInterface) => ({
   type: actionsType.loginUser,
   userData,

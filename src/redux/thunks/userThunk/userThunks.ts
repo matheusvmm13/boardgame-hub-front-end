@@ -4,13 +4,16 @@ import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { DecodedToken } from "../../../components/form/FormMatch";
 import { UserLoginDataInterface } from "../../../utils/types/userInterface";
-import { loginUserAction } from "../../actions/actionsCreator";
+import {
+  loginUserAction,
+  registerUserAction,
+} from "../../actions/actionsCreator";
 
 export const userLoginThunk =
   (user: UserLoginDataInterface) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const response = await fetch(
-      `${process.env.REACT_APP_LOCAL_API}users/login`,
+      `${process.env.REACT_APP_PUBLIC_API}users/login`,
       {
         method: "POST",
         headers: {
@@ -31,6 +34,28 @@ export const userLoginThunk =
         loggedIn: true,
       };
       dispatch(loginUserAction(logedUser));
+    } else {
+      toast.error("Wrong credentials");
+    }
+  };
+
+export const registerThunk =
+  (user: UserLoginDataInterface) =>
+  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_PUBLIC_API}users/signup`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    );
+    const newUser = await response.json();
+    if (response.ok) {
+      dispatch(registerUserAction(newUser));
+      toast.success("User created");
     } else {
       toast.error("Wrong credentials");
     }

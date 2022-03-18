@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import styled from "styled-components";
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import userLoginThunk from "../../redux/thunks/userThunk/userThunks";
+import { registerThunk } from "../../redux/thunks/userThunk/userThunks";
 
 const SignupValidationSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
@@ -37,7 +37,7 @@ const SignupForm: React.FC<{}> = () => {
           { setSubmitting }: FormikHelpers<Values>
         ) => {
           setSubmitting(false);
-          dispatch(userLoginThunk(values));
+          dispatch(registerThunk(values));
         }}
       >
         <Form>
