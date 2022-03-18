@@ -27,32 +27,3 @@ describe("Given a loadMyMatchesThunk function", () => {
     });
   });
 });
-
-/* describe("Given a deleteMatchesThunk", () => {
-  describe("When it's called with an id parameter and api response is ok", () => {
-    test("Then it should call dispatch passing a deleteAction", async () => {
-      jest.setTimeout(9000);
-
-      const localStorageMock = {
-        getItem: jest.fn(),
-        setItem: jest.fn(),
-        clear: jest.fn(),
-      };
-
-      Storage.prototype.getItem = jest.fn().mockResolvedValue(localStorageMock);
-
-      const expectedAction = {
-        type: "delete-matches",
-        id: "6229ef04d27d51d23afda2e0",
-      };
-
-      const mockDispatch = jest.fn();
-
-      const deleteThunk = deleteMatchThunk(expectedAction.id);
-      await deleteThunk(mockDispatch);
-
-      expect(mockDispatch).toHaveBeenCalled();
-    });
-  });
-});
- */
