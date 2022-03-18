@@ -8,6 +8,7 @@ import {
 } from "../actions/actionsCreator";
 import { DecodedToken } from "../../components/form/FormMatch";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
+import toast from "react-hot-toast";
 
 export const loadGamesThunk = async (
   dispatch: ThunkDispatch<void, unknown, AnyAction>
@@ -47,4 +48,5 @@ export const addGameThunk =
     );
     const newAddedBoardgame = await response.json();
     dispatch(addGameAction(newAddedBoardgame));
+    toast.success("Game added to your list!");
   };

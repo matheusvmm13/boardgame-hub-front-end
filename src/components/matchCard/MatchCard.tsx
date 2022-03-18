@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { GiMeeple } from "react-icons/gi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
+import { RootState } from "../../redux/reducers";
 
 const MatchCard = ({
   gameTitle,
@@ -13,6 +14,7 @@ const MatchCard = ({
   location,
   id,
 }: MatchInterface): JSX.Element => {
+  const user = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch();
 
   const deleteMatch = (id: string) => {
@@ -44,9 +46,11 @@ const MatchCard = ({
         <CardLocation className="card__location">
           <p className="card__location--city">{location}</p>
         </CardLocation>
-        <p className="card__delete" onClick={() => deleteMatch(id)}>
-          DELETE
-        </p>
+        {user.loggedIn && (
+          <p className="card__delete" onClick={() => deleteMatch(id)}>
+            DELETE
+          </p>
+        )}
       </Cardbody>
     </Card>
   );

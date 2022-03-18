@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -12,9 +13,15 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user.loggedIn) {
-      navigate("/");
+      toast("Welcome", {
+        icon: "🤗",
+      });
+
+      setTimeout(() => {
+        navigate("/");
+      }, 250);
     }
-  }, [navigate, user.loggedIn]);
+  }, [navigate, user.loggedIn, user.name]);
 
   return (
     <>
