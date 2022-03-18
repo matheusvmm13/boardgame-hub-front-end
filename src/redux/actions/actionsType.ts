@@ -6,6 +6,7 @@ const actionsType = {
   addGame: "add-game",
   loadGames: "load-games",
   loadMyGames: "load-my-games",
+  registerUser: "register-user",
   loginUser: "login-user",
   logoutUser: "logout-user",
 };

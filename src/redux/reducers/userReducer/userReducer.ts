@@ -32,6 +32,10 @@ const userReducer = (
       newUserState = { ...initialUserData };
       break;
 
+    case actionsType.registerUser:
+      newUserState = { ...(action as logingUserInterface).userData };
+      break;
+
     default:
       newUserState = { ...userState };
   }
