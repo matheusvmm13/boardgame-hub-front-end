@@ -13,7 +13,7 @@ jest.mock("jwt-decode", () => () => ({
 describe("Given a addGameThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
-      jest.setTimeout(8000);
+      jest.setTimeout(9000);
 
       localStorage.setItem(
         "token",
@@ -34,7 +34,7 @@ describe("Given a addGameThunk function", () => {
 describe("Given a loadGamesThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
-      jest.setTimeout(8000);
+      jest.setTimeout(9000);
 
       const dispatch = jest.fn();
       await loadGamesThunk(dispatch);
@@ -46,7 +46,7 @@ describe("Given a loadGamesThunk function", () => {
 describe("Given a loadMyGamesThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
-      jest.setTimeout(8000);
+      jest.setTimeout(9000);
 
       const gameId = "622dd09e87c35208164d62c3";
       const dispatch = jest.fn();
