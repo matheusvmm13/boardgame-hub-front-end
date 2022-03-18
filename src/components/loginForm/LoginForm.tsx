@@ -1,9 +1,17 @@
 import * as React from "react";
+import * as Yup from "yup";
 import styled from "styled-components";
-import { Formik, Field, Form, FormikHelpers } from "formik";
+import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import userLoginThunk from "../../redux/thunks/userThunk/userThunks";
 
+const LoginValidationSchema = Yup.object().shape({
+  username: Yup.string().required("Required"),
+  password: Yup.string()
+    .required("No password provided")
+    .min(6, "Password is too short - should be 6 chars minimum.")
+    .matches(/(?=.*[0-9])/, "Password must contain a number."),
+});
 interface Values {
   username: string;
   password: string;
@@ -19,6 +27,7 @@ const LoginForm: React.FC<{}> = () => {
           username: "",
           password: "",
         }}
+        validationSchema={LoginValidationSchema}
         enableReinitialize={true}
         onSubmit={(
           values: Values,
@@ -40,6 +49,7 @@ const LoginForm: React.FC<{}> = () => {
               name="username"
               type="text"
             />
+            <ErrorMessage name="username" className="errorMessage__username" />
 
             <label htmlFor="password" className="form__label">
               password
@@ -50,6 +60,7 @@ const LoginForm: React.FC<{}> = () => {
               name="password"
               type="password"
             />
+            <ErrorMessage name="password" className="errorMessage__password" />
           </StyledForm>
 
           <FormButton type="submit" className="button__submit">
