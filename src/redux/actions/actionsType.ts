@@ -1,5 +1,6 @@
 const actionsType = {
   loadMatches: "load-matches",
+  loadMatchesInfo: "load-matches-info",
   loadMyMatches: "load-my-matches",
   deleteMatches: "delete-matches",
   createMatches: "create-matches",

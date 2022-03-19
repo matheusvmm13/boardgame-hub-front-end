@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store";
 import MatchCard from "./MatchCard";
 
@@ -18,19 +19,21 @@ describe("Given a Match Card component", () => {
       };
 
       render(
-        <Provider store={store}>
-          <MatchCard
-            gameTitle={partida.gameTitle}
-            image={partida.image}
-            date={partida.date}
-            maxPlayers={partida.maxPlayers}
-            players={partida.players}
-            location={partida.location}
-            key={partida.id}
-            id={partida.id}
-            creator={partida.creator}
-          />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MatchCard
+              gameTitle={partida.gameTitle}
+              image={partida.image}
+              date={partida.date}
+              maxPlayers={partida.maxPlayers}
+              players={partida.players}
+              location={partida.location}
+              key={partida.id}
+              id={partida.id}
+              creator={partida.creator}
+            />
+          </Provider>
+        </BrowserRouter>
       );
 
       const text = screen.getByRole("heading", { name: /Dune Imperium/i });
@@ -49,19 +52,21 @@ describe("Given a Match Card component", () => {
       };
 
       render(
-        <Provider store={store}>
-          <MatchCard
-            gameTitle={partida.gameTitle}
-            image={partida.image}
-            date={partida.date}
-            maxPlayers={partida.maxPlayers}
-            players={partida.players}
-            location={partida.location}
-            key={partida.id}
-            id={partida.id}
-            creator={partida.creator}
-          />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MatchCard
+              gameTitle={partida.gameTitle}
+              image={partida.image}
+              date={partida.date}
+              maxPlayers={partida.maxPlayers}
+              players={partida.players}
+              location={partida.location}
+              key={partida.id}
+              id={partida.id}
+              creator={partida.creator}
+            />
+          </Provider>
+        </BrowserRouter>
       );
 
       const text = screen.getByText("Madrid");

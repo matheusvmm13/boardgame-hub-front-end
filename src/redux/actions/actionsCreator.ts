@@ -8,6 +8,11 @@ export const loadMatchesAction = (match: MatchInterface) => ({
   match,
 });
 
+export const loadMatchesInfoAction = (match: MatchInterface) => ({
+  type: actionsType.loadMatchesInfo,
+  match,
+});
+
 export const loadMyMatchesAction = (match: MatchInterface) => ({
   type: actionsType.loadMyMatches,
   match,
