@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import { RootState } from "../../redux/reducers";
+import { useNavigate } from "react-router-dom";
 
 const MatchCard = ({
   gameTitle,
@@ -16,15 +17,25 @@ const MatchCard = ({
 }: MatchInterface): JSX.Element => {
   const user = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteMatch = (id: string) => {
     dispatch(deleteMatchThunk(id));
   };
 
+  const matchInfo = (id: string) => {
+    navigate(`${id}`);
+  };
+
   return (
     <Card className="card">
       <Cardbody className="card__body">
-        <img className="card__gameimage" src={image} alt={gameTitle} />
+        <img
+          className="card__gameimage"
+          src={image}
+          alt={gameTitle}
+          onClick={() => matchInfo(id)}
+        />
         <CardDate className="card__gamedate">
           {new Intl.DateTimeFormat("en-GB", {
             dateStyle: "full",

@@ -6,6 +6,7 @@ import {
   createMatchesAction,
   deleteMatchesAction,
   loadMatchesAction,
+  loadMatchesInfoAction,
 } from "../actions/actionsCreator";
 
 export const loadMatchesThunk = async (
@@ -16,6 +17,15 @@ export const loadMatchesThunk = async (
   const allMatches = matchesList.matches;
   dispatch(loadMatchesAction(allMatches));
 };
+
+export const loadMatchesInfoThunk =
+  (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_PUBLIC_API}matches/${id}`
+    );
+    const matchInfo = await response.json();
+    dispatch(loadMatchesInfoAction(matchInfo));
+  };
 
 export const loadMyMatchesThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
