@@ -37,7 +37,7 @@ const MatchCard = ({
           onClick={() => matchInfo(id)}
         />
         <CardDate className="card__gamedate">
-          {new Intl.DateTimeFormat("en-GB", {
+          {new Intl.DateTimeFormat("en-ES", {
             dateStyle: "full",
             timeStyle: "short",
           }).format(Date.parse(date))}
@@ -105,7 +105,7 @@ const Cardbody = styled.article`
   }
 `;
 
-const CardDate = styled.p`
+export const CardDate = styled.p`
   font-weight: 400;
   color: ${(props) => props.theme.text};
   margin: 0.5rem 0;

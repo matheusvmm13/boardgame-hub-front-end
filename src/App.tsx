@@ -11,6 +11,7 @@ import MyBoardgamesPage from "./pages/my-boardgames/MyBoardgamesPage";
 import LoginPage from "./pages/login/LoginPage";
 import { Toaster } from "react-hot-toast";
 import SignupPage from "./pages/sign-up/SignupPage";
+import MatchInfoPage from "./pages/match-info/MatchInfoPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/matches" />} />
           <Route path="/matches" element={<AllMatchesPage />} />
+          <Route path="/matches/:id" element={<MatchInfoPage />} />
           <Route path="/my-matches/new-match" element={<NewMatchPage />} />
           <Route path="/my-matches" element={<MyMatchesPage />} />
           <Route path="/my-boardgames" element={<MyBoardgamesPage />} />

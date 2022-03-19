@@ -1,3 +1,4 @@
+import { AnyAction } from "redux";
 import {
   anyActionInterface,
   loadMatchesInfoInterface,
@@ -7,7 +8,7 @@ import actionsType from "../../actions/actionsType";
 
 const matchInfoReducer = (
   currentState: MatchInterface | {} = {},
-  action: anyActionInterface | loadMatchesInfoInterface = {}
+  action: anyActionInterface | loadMatchesInfoInterface | AnyAction = {}
 ) => {
   let newMatch: MatchInterface | {} = {};
 
