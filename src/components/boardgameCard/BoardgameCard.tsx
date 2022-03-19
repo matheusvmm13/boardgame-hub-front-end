@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { addGameThunk } from "../../redux/thunks/boardgameThunks";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
@@ -12,6 +13,7 @@ const BoardgameCard = ({
   _id,
 }: BoardgameInterface): JSX.Element => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const addNewBoardgame = (
     _id: Partial<BoardgameInterface> | string | undefined
@@ -35,9 +37,11 @@ const BoardgameCard = ({
             <p className="card__playtime--minutes">{max_playtime} Minutes</p>
           </CardMaxPlayTime>
         </CardInfo>
-        <AddButton className="card__add" onClick={() => addNewBoardgame(_id)}>
-          ADD
-        </AddButton>
+        {location.pathname === "/all-boardgames" && (
+          <AddButton className="card__add" onClick={() => addNewBoardgame(_id)}>
+            ADD
+          </AddButton>
+        )}
       </Cardbody>
     </Card>
   );
