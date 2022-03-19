@@ -81,7 +81,6 @@ const Card = styled.li`
   overflow: hidden;
   box-shadow: 1px 3px 20px #9e9e9e;
   border-radius: 20px;
-  cursor: pointer;
   transition: transform 200ms ease-in;
 
   img {
@@ -89,6 +88,7 @@ const Card = styled.li`
     width: 100%;
     object-fit: none;
     border-radius: 10px;
+    cursor: pointer;
   }
 `;
 
