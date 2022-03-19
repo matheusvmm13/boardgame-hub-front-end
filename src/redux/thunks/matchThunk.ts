@@ -21,10 +21,11 @@ export const loadMatchesThunk = async (
 export const loadMatchesInfoThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const response = await fetch(
-      `${process.env.REACT_APP_PUBLIC_API}matches/${id}`
+      `${process.env.REACT_APP_LOCAL_API}matches/${id}`
     );
     const matchInfo = await response.json();
-    dispatch(loadMatchesInfoAction(matchInfo));
+    const matchDetails = matchInfo.match;
+    dispatch(loadMatchesInfoAction(matchDetails));
   };
 
 export const loadMyMatchesThunk =
