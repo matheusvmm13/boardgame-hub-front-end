@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store";
 import MyMatchesPage from "./MyMatchesPage";
 
@@ -13,9 +14,11 @@ describe("Given a My Matches page component", () => {
   describe("When it's rendered", () => {
     test("Then it should render a title with All Matches", () => {
       render(
-        <Provider store={store}>
-          <MyMatchesPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MyMatchesPage />
+          </Provider>
+        </BrowserRouter>
       );
 
       const TextHeading = screen.getByRole("heading", {

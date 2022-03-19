@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import jwtDecode from "jwt-decode";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DecodedToken } from "../../components/form/FormMatch";
-import Header from "../../components/header/Header";
 import { RootState } from "../../redux/reducers";
 import { loadMyMatchesThunk } from "../../redux/thunks/matchThunk";
+import Header from "../../components/header/Header";
 import MatchCard from "../../components/matchCard/MatchCard";
-import Spinner from "../../components/spinner/Spinner";
+import { Link } from "react-router-dom";
 
 const MyMatchesPage = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,12 @@ const MyMatchesPage = () => {
             ))}
           </ul>
         ) : (
-          <Spinner />
+          <div className="container">
+            <h2>
+              You don't have any current match, but you can{" "}
+              <Link to={"/my-matches/new-match"}>create a new match!</Link>
+            </h2>
+          </div>
         )}
       </Wrapper>
     </>
@@ -56,6 +61,13 @@ const Wrapper = styled.section`
   min-height: 100vh;
 
   .matches__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

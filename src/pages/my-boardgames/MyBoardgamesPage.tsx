@@ -7,7 +7,7 @@ import Header from "../../components/header/Header";
 import { RootState } from "../../redux/reducers";
 import { loadMyGamesThunk } from "../../redux/thunks/boardgameThunks";
 import BoardgameCard from "../../components/boardgameCard/BoardgameCard";
-import Spinner from "../../components/spinner/Spinner";
+import { Link } from "react-router-dom";
 
 const MyBoardgamesPage = () => {
   const dispatch = useDispatch();
@@ -41,7 +41,12 @@ const MyBoardgamesPage = () => {
             ))}
           </ul>
         ) : (
-          <Spinner />
+          <div className="container">
+            <h2>
+              You don't have games in your collection, but you can{" "}
+              <Link to={"/all-boardgames"}>add games here!</Link>
+            </h2>
+          </div>
         )}
       </Wrapper>
     </>
@@ -54,6 +59,13 @@ const Wrapper = styled.section`
   min-height: 100vh;
 
   .boardgames__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store";
 import MyBoardgamesPage from "./MyBoardgamesPage";
 
@@ -13,9 +14,11 @@ describe("Given a My Boardgames page component", () => {
   describe("When it's rendered", () => {
     test("Then it should render a title with All Boardgames", () => {
       render(
-        <Provider store={store}>
-          <MyBoardgamesPage />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <MyBoardgamesPage />
+          </Provider>
+        </BrowserRouter>
       );
 
       const TextHeading = screen.getByRole("heading", {

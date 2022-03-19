@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store";
 import BoardgameCard from "./BoardgameCard";
 
@@ -16,9 +17,11 @@ describe("Given a Match Card component", () => {
       };
 
       render(
-        <Provider store={store}>
-          <BoardgameCard name={game.name} />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <BoardgameCard name={game.name} />
+          </Provider>
+        </BrowserRouter>
       );
 
       const text = screen.getByRole("heading", { name: /Dune Imperium/i });
