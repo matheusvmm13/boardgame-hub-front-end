@@ -24,7 +24,6 @@ export const loadMatchesInfoThunk =
       `${process.env.REACT_APP_PUBLIC_API}matches/${id}`
     );
     const matchInfo = await response.json();
-    console.log(matchInfo);
     const matchDetails = matchInfo.match;
     dispatch(loadMatchesInfoAction(matchDetails));
   };

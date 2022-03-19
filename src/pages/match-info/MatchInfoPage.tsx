@@ -17,8 +17,6 @@ const MatchInfoPage = () => {
   const dispatch = useDispatch();
   const matchData = useSelector((state: RootState) => state.matchInfo);
   const matchCreator = (matchData as MatchInterface).creator;
-  console.log(matchData);
-  console.log(matchCreator);
 
   useEffect(() => {
     dispatch(loadMatchesInfoThunk(id as string));
