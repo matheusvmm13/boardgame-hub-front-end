@@ -9,6 +9,7 @@ import { MatchInterface } from "../../utils/types/matchInterface";
 import { CreatorInterface } from "../../utils/types/userInterface";
 import Header from "../../components/header/Header";
 import Spinner from "../../components/spinner/Spinner";
+import Map from "../../components/map/Map";
 
 const MatchInfoPage = () => {
   const { id } = useParams();
@@ -60,6 +61,7 @@ const MatchInfoPage = () => {
               REQUEST TO JOIN
             </RequestButton>
           </div>
+          <Map />
         </Wrapper>
       ) : (
         <Spinner />

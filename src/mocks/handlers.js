@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import { mockedMatch } from "./mockedObjects";
 
 export const handlers = [
   rest.get(`${process.env.REACT_APP_PUBLIC_API}matches`, (req, res, ctx) => {
@@ -66,6 +67,13 @@ export const handlers = [
     }
   ),
 
+  rest.post(
+    `${process.env.REACT_APP_PUBLIC_API}my-matches/new-match`,
+    (req, res, ctx) => {
+      return res(ctx.status(201), ctx.json(mockedMatch[0]));
+    }
+  ),
+
   rest.patch(
     `${process.env.REACT_APP_PUBLIC_API}all-boardgames/add/622dd09e87c35208164d62c3/622a34ef55c15b820edc9a3e`,
     (req, res, ctx) => {
@@ -91,7 +99,7 @@ export const handlers = [
   ),
 
   rest.delete(
-    `${process.env.REACT_APP_PUBLIC_API}delete/531452`,
+    `${process.env.REACT_APP_PUBLIC_API}my-matches/delete/531452`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
