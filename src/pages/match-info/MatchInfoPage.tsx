@@ -56,18 +56,21 @@ const MatchInfoPage = () => {
             <RiMapPinLine className="remix-icon__map" size={25} />
             <InfoText>{(matchData as MatchInterface).location}</InfoText>
           </InfoContainer>
+
           <div className="button--wrapper">
             <RequestButton className="button__request" onClick={() => "Join"}>
               REQUEST TO JOIN
             </RequestButton>
           </div>
-          {(matchData as MatchInterface).location !== undefined ? (
-            <Map
-              matchLocation={(matchData as MatchInterface).location as string}
-            />
-          ) : (
-            <div>...Loading</div>
-          )}
+          <InfoContainer className="location--container">
+            {(matchData as MatchInterface).location !== undefined ? (
+              <Map
+                matchLocation={(matchData as MatchInterface).location as string}
+              />
+            ) : (
+              <div>Loading Map...</div>
+            )}
+          </InfoContainer>
         </Wrapper>
       ) : (
         <Spinner />
