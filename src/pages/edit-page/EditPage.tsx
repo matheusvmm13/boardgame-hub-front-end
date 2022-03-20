@@ -1,47 +1,27 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { RootState } from "../../redux/reducers";
-import toast from "react-hot-toast";
 import styled from "styled-components";
+import EditForm from "../../components/editForm/EditForm";
 import Header from "../../components/header/Header";
-import LoginForm from "../../components/loginForm/LoginForm";
 
-const LoginPage = () => {
-  const user = useSelector((state: RootState) => state.users);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user.loggedIn) {
-      toast("Welcome", {
-        icon: "🤗",
-      });
-
-      setTimeout(() => {
-        navigate("/");
-      }, 250);
-    }
-  }, [navigate, user.loggedIn]);
-
+const EditPage = () => {
   return (
     <>
       <Wrapper className="container">
-        <Header title={"Login"} />
+        <Header title={"Update Match"} />
         <SectionContainer className="container__section">
           <figure className="container__image">
             <img
-              src="https://images.unsplash.com/photo-1635921152718-06a19ec70a6c"
+              src="https://images.unsplash.com/photo-1506954673998-b077f05b13c7"
               alt="boardgame"
             />
           </figure>
-          <LoginForm />
+          <EditForm />
         </SectionContainer>
       </Wrapper>
     </>
   );
 };
 
-export default LoginPage;
+export default EditPage;
 
 const Wrapper = styled.section`
   min-height: 100vh;

@@ -5,6 +5,7 @@ import {
   deleteMatchesInterface,
   loadMatchesInterface,
   loadMyMatchesInterface,
+  updateMyMatchesInterface,
 } from "../../utils/types/actionsInterface";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import actionsType from "../actions/actionsType";
@@ -17,6 +18,7 @@ const matchReducer = (
     | loadMyMatchesInterface
     | deleteMatchesInterface
     | createMatchesInterface
+    | updateMyMatchesInterface
     | AnyAction = {}
 ) => {
   let newMatch: MatchInterface[];
@@ -38,6 +40,14 @@ const matchReducer = (
 
     case actionsType.createMatches:
       newMatch = [...state, (action as createMatchesInterface).match];
+      break;
+
+    case actionsType.updateMyMatches:
+      newMatch = state.map((match) =>
+        match.id === (action as updateMyMatchesInterface).match.id
+          ? (action as updateMyMatchesInterface).match
+          : match
+      );
       break;
 
     default:

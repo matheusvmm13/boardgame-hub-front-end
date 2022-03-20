@@ -1,12 +1,12 @@
 import * as React from "react";
 import jwtDecode from "jwt-decode";
 import styled from "styled-components";
+import Spinner from "../spinner/Spinner";
 import { Formik, Field, Form, FormikHelpers } from "formik";
 import { useDispatch } from "react-redux";
 import { createMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import { BoardgameInterface } from "../../utils/types/boardgameInterface";
-import Spinner from "../spinner/Spinner";
 import { Link } from "react-router-dom";
 
 interface MyFormValues extends MatchInterface {

@@ -12,8 +12,21 @@ import LoginPage from "./pages/login/LoginPage";
 import { Toaster } from "react-hot-toast";
 import SignupPage from "./pages/sign-up/SignupPage";
 import MatchInfoPage from "./pages/match-info/MatchInfoPage";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/reducers";
+import EditPage from "./pages/edit-page/EditPage";
 
 function App() {
+  const user = useSelector((state: RootState) => state.users);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      user.loggedIn = true;
+    }
+  }, [user]);
+
   return (
     <>
       <div>
@@ -35,8 +48,9 @@ function App() {
           <Route path="/" element={<Navigate to="/matches" />} />
           <Route path="/matches" element={<AllMatchesPage />} />
           <Route path="/matches/:id" element={<MatchInfoPage />} />
-          <Route path="/my-matches/new-match" element={<NewMatchPage />} />
           <Route path="/my-matches" element={<MyMatchesPage />} />
+          <Route path="/my-matches/edit/:id" element={<EditPage />} />
+          <Route path="/my-matches/new-match" element={<NewMatchPage />} />
           <Route path="/my-boardgames" element={<MyBoardgamesPage />} />
           <Route path="/all-boardgames" element={<AllBoardgamesPage />} />
           <Route path="/users/login" element={<LoginPage />} />

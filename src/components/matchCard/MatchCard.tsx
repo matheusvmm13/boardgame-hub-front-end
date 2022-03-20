@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import { RootState } from "../../redux/reducers";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MatchCard = ({
   gameTitle,
@@ -16,11 +16,16 @@ const MatchCard = ({
   id,
 }: MatchInterface): JSX.Element => {
   const user = useSelector((state: RootState) => state.users);
+  const locationPath = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const deleteMatch = (id: string) => {
     dispatch(deleteMatchThunk(id));
+  };
+
+  const updateMatch = (id: string) => {
+    navigate(`edit/${id}`);
   };
 
   const matchInfo = (id: string) => {
@@ -57,8 +62,14 @@ const MatchCard = ({
         <CardLocation className="card__location">
           <p className="card__location--city">{location}</p>
         </CardLocation>
-        {user.loggedIn && (
-          <p className="card__delete" onClick={() => deleteMatch(id)}>
+        {locationPath.pathname === "/my-matches" && (
+          <p className="card__delete" onClick={() => updateMatch(id as string)}>
+            EDIT
+          </p>
+        )}
+
+        {user.loggedIn && locationPath.pathname === "/my-matches" && (
+          <p className="card__delete" onClick={() => deleteMatch(id as string)}>
             DELETE
           </p>
         )}
@@ -99,6 +110,7 @@ const Cardbody = styled.article`
     font-weight: 400;
     margin: 0.5rem 0;
     color: ${(props) => props.theme.lightText};
+    cursor: pointer;
     &:hover {
       color: #000;
     }
