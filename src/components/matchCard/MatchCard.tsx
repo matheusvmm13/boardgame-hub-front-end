@@ -16,15 +16,17 @@ const MatchCard = ({
   id,
 }: MatchInterface): JSX.Element => {
   const user = useSelector((state: RootState) => state.users);
+  const locationPath = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const locationPath = useLocation();
 
   const deleteMatch = (id: string) => {
     dispatch(deleteMatchThunk(id));
   };
 
-  const updateMatch = (id: string) => {};
+  const updateMatch = (id: string) => {
+    navigate(`edit/${id}`);
+  };
 
   const matchInfo = (id: string) => {
     navigate(`${id}`);
@@ -60,13 +62,14 @@ const MatchCard = ({
         <CardLocation className="card__location">
           <p className="card__location--city">{location}</p>
         </CardLocation>
-        {user.loggedIn && locationPath.pathname === "/my-matches" && (
-          <p className="card__delete" onClick={() => updateMatch(id)}>
+        {locationPath.pathname === "/my-matches" && (
+          <p className="card__delete" onClick={() => updateMatch(id as string)}>
             EDIT
           </p>
         )}
+
         {user.loggedIn && locationPath.pathname === "/my-matches" && (
-          <p className="card__delete" onClick={() => deleteMatch(id)}>
+          <p className="card__delete" onClick={() => deleteMatch(id as string)}>
             DELETE
           </p>
         )}

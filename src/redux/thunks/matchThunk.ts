@@ -88,11 +88,11 @@ export const createMatchThunk =
   };
 
 export const updateMyMatchThunk =
-  (match: MatchInterface, id: string) =>
+  (match: Partial<MatchInterface>, id: string) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
     const token = localStorage.getItem("token");
     const response = await fetch(
-      `${process.env.REACT_APP_LOCAL_API}my-matches/edit/${id}`,
+      `${process.env.REACT_APP_PUBLIC_API}my-matches/edit/${id}`,
       {
         method: "PUT",
         mode: "cors",
