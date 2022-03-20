@@ -49,7 +49,7 @@ export const addGameAction = (boardgame: BoardgameInterface) => ({
 });
 
 export const registerUserAction = (userData: UserLoginDataInterface) => ({
-  type: actionsType.loginUser,
+  type: actionsType.registerUser,
   userData,
 });
 
@@ -59,5 +59,5 @@ export const loginUserAction = (userData: UserLoginDataInterface) => ({
 });
 
 export const logoutUserAction = () => ({
-  type: actionsType.loginUser,
+  type: actionsType.logoutUser,
 });

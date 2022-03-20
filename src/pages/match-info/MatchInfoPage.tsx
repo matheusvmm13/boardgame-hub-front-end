@@ -56,10 +56,7 @@ const MatchInfoPage = () => {
             <InfoText>{(matchData as MatchInterface).location}</InfoText>
           </InfoContainer>
           <div className="button--wrapper">
-            <RequestButton
-              className="button__request"
-              onClick={() => console.log("Hola")}
-            >
+            <RequestButton className="button__request" onClick={() => "Join"}>
               REQUEST TO JOIN
             </RequestButton>
           </div>
