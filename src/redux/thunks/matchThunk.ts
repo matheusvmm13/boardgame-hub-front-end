@@ -7,6 +7,7 @@ import {
   deleteMatchesAction,
   loadMatchesAction,
   loadMatchesInfoAction,
+  updateMyMatchesAction,
 } from "../actions/actionsCreator";
 
 export const loadMatchesThunk = async (
@@ -84,4 +85,29 @@ export const createMatchThunk =
     const newMatch = await response.json();
     dispatch(createMatchesAction(newMatch));
     toast.success("New match created");
+  };
+
+export const updateMyMatchThunk =
+  (match: MatchInterface, id: string) =>
+  async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      `${process.env.REACT_APP_LOCAL_API}my-matches/edit/${id}`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(match),
+      }
+    );
+    if (response.ok) {
+      const updatedMatch: MatchInterface = await response.json();
+      dispatch(updateMyMatchesAction(updatedMatch));
+      toast.success("Match updated");
+    } else {
+      toast.error("Something went wrong");
+    }
   };

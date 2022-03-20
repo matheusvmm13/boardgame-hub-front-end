@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../../redux/reducers";
+import toast from "react-hot-toast";
 import styled from "styled-components";
 import Header from "../../components/header/Header";
 import LoginForm from "../../components/loginForm/LoginForm";
-import { RootState } from "../../redux/reducers";
 
 const LoginPage = () => {
   const user = useSelector((state: RootState) => state.users);

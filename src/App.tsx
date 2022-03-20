@@ -12,8 +12,20 @@ import LoginPage from "./pages/login/LoginPage";
 import { Toaster } from "react-hot-toast";
 import SignupPage from "./pages/sign-up/SignupPage";
 import MatchInfoPage from "./pages/match-info/MatchInfoPage";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "./redux/reducers";
 
 function App() {
+  const user = useSelector((state: RootState) => state.users);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      user.loggedIn = true;
+    }
+  });
+
   return (
     <>
       <div>

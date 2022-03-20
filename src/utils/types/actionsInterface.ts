@@ -21,6 +21,9 @@ export interface createMatchesInterface extends anyActionInterface {
   match: MatchInterface;
 }
 
+export interface updateMyMatchesInterface extends anyActionInterface {
+  match: MatchInterface;
+}
 export interface deleteMatchesInterface extends anyActionInterface {
   id: string;
 }

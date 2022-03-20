@@ -2,6 +2,7 @@ const actionsType = {
   loadMatches: "load-matches",
   loadMatchesInfo: "load-matches-info",
   loadMyMatches: "load-my-matches",
+  updateMyMatches: "update-my-matches",
   deleteMatches: "delete-matches",
   createMatches: "create-matches",
   addGame: "add-game",

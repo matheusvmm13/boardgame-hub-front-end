@@ -18,6 +18,11 @@ export const loadMyMatchesAction = (match: MatchInterface) => ({
   match,
 });
 
+export const updateMyMatchesAction = (match: MatchInterface) => ({
+  type: actionsType.updateMyMatches,
+  match,
+});
+
 export const deleteMatchesAction = (id: string) => ({
   type: actionsType.deleteMatches,
   id,
