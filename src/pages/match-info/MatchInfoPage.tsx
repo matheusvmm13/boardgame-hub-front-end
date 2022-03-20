@@ -61,7 +61,13 @@ const MatchInfoPage = () => {
               REQUEST TO JOIN
             </RequestButton>
           </div>
-          <Map />
+          {(matchData as MatchInterface).location !== undefined ? (
+            <Map
+              matchLocation={(matchData as MatchInterface).location as string}
+            />
+          ) : (
+            <div>...Loading</div>
+          )}
         </Wrapper>
       ) : (
         <Spinner />
