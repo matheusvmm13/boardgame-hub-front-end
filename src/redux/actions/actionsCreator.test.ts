@@ -8,8 +8,13 @@ import {
   deleteMatchesAction,
   loadGamesAction,
   loadMatchesAction,
+  loadMatchesInfoAction,
+  loadMyGamesAction,
   loadMyMatchesAction,
   loginUserAction,
+  logoutUserAction,
+  registerUserAction,
+  updateMyMatchesAction,
 } from "./actionsCreator";
 
 describe("Given a load matches action", () => {
@@ -80,6 +85,32 @@ describe("Given a delete matches action", () => {
   });
 });
 
+describe("Given a load matches information action", () => {
+  describe("When it receives an match", () => {
+    test("Then it should return an action type load match info", () => {
+      const match: MatchInterface = {
+        id: "345245871",
+        gameTitle: "Dune",
+        image: "",
+        creator: "username",
+        date: "2022",
+        maxPlayers: 5,
+        players: ["uno", "dos"],
+        location: "Barcelona",
+      };
+
+      const expectedAction = {
+        type: "load-matches-info",
+        match,
+      };
+
+      const createAction = loadMatchesInfoAction(match);
+
+      expect(createAction).toEqual(expectedAction);
+    });
+  });
+});
+
 describe("Given a create matches action", () => {
   describe("When it receives an match", () => {
     test("Then it should return an action type create match", () => {
@@ -100,6 +131,32 @@ describe("Given a create matches action", () => {
       };
 
       const createAction = createMatchesAction(match);
+
+      expect(createAction).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a update my matches action", () => {
+  describe("When it receives an match", () => {
+    test("Then it should return an action type update my match", () => {
+      const match: MatchInterface = {
+        id: "345245871",
+        gameTitle: "Dune",
+        image: "",
+        creator: "username",
+        date: "2022",
+        maxPlayers: 5,
+        players: ["uno", "dos"],
+        location: "Barcelona",
+      };
+
+      const expectedAction = {
+        type: "update-my-matches",
+        match,
+      };
+
+      const createAction = updateMyMatchesAction(match);
 
       expect(createAction).toEqual(expectedAction);
     });
@@ -130,6 +187,30 @@ describe("Given a load games action", () => {
   });
 });
 
+describe("Given a load my games action", () => {
+  describe("When it receives a boardgame", () => {
+    test("Then it should return an action type loadMyGames", () => {
+      const boardgame: BoardgameInterface = {
+        name: "string",
+        _id: "string",
+        image_url: "string",
+        max_players: 3,
+        min_players: 3,
+        max_playtime: 30,
+      };
+
+      const expectedAction = {
+        type: "load-my-games",
+        boardgame,
+      };
+
+      const action = loadMyGamesAction(boardgame);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
 describe("Given a add games action", () => {
   describe("When it receives a name", () => {
     test("Then it should return an action type add game", () => {
@@ -153,6 +234,27 @@ describe("Given a add games action", () => {
   });
 });
 
+describe("Given a Register user action", () => {
+  describe("When it get's called", () => {
+    test("Then it should return an action type registerUser", () => {
+      const userData: UserLoginDataInterface = {
+        name: "Matheus",
+        username: "matheusvmm",
+        password: "123456",
+      };
+
+      const expectedAction = {
+        type: "register-user",
+        userData: userData,
+      };
+
+      const action = registerUserAction(userData);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
 describe("Given a login user action", () => {
   describe("When it receives a user data", () => {
     test("Then it should return an action type loginUser", () => {
@@ -168,6 +270,20 @@ describe("Given a login user action", () => {
       };
 
       const action = loginUserAction(userData);
+
+      expect(action).toEqual(expectedAction);
+    });
+  });
+});
+
+describe("Given a logout user action", () => {
+  describe("When it get's called", () => {
+    test("Then it should return an action type logoutUser", () => {
+      const expectedAction = {
+        type: "logout-user",
+      };
+
+      const action = logoutUserAction();
 
       expect(action).toEqual(expectedAction);
     });

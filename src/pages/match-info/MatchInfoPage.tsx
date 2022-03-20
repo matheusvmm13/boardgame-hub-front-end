@@ -9,6 +9,7 @@ import { MatchInterface } from "../../utils/types/matchInterface";
 import { CreatorInterface } from "../../utils/types/userInterface";
 import Header from "../../components/header/Header";
 import Spinner from "../../components/spinner/Spinner";
+import Map from "../../components/map/Map";
 
 const MatchInfoPage = () => {
   const { id } = useParams();
@@ -55,14 +56,21 @@ const MatchInfoPage = () => {
             <RiMapPinLine className="remix-icon__map" size={25} />
             <InfoText>{(matchData as MatchInterface).location}</InfoText>
           </InfoContainer>
+
           <div className="button--wrapper">
-            <RequestButton
-              className="button__request"
-              onClick={() => console.log("Hola")}
-            >
+            <RequestButton className="button__request" onClick={() => "Join"}>
               REQUEST TO JOIN
             </RequestButton>
           </div>
+          <InfoContainer className="location--container">
+            {(matchData as MatchInterface).location !== undefined ? (
+              <Map
+                matchLocation={(matchData as MatchInterface).location as string}
+              />
+            ) : (
+              <div>Loading Map...</div>
+            )}
+          </InfoContainer>
         </Wrapper>
       ) : (
         <Spinner />

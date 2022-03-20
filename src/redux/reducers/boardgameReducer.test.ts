@@ -3,7 +3,7 @@ import actionsType from "../actions/actionsType";
 import boardgameReducer from "./boardgameReducer";
 
 describe("Given a boardgameReducer function", () => {
-  describe("When it is called with an empty state and the loadgamess action with a game", () => {
+  describe("When it is called with an empty state and the load games action with a game", () => {
     test("Then it should return the new state with the array of games", async () => {
       const boardgameState: BoardgameInterface[] = [];
 
@@ -36,7 +36,7 @@ describe("Given a boardgameReducer function", () => {
       expect(newState).toEqual(gamesArray);
     });
   });
-  describe("When it is called with the load my gamess action", () => {
+  describe("When it is called with the load my games action", () => {
     test("Then it should return the new state with the array of games from the user", async () => {
       const boardgameState: BoardgameInterface[] = [];
 
