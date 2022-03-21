@@ -71,7 +71,7 @@ const FormMatch: React.FC<{}> = () => {
     const selectedGameState = boardgameResults.filter(
       (game) => game.name === selectedId
     )[0];
-    formData.gameTitle = selectedGameState.name;
+    formData.gameTitle = selectedGameState.name as string;
     formData.image = selectedGameState.image_url as string;
     formData.maxPlayers = selectedGameState.max_players as number;
   };

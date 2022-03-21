@@ -1,4 +1,5 @@
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import BoardgameCard from "../components/boardgameCard/BoardgameCard";
 import store from "../redux/store";
@@ -11,9 +12,11 @@ export default {
 
 const Template = (args) => (
   <ThemeProvider theme={theme}>
-    <Provider store={store}>
-      <BoardgameCard {...args} />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <BoardgameCard {...args} />
+      </Provider>
+    </BrowserRouter>
   </ThemeProvider>
 );
 
