@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logoutUserAction } from "../../redux/actions/actionsCreator";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
-import toast from "react-hot-toast";
 
 export interface NavbarProps {
   isOpen: boolean;
@@ -43,27 +43,55 @@ const Navigationbar = (): JSX.Element => {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <Link to={`/matches`} className="menu__link">
+        <Link
+          to={`/matches`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {user.loggedIn && <MenuLink>All Matches</MenuLink>}
         </Link>
-        <Link to={`/my-matches`} className="menu__link">
+        <Link
+          to={`/my-matches`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {user.loggedIn && <MenuLink>My Matches</MenuLink>}
         </Link>
-        <Link to={`/my-matches/new-match`} className="menu__link">
+        <Link
+          to={`/my-matches/new-match`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {user.loggedIn && <MenuLink>New Match</MenuLink>}
         </Link>
-        <Link to={`/my-boardgames`} className="menu__link">
+        <Link
+          to={`/my-boardgames`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {user.loggedIn && <MenuLink>My Boardgames</MenuLink>}
         </Link>
-        <Link to={`/all-boardgames`} className="menu__link">
+        <Link
+          to={`/all-boardgames`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {user.loggedIn && <MenuLink>All Boardgames</MenuLink>}
         </Link>
-        <Link to={`/users/login`} className="menu__link">
+        <Link
+          to={`/users/login`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {!user.loggedIn && <MenuLink>Login</MenuLink>}
         </Link>
         {user.loggedIn && <MenuLink onClick={logout}>Logout</MenuLink>}
-        <Link to={`/users/signup`} className="menu__link">
-          <MenuLinkAuth>Sign Up</MenuLinkAuth>
+        <Link
+          to={`/users/signup`}
+          className="menu__link"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {!user.loggedIn && <MenuLinkAuth>Sign Up</MenuLinkAuth>}
         </Link>
       </Menu>
     </Nav>

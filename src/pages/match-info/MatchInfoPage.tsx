@@ -5,6 +5,10 @@ import {
   RiMapPinLine,
   RiTeamLine,
 } from "react-icons/ri";
+import Header from "../../components/header/Header";
+import Spinner from "../../components/spinner/Spinner";
+import Map from "../../components/map/Map";
+import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
@@ -12,20 +16,23 @@ import { loadMatchesInfoThunk } from "../../redux/thunks/matchThunk";
 import { useParams } from "react-router-dom";
 import { MatchInterface } from "../../utils/types/matchInterface";
 import { CreatorInterface } from "../../utils/types/userInterface";
-import Header from "../../components/header/Header";
-import Spinner from "../../components/spinner/Spinner";
-import Map from "../../components/map/Map";
-import toast from "react-hot-toast";
 
 const MatchInfoPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const userData = useSelector((state: RootState) => state.users);
   const matchData = useSelector((state: RootState) => state.matchInfo);
   const matchCreator = (matchData as MatchInterface).creator;
 
   useEffect(() => {
     dispatch(loadMatchesInfoThunk(id as string));
   }, [dispatch, id]);
+
+  const requestToJoin = () => {
+    userData.loggedIn
+      ? toast.success("Request sent to the organizer!")
+      : toast.error("You must login first");
+  };
 
   return (
     <>
@@ -84,9 +91,7 @@ const MatchInfoPage = () => {
             <div className="button--wrapper">
               <RequestButton
                 className="button__request"
-                onClick={() =>
-                  toast.success("Your request was sent to the organizer!")
-                }
+                onClick={() => requestToJoin()}
               >
                 REQUEST TO JOIN
               </RequestButton>
@@ -195,6 +200,7 @@ const RequestButton = styled.button`
   font-size: 1rem;
   border: none;
   border-radius: 15px;
+  cursor: pointer;
 
   &:hover {
     color: #fff;
