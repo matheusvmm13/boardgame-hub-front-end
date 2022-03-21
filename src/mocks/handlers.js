@@ -68,6 +68,25 @@ export const handlers = [
   ),
 
   rest.get(
+    `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622dd09e87c35208164d62c3`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          boardgames: [
+            {
+              _id: "622dd09e87c35208164d62c3",
+              handle: "root",
+              url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
+              name: "Root",
+            },
+          ],
+        })
+      );
+    }
+  ),
+
+  rest.get(
     `${process.env.REACT_APP_PUBLIC_API}my-matches/622dcd3487c35208164d62a2`,
     (req, res, ctx) => {
       return res(
