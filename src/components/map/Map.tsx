@@ -38,6 +38,6 @@ const MapContainer = styled.article`
 
   @media screen and (min-device-width: 320px) and (max-width: 768px) {
     overflow: hidden;
-    padding-bottom: 16%;
+    // padding-bottom: 16%;
   }
 `;
