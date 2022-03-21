@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { RiCalendarLine, RiUser3Line, RiMapPinLine } from "react-icons/ri";
+import {
+  RiCalendarLine,
+  RiUser3Line,
+  RiMapPinLine,
+  RiTeamLine,
+} from "react-icons/ri";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
@@ -10,6 +15,7 @@ import { CreatorInterface } from "../../utils/types/userInterface";
 import Header from "../../components/header/Header";
 import Spinner from "../../components/spinner/Spinner";
 import Map from "../../components/map/Map";
+import toast from "react-hot-toast";
 
 const MatchInfoPage = () => {
   const { id } = useParams();
@@ -57,6 +63,11 @@ const MatchInfoPage = () => {
 
               <RiMapPinLine className="remix-icon__map" size={25} />
               <InfoText>{(matchData as MatchInterface).location}</InfoText>
+
+              <RiTeamLine className="remix-icon__map" size={25} />
+              <InfoText>
+                Players: 2 - {(matchData as MatchInterface).maxPlayers}
+              </InfoText>
             </InfoContainer>
 
             <InfoContainer className="location--container">
@@ -71,7 +82,12 @@ const MatchInfoPage = () => {
               )}
             </InfoContainer>
             <div className="button--wrapper">
-              <RequestButton className="button__request" onClick={() => "Join"}>
+              <RequestButton
+                className="button__request"
+                onClick={() =>
+                  toast.success("Your request was sent to the organizer!")
+                }
+              >
                 REQUEST TO JOIN
               </RequestButton>
             </div>
@@ -96,6 +112,7 @@ const Wrapper = styled.section`
     min-width: 90%;
     margin: 3rem 2.3rem 0 2.3rem;
     border-radius: 15px;
+    border: 2px solid ${(props) => props.theme.primary};
     object-fit: cover;
   }
 
@@ -121,7 +138,8 @@ const Wrapper = styled.section`
   @media screen and (min-device-width: 320px) and (max-width: 768px) {
     img {
       object-fit: contain;
-      margin: 1rem 0rem 0rem;
+      padding: 0.5rem;
+      margin: 1rem 1rem 0rem;
     }
 
     .container--information--location {
