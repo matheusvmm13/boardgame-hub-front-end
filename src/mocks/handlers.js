@@ -85,6 +85,24 @@ export const handlers = [
       );
     }
   ),
+  rest.get(
+    `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622b0ae8a25d83e35893b3cc`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          boardgames: [
+            {
+              _id: "622b0ae8a25d83e35893b3cc",
+              handle: "root",
+              url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
+              name: "Root",
+            },
+          ],
+        })
+      );
+    }
+  ),
 
   rest.get(
     `${process.env.REACT_APP_PUBLIC_API}my-matches/622b0ae8a25d83e35893b3cc`,
