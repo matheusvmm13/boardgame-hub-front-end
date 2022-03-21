@@ -41,12 +41,15 @@ const MatchCard = ({
           alt={gameTitle}
           onClick={() => matchInfo(id)}
         />
-        <CardDate className="card__gamedate">
-          {new Intl.DateTimeFormat("en-ES", {
-            dateStyle: "full",
-            timeStyle: "short",
-          }).format(Date.parse(date))}
-        </CardDate>
+        {date !== null && (
+          <CardDate className="card__gamedate">
+            {new Intl.DateTimeFormat("en-ES", {
+              dateStyle: "full",
+              timeStyle: "short",
+            }).format(Date.parse(date))}
+          </CardDate>
+        )}
+
         <CardGameTitle className="card__gametitle">{gameTitle}</CardGameTitle>
 
         <CardPlayersWrapper>
