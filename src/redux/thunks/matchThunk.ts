@@ -82,9 +82,13 @@ export const createMatchThunk =
         body: JSON.stringify(match),
       }
     );
-    const newMatch = await response.json();
-    dispatch(createMatchesAction(newMatch));
-    toast.success("New match created");
+    if (response.ok) {
+      const newMatch = await response.json();
+      dispatch(createMatchesAction(newMatch));
+      toast.success("New match created");
+    } else {
+      toast.error("Something went wrong");
+    }
   };
 
 export const updateMyMatchThunk =
