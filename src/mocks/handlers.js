@@ -116,11 +116,4 @@ export const handlers = [
       );
     }
   ),
-
-  rest.delete(
-    `${process.env.REACT_APP_PUBLIC_API}del/531452`,
-    (req, res, ctx) => {
-      return res(ctx.status(404));
-    }
-  ),
 ];
