@@ -45,6 +45,7 @@ const MatchCard = ({
             {new Intl.DateTimeFormat("en-ES", {
               dateStyle: "full",
               timeStyle: "short",
+              timeZone: "Europe/Madrid",
             }).format(Date.parse(date))}
           </CardDate>
         )}
