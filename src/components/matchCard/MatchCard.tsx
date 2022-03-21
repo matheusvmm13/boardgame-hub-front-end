@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { GiMeeple } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteMatchThunk } from "../../redux/thunks/matchThunk";
 import { MatchInterface } from "../../utils/types/matchInterface";
@@ -53,13 +52,12 @@ const MatchCard = ({
         <CardGameTitle className="card__gametitle">{gameTitle}</CardGameTitle>
 
         <CardPlayersWrapper>
-          <p className="card__player--max">Max Players</p>
-          {/* <p className="card__player--number">{players.length}</p> */}
-          {Array.from(Array(maxPlayers)).map((player, index) => (
+          <p className="card__player--number">Attendees: {players.length}</p>
+          {/* {Array.from(Array(maxPlayers)).map((player, index) => (
             <CardPlayers key={index} className="card__players">
               <GiMeeple className="icon__meeple" />
             </CardPlayers>
-          ))}
+          ))} */}
         </CardPlayersWrapper>
 
         <CardLocation className="card__location">
@@ -101,6 +99,7 @@ const Card = styled.li`
     height: 10rem;
     width: 100%;
     object-fit: none;
+    border: 2px solid ${(props) => props.theme.primary};
     border-radius: 10px;
     cursor: pointer;
   }
@@ -150,7 +149,7 @@ const CardPlayersWrapper = styled.article`
   }
 `;
 
-const CardPlayers = styled.div`
+/* const CardPlayers = styled.div`
   margin: 0.5rem 0.3rem 0.5rem 0rem;
   align-items: center;
 
@@ -168,7 +167,7 @@ const CardPlayers = styled.div`
     height: 1.3rem;
     width: 100%;
   }
-`;
+`; */
 
 const CardLocation = styled.div`
   font-weight: 400;

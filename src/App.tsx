@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/reducers";
 import EditPage from "./pages/edit-page/EditPage";
+import NotFoundPage from "./pages/not-found/NotFoundPage";
 
 function App() {
   const user = useSelector((state: RootState) => state.users);
@@ -55,6 +56,7 @@ function App() {
           <Route path="/all-boardgames" element={<AllBoardgamesPage />} />
           <Route path="/users/login" element={<LoginPage />} />
           <Route path="/users/signup" element={<SignupPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ThemeProvider>
     </>
