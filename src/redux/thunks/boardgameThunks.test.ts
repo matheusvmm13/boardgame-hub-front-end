@@ -12,7 +12,7 @@ jest.mock("jwt-decode", () => () => ({
 
 describe("Given a addGameThunk function", () => {
   describe("When it called", () => {
-    test("Then it should dispatch a function", async () => {
+    test.skip("Then it should dispatch a function", async () => {
       jest.setTimeout(9000);
 
       localStorage.setItem(
