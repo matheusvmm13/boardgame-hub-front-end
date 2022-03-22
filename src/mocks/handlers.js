@@ -91,20 +91,57 @@ export const handlers = [
   ),
 
   rest.get(
-    `${process.env.REACT_APP_PUBLIC_API}my-matches/622b0ae8a25d83e35893b3cc`,
+    `${process.env.REACT_APP_PUBLIC_API}my-matches/6238cbdb3ae9bb76b01b7dbc`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json([
+          {
+            _id: "6238da4bcb6e77864e4495f1",
+            gameTitle: "Sushi Go!",
+            image:
+              "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1632756769364",
+            creator: "6238cbdb3ae9bb76b01b7dbc",
+            date: "2022-03-27T17:30:00.000Z",
+            players: ["6238cbdb3ae9bb76b01b7dbc"],
+            maxPlayers: 5,
+            location: "Carrer de Padilla, 255, 08013 Barcelona",
+            id: "6238da4bcb6e77864e4495f1",
+          },
+          {
+            _id: "6238de6bcb6e77864e44962f",
+            gameTitle: "Tzolk'in: The Mayan Calendar",
+            image:
+              "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254183526-61f2BdYqPR4L.jpg",
+            creator: "6238cbdb3ae9bb76b01b7dbc",
+            date: "2022-03-24T00:20:00.000Z",
+            players: ["6238cbdb3ae9bb76b01b7dbc"],
+            maxPlayers: 4,
+            location: "Avinguda Diagonal, 643, 08028 Barcelona",
+            id: "6238de6bcb6e77864e44962f",
+          },
+        ])
+      );
+    }
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_PUBLIC_API}matches/62349fe9c93388f7b096ab02`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
         ctx.json({
-          id: "622dcd3487c35208164d62a2",
-          gameTitle: "Root",
-          image:
-            "https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__imagepage/img/BjM3LyahJ4IQ2ov5MkzkHatbmUc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5666597.jpg",
-          creator: "",
-          date: "2022-08-01",
-          maxPlayers: 4,
-          players: ["", ""],
-          location: "Barcelona",
+          match: {
+            id: "62349fe9c93388f7b096ab02",
+            gameTitle: "Ticket to Ride: Europe",
+            image:
+              "https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__imagepage/img/BjM3LyahJ4IQ2ov5MkzkHatbmUc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5666597.jpg",
+            creator: {},
+            date: "2022-08-01",
+            maxPlayers: 4,
+            players: [],
+            location: "Barcelona",
+          },
         })
       );
     }
@@ -149,6 +186,25 @@ export const handlers = [
     `${process.env.REACT_APP_PUBLIC_API}users/signup`,
     (req, res, ctx) => {
       return res(ctx.status(201), ctx.json(userRegistered.response));
+    }
+  ),
+
+  rest.put(
+    `${process.env.REACT_APP_PUBLIC_API}my-matches/edit/6233075705443313063349fd`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          id: "531452",
+          gameTitle: "Carcassone",
+          image: "",
+          creator: "username2",
+          date: "march 2020",
+          maxPlayers: 4,
+          players: ["", "", ""],
+          location: "Barcelona",
+        })
+      );
     }
   ),
 
