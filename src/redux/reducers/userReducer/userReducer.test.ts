@@ -10,6 +10,8 @@ describe("Given a userReducer function", () => {
         password: "1234565677",
         id: "",
         loggedIn: false,
+        boardgames: [],
+        matches: [],
       };
 
       const action = {
@@ -30,6 +32,8 @@ describe("Given a userReducer function", () => {
         password: "",
         id: "",
         loggedIn: false,
+        boardgames: [],
+        matches: [],
       };
 
       const action = {
@@ -49,6 +53,8 @@ describe("Given a userReducer function", () => {
         password: "",
         id: "",
         loggedIn: false,
+        boardgames: [],
+        matches: [],
       };
 
       const action = {

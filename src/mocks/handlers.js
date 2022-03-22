@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { mockedMatch } from "./mockedObjects";
+import { loggedUser, mockedMatch, userRegistered } from "./mockedObjects";
 
 export const handlers = [
   rest.get(`${process.env.REACT_APP_PUBLIC_API}matches`, (req, res, ctx) => {
@@ -61,6 +61,12 @@ export const handlers = [
               url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
               name: "Root",
             },
+            {
+              _id: "622dcd8a87c35208164d62a6",
+              handle: "scythe",
+              url: "https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe",
+              name: "Scythe",
+            },
           ],
         })
       );
@@ -68,38 +74,18 @@ export const handlers = [
   ),
 
   rest.get(
-    `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622dd09e87c35208164d62c3`,
-    (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          boardgames: [
-            {
-              _id: "622dd09e87c35208164d62c3",
-              handle: "root",
-              url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
-              name: "Root",
-            },
-          ],
-        })
-      );
-    }
-  ),
-  rest.get(
     `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622b0ae8a25d83e35893b3cc`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json({
-          boardgames: [
-            {
-              _id: "622b0ae8a25d83e35893b3cc",
-              handle: "root",
-              url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
-              name: "Root",
-            },
-          ],
-        })
+        ctx.json([
+          {
+            _id: "622dcd8a87c35208164d62a6",
+            handle: "scythe",
+            url: "https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe",
+            name: "Scythe",
+          },
+        ])
       );
     }
   ),
@@ -132,7 +118,7 @@ export const handlers = [
   ),
 
   rest.patch(
-    `${process.env.REACT_APP_PUBLIC_API}all-boardgames/add/622dd09e87c35208164d62c3/622b0ae8a25d83e35893b3cc`,
+    `${process.env.REACT_APP_PUBLIC_API}all-boardgames/add/622dcf0a87c35208164d62b1/622a4dc955c15b820edc9a45`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
@@ -144,14 +130,25 @@ export const handlers = [
             picture:
               "https://cf.geekdo-images.com/0B3BF9BtfsopNybuP3GK-w__imagepage/img/iy0CsTSvAOoAzxzoOFtnKDoTCsQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2342125.jpg",
             matches: ["62288d05c84b1704c29341e8"],
-            boardgames: [
-              "622dcd8a87c35208164d62a6",
-              "622dd09e87c35208164d62c3",
-            ],
+            boardgames: ["622dcf0a87c35208164d62b1"],
             id: "622a4dc955c15b820edc9a45",
           },
         })
       );
+    }
+  ),
+
+  rest.post(
+    `${process.env.REACT_APP_PUBLIC_API}users/login`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(loggedUser.response));
+    }
+  ),
+
+  rest.post(
+    `${process.env.REACT_APP_PUBLIC_API}users/signup`,
+    (req, res, ctx) => {
+      return res(ctx.status(201), ctx.json(userRegistered.response));
     }
   ),
 

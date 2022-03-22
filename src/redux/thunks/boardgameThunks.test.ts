@@ -4,37 +4,10 @@ import {
   loadMyGamesThunk,
 } from "./boardgameThunks";
 
-jest.mock("jwt-decode", () => () => ({
-  name: "Lina Bo",
-  id: "622b0ae8a25d83e35893b3cc",
-  iat: 1647183996,
-}));
-
-describe("Given a addGameThunk function", () => {
-  describe("When it called", () => {
-    test.skip("Then it should dispatch a function", async () => {
-      jest.setTimeout(9000);
-
-      localStorage.setItem(
-        "token",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTGluYSBCbyIsImlkIjoiNjIyYjBhZThhMjVkODNlMzU4OTNiM2NjIiwiaWF0IjoxNjQ3MjYyNjkyfQ.JgSsxiFefjTqn-nil25OIizxA_cfCP9jX6xyZaOBjvI"
-      );
-
-      const gameId = "622dd09e87c35208164d62c3";
-      const dispatch = jest.fn();
-
-      const myAddGameThunk = addGameThunk(gameId);
-      await myAddGameThunk(dispatch);
-
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
-});
-
 describe("Given a loadGamesThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
-      jest.setTimeout(9000);
+      jest.setTimeout(1000);
 
       const dispatch = jest.fn();
       await loadGamesThunk(dispatch);
@@ -43,17 +16,68 @@ describe("Given a loadGamesThunk function", () => {
   });
 });
 
-describe("Given a loadMyGamesThunk function", () => {
+describe("Given a addGamesThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
       jest.setTimeout(9000);
+      jest.useFakeTimers();
+      jest.advanceTimersByTime(1000);
 
-      const gameId = "622dd09e87c35208164d62c3";
+      const mockLocalStorage = {
+        getItem: () =>
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicGVwZSIsInVzZXJuYW1lIjoicGVwZSIsImlkIjoiNjIzMzFkZjQ3NDMzMGZiZDI4ZDU5NWUxIiwiaWF0IjoxNjQ3NTE3Mjg4fQ.suBLCba7CxFLfXRDudmvdL1uRzVFGAlnWxkOngW0i1A",
+      };
+      Object.defineProperty(window, "localStorage", {
+        value: mockLocalStorage,
+      });
+
+      jest.mock("jwt-decode", () => () => ({
+        name: "Lina Bo",
+        id: "622b0ae8a25d83e35893b3cc",
+        iat: 1647183996,
+      }));
+
+      const dispatch = jest.fn();
+      await addGameThunk(dispatch());
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a loadMyGamesThunk function", () => {
+  describe("When it called", () => {
+    test.skip("Then it should dispatch a function", async () => {
+      jest.setTimeout(1200);
+      jest.useFakeTimers();
+      jest.advanceTimersByTime(1000);
+
+      const mockLocalStorage = {
+        getItem: () =>
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicGVwZSIsInVzZXJuYW1lIjoicGVwZSIsImlkIjoiNjIzMzFkZjQ3NDMzMGZiZDI4ZDU5NWUxIiwiaWF0IjoxNjQ3NTE3Mjg4fQ.suBLCba7CxFLfXRDudmvdL1uRzVFGAlnWxkOngW0i1A",
+      };
+      Object.defineProperty(window, "localStorage", {
+        value: mockLocalStorage,
+      });
+
+      const userId = "622b0ae8a25d83e35893b3cc";
       const dispatch = jest.fn();
 
-      const myLoadMyGamesThunk = loadMyGamesThunk(gameId);
-      await myLoadMyGamesThunk(dispatch);
-      expect(dispatch).toHaveBeenCalled();
+      const action = {
+        type: "load-my-games",
+        boardgame: [
+          {
+            _id: "622dcd8a87c35208164d62a6",
+            handle: "scythe",
+            url: "https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe",
+            name: "Scythe",
+          },
+        ],
+      };
+
+      const myLoadMyGamesThunk = loadMyGamesThunk(userId);
+      await myLoadMyGamesThunk(dispatch());
+
+      expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
 });
