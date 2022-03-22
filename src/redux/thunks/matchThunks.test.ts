@@ -5,6 +5,7 @@ import {
   loadMatchesInfoThunk,
   loadMatchesThunk,
   loadMyMatchesThunk,
+  updateMyMatchThunk,
 } from "./matchThunk";
 
 describe("Given a loadMatchesThunk function", () => {
@@ -21,10 +22,10 @@ describe("Given a loadMatchesThunk function", () => {
 
 describe("Given a loadMyMatchesThunk function", () => {
   describe("When it called", () => {
-    test.skip("Then it should dispatch a function", async () => {
+    test("Then it should dispatch a function", async () => {
       jest.setTimeout(8000);
 
-      const id = "6229ef04d27d51d23afda2e0";
+      const id = "6238cbdb3ae9bb76b01b7dbc";
       const dispatch = jest.fn();
 
       const myMatchesThunk = loadMyMatchesThunk(id);
@@ -35,12 +36,39 @@ describe("Given a loadMyMatchesThunk function", () => {
   });
 });
 
-describe("Given a loadMatchesInfoThunk function", () => {
+describe("Given a updateMyMatchThunk function", () => {
   describe("When it called", () => {
-    test.skip("Then it should dispatch a function", async () => {
+    test("Then it should dispatch a function", async () => {
       jest.setTimeout(8000);
 
-      const id = "6229ef04d27d51d23afda2e0";
+      const match = {
+        id: "531452",
+        gameTitle: "Carcassone",
+        image: "",
+        creator: "username2",
+        date: "march 2020",
+        maxPlayers: 3,
+        players: ["", "", ""],
+        location: "Madrid",
+      };
+
+      const id = "6233075705443313063349fd";
+      const dispatch = jest.fn();
+
+      const myMatchesThunk = updateMyMatchThunk(match, id);
+      await myMatchesThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a loadMatchesInfoThunk function", () => {
+  describe("When it called", () => {
+    test("Then it should dispatch a function", async () => {
+      jest.setTimeout(8000);
+
+      const id = "62349fe9c93388f7b096ab02";
       const dispatch = jest.fn();
 
       const myMatchesThunk = loadMatchesInfoThunk(id);
@@ -51,7 +79,7 @@ describe("Given a loadMatchesInfoThunk function", () => {
   });
 });
 
-describe("Given a deleteMatchThunk function", () => {
+describe("Given a createMatchThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
       jest.setTimeout(8000);
@@ -83,7 +111,7 @@ describe("Given a deleteMatchThunk function", () => {
   });
 });
 
-describe("Given a createMatchThunk function", () => {
+describe("Given a deleteMatchThunk function", () => {
   describe("When it called", () => {
     test("Then it should dispatch a function", async () => {
       jest.setTimeout(8000);
