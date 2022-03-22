@@ -32,6 +32,7 @@ export const loadMyGamesThunk =
 export const addGameThunk =
   (gameId: Partial<BoardgameInterface> | string | undefined) =>
   async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    debugger;
     const token: string = localStorage.getItem("token") as string;
     const decodedToken: DecodedToken = jwtDecode(token);
     const userId = decodedToken.id;
