@@ -17,22 +17,25 @@ const Navigationbar = (): JSX.Element => {
   const navigate = useNavigate();
 
   const logout = () => {
+    debugger;
     localStorage.removeItem("token");
     dispatch(logoutUserAction());
     toast("Good Bye!", {
       icon: "👋",
     });
 
-    setTimeout(() => {
-      navigate("/");
-    }, 250);
+    /*     setTimeout(() => {
+    }, 250); */
+    navigate("/");
   };
 
   return (
     <Nav>
       <Logo>
         <Link to="/matches" className="logo__link">
-          <span className="logo__boardgame">Boardgame</span>
+          <span className="logo__boardgame" data-testid="logo-element">
+            Boardgame
+          </span>
           <span>Hub</span>
         </Link>
       </Logo>

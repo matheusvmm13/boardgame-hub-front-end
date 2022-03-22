@@ -27,7 +27,7 @@ describe("Given a form component", () => {
       const mockStore = configureMockStore([thunk]);
       const storeMock = mockStore({
         users: {
-          isLoggedin: true,
+          loggedIn: true,
           boardgames: [
             {
               images: {
