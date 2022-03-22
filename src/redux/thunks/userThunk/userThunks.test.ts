@@ -1,4 +1,4 @@
-import userLoginThunk from "./userThunks";
+import userLoginThunk, { registerThunk } from "./userThunks";
 
 describe("Given a loginUserThunk function", () => {
   describe("When it is called with correct credentials", () => {
@@ -27,6 +27,39 @@ describe("Given a loginUserThunk function", () => {
 
       const loginThunk = userLoginThunk(user);
       await loginThunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
+});
+
+describe("Given a registerUserThunk function", () => {
+  describe("When it is called with a userData to register", () => {
+    test("Then it should call dispatch with the registerUser action", async () => {
+      const userData = {
+        name: "Laura",
+        username: "laurawallace",
+        password: "Sil1234",
+      };
+
+      const dispatch = jest.fn();
+
+      const expectedAction = {
+        type: "register-user",
+        userData: {
+          name: "Laura",
+          username: "laurawallace",
+          password:
+            "$2b$10$6YGQ8YbSlw1CDfv2oUa8PuakrP8TTRR55eU81YmR3zfQrnEIQA0PC",
+          boardgames: [],
+          matches: [],
+          id: "623790b0dfa33dfc6f497aca",
+        },
+      };
+
+      const registerThunkFunction = registerThunk(userData);
+      await registerThunkFunction(dispatch);
 
       expect(dispatch).toHaveBeenCalled();
       expect(dispatch).toHaveBeenCalledWith(expectedAction);

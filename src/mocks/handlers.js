@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { loggedUser, mockedMatch } from "./mockedObjects";
+import { loggedUser, mockedMatch, userRegistered } from "./mockedObjects";
 
 export const handlers = [
   rest.get(`${process.env.REACT_APP_PUBLIC_API}matches`, (req, res, ctx) => {
@@ -159,6 +159,13 @@ export const handlers = [
     `${process.env.REACT_APP_PUBLIC_API}users/login`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(loggedUser.response));
+    }
+  ),
+
+  rest.post(
+    `${process.env.REACT_APP_PUBLIC_API}users/signup`,
+    (req, res, ctx) => {
+      return res(ctx.status(201), ctx.json(userRegistered.response));
     }
   ),
 

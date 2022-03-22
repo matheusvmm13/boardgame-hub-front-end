@@ -15,6 +15,8 @@ const initialUserData = {
   password: "",
   id: "",
   loggedIn: false,
+  matches: [],
+  boardgames: [],
 };
 
 const userReducer = (
