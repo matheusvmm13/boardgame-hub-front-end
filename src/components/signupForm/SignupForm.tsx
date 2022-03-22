@@ -96,7 +96,7 @@ const FormWrapper = styled.div`
   }
 `;
 
-const StyledForm = styled.form`
+const StyledForm = styled.section`
   background-color: #ffffff;
   display: flex;
   align-items: flex-start;

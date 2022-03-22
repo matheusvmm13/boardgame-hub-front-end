@@ -61,6 +61,12 @@ export const handlers = [
               url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
               name: "Root",
             },
+            {
+              _id: "622dcd8a87c35208164d62a6",
+              handle: "scythe",
+              url: "https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe",
+              name: "Scythe",
+            },
           ],
         })
       );
@@ -68,38 +74,18 @@ export const handlers = [
   ),
 
   rest.get(
-    `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622dd09e87c35208164d62c3`,
-    (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          boardgames: [
-            {
-              _id: "622dd09e87c35208164d62c3",
-              handle: "root",
-              url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
-              name: "Root",
-            },
-          ],
-        })
-      );
-    }
-  ),
-  rest.get(
     `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622b0ae8a25d83e35893b3cc`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json({
-          boardgames: [
-            {
-              _id: "622b0ae8a25d83e35893b3cc",
-              handle: "root",
-              url: "https://www.boardgameatlas.com/game/TAAifFP590/root",
-              name: "Root",
-            },
-          ],
-        })
+        ctx.json([
+          {
+            _id: "622dcd8a87c35208164d62a6",
+            handle: "scythe",
+            url: "https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe",
+            name: "Scythe",
+          },
+        ])
       );
     }
   ),
