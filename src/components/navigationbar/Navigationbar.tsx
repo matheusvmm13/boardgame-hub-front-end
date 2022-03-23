@@ -17,15 +17,12 @@ const Navigationbar = (): JSX.Element => {
   const navigate = useNavigate();
 
   const logout = () => {
-    debugger;
     localStorage.removeItem("token");
     dispatch(logoutUserAction());
     toast("Good Bye!", {
       icon: "👋",
     });
 
-    /*     setTimeout(() => {
-    }, 250); */
     navigate("/");
   };
 

@@ -54,11 +54,6 @@ const MatchCard = ({
 
         <CardPlayersWrapper>
           <p className="card__player--number">Attendees: {players.length}</p>
-          {/* {Array.from(Array(maxPlayers)).map((player, index) => (
-            <CardPlayers key={index} className="card__players">
-              <GiMeeple className="icon__meeple" />
-            </CardPlayers>
-          ))} */}
         </CardPlayersWrapper>
 
         <CardLocation className="card__location">
@@ -71,7 +66,7 @@ const MatchCard = ({
         )}
 
         {user.loggedIn && locationPath.pathname === "/my-matches" && (
-          <p className="card__delete" onClick={() => deleteMatch(id as string)}>
+          <p className="card__delete" onClick={() => deleteMatch(id)}>
             DELETE
           </p>
         )}
@@ -149,26 +144,6 @@ const CardPlayersWrapper = styled.article`
     margin: 0.5rem 0.5rem 0.5rem 0rem;
   }
 `;
-
-/* const CardPlayers = styled.div`
-  margin: 0.5rem 0.3rem 0.5rem 0rem;
-  align-items: center;
-
-  .card__players--playerimage {
-    height: 1.8rem;
-    width: 1.8rem;
-    margin-right: 0.2rem;
-    border-radius: 20%;
-    border: 1.5px solid ${(props) => props.theme.lightText};
-    object-fit: cover;
-  }
-
-  .icon__meeple {
-    color: ${(props) => props.theme.lightText};
-    height: 1.3rem;
-    width: 100%;
-  }
-`; */
 
 const CardLocation = styled.div`
   font-weight: 400;
