@@ -29,7 +29,7 @@ const Navigationbar = (): JSX.Element => {
   return (
     <Nav>
       <Logo>
-        <Link to="/matches" className="logo__link">
+        <Link to="/matches" className="logo__link" title="boardgameHub">
           <span className="logo__boardgame" data-testid="logo-element">
             Boardgame
           </span>
@@ -46,6 +46,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/matches`}
           className="menu__link"
+          title="All Matches"
           onClick={() => setIsOpen(!isOpen)}
         >
           {user.loggedIn && <MenuLink>All Matches</MenuLink>}
@@ -53,6 +54,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/my-matches`}
           className="menu__link"
+          title="My Matches"
           onClick={() => setIsOpen(!isOpen)}
         >
           {user.loggedIn && <MenuLink>My Matches</MenuLink>}
@@ -60,6 +62,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/my-matches/new-match`}
           className="menu__link"
+          title="New Match"
           onClick={() => setIsOpen(!isOpen)}
         >
           {user.loggedIn && <MenuLink>New Match</MenuLink>}
@@ -67,6 +70,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/my-boardgames`}
           className="menu__link"
+          title="My Boardgames"
           onClick={() => setIsOpen(!isOpen)}
         >
           {user.loggedIn && <MenuLink>My Boardgames</MenuLink>}
@@ -74,6 +78,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/all-boardgames`}
           className="menu__link"
+          title="All Boardgames"
           onClick={() => setIsOpen(!isOpen)}
         >
           {user.loggedIn && <MenuLink>All Boardgames</MenuLink>}
@@ -81,6 +86,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/users/login`}
           className="menu__link"
+          title="Login"
           onClick={() => setIsOpen(!isOpen)}
         >
           {!user.loggedIn && <MenuLink>Login</MenuLink>}
@@ -89,6 +95,7 @@ const Navigationbar = (): JSX.Element => {
         <Link
           to={`/users/signup`}
           className="menu__link"
+          title="Sign up"
           onClick={() => setIsOpen(!isOpen)}
         >
           {!user.loggedIn && <MenuLinkAuth>Sign Up</MenuLinkAuth>}
