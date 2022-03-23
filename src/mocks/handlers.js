@@ -74,7 +74,7 @@ export const handlers = [
   ),
 
   rest.get(
-    `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622a34ef55c15b820edc9a3e`,
+    `${process.env.REACT_APP_PUBLIC_API}my-matches/622b0ae8a25d83e35893b3cc`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
