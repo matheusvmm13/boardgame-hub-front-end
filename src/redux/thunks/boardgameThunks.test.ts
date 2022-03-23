@@ -59,25 +59,18 @@ describe("Given a loadMyGamesThunk function", () => {
         value: mockLocalStorage,
       });
 
-      const userId = "622b0ae8a25d83e35893b3cc";
+      jest.mock("jwt-decode", () => () => ({
+        name: "Eric Lang",
+        id: "622a34ef55c15b820edc9a3e",
+        iat: 1647183996,
+      }));
+
       const dispatch = jest.fn();
 
-      const action = {
-        type: "load-my-games",
-        boardgame: [
-          {
-            _id: "622dcd8a87c35208164d62a6",
-            handle: "scythe",
-            url: "https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe",
-            name: "Scythe",
-          },
-        ],
-      };
-
-      const myLoadMyGamesThunk = loadMyGamesThunk(userId);
+      const myLoadMyGamesThunk = loadMyGamesThunk("622a34ef55c15b820edc9a3e");
       await myLoadMyGamesThunk(dispatch());
 
-      expect(dispatch).toHaveBeenCalledWith(action);
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });

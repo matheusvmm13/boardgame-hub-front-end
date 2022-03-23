@@ -9,6 +9,7 @@ const Map = (matchLocation: MapInterface): JSX.Element => {
     <>
       <MapContainer className="map__responsive">
         <iframe
+          data-testid="map-element"
           title="boardgame"
           width="450"
           height="250"

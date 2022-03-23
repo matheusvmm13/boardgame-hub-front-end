@@ -22,6 +22,7 @@ export const loadGamesThunk = async (
 
 export const loadMyGamesThunk =
   (id: string) => async (dispatch: ThunkDispatch<void, unknown, AnyAction>) => {
+    debugger;
     const response = await fetch(
       `${process.env.REACT_APP_PUBLIC_API}my-boardgames/${id}`
     );
