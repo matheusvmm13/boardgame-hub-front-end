@@ -6,10 +6,18 @@ import MatchCard from "../../components/matchCard/MatchCard";
 import { RootState } from "../../redux/reducers";
 import { loadMatchesThunk } from "../../redux/thunks/matchThunk";
 import Spinner from "../../components/spinner/Spinner";
+import { MatchInterface } from "../../utils/types/matchInterface";
 
 const AllMatchesPage = () => {
   const dispatch = useDispatch();
   const matchesData = useSelector((state: RootState) => state.matches);
+
+  const sortedMatches = matchesData
+    .slice()
+    .sort(
+      (a: MatchInterface, b: MatchInterface) =>
+        +new Date(a.date) - +new Date(b.date)
+    );
 
   useEffect(() => {
     dispatch(loadMatchesThunk);
@@ -21,7 +29,7 @@ const AllMatchesPage = () => {
         <Header title={"All Matches"} />
         {matchesData.length > 0 ? (
           <ul className="matches__list">
-            {matchesData.map((partida) => (
+            {sortedMatches.map((partida) => (
               <MatchCard
                 gameTitle={partida.gameTitle}
                 image={partida.image}

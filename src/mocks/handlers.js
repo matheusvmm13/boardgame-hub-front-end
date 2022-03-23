@@ -74,7 +74,7 @@ export const handlers = [
   ),
 
   rest.get(
-    `${process.env.REACT_APP_PUBLIC_API}my-boardgames/622a34ef55c15b820edc9a3e`,
+    `${process.env.REACT_APP_PUBLIC_API}my-matches/622b0ae8a25d83e35893b3cc`,
     (req, res, ctx) => {
       return res(
         ctx.status(200),
@@ -252,6 +252,27 @@ export const handlers = [
             _id: "622a34ef55c15b820edc9a3e",
             name: "Eric Lang",
             username: "ericrage",
+            picture:
+              "https://cf.geekdo-images.com/0B3BF9BtfsopNybuP3GK-w__imagepage/img/iy0CsTSvAOoAzxzoOFtnKDoTCsQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2342125.jpg",
+            matches: ["62288d05c84b1704c29341e8"],
+            boardgames: ["622dcf0a87c35208164d62b1"],
+            id: "622a4dc955c15b820edc9a45",
+          },
+        })
+      );
+    }
+  ),
+
+  rest.patch(
+    `${process.env.REACT_APP_PUBLIC_API}all-boardgames/add/622dcd3487c35208164d62a2/62331df474330fbd28d595e1`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          userData: {
+            _id: "62331df474330fbd28d595e1",
+            name: "Pepe",
+            username: "pepe",
             picture:
               "https://cf.geekdo-images.com/0B3BF9BtfsopNybuP3GK-w__imagepage/img/iy0CsTSvAOoAzxzoOFtnKDoTCsQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2342125.jpg",
             matches: ["62288d05c84b1704c29341e8"],
