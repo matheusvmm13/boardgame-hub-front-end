@@ -151,7 +151,6 @@ const FormMatch: React.FC<{}> = () => {
                   placeholder="Select the number of players"
                   type="number"
                   min={1}
-                  //max={formData?.maxPlayers}
                 />
               )}
 
